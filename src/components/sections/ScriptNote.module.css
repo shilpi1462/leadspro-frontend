@@ -1,0 +1,45 @@
+.note {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.words {
+  font-size: clamp(1.5rem, 1.05rem + 1.8vw, 2.9rem);
+  white-space: pre-line;
+  text-align: center;
+  transform: rotate(-11deg);
+}
+
+.arrow {
+  width: clamp(56px, 3rem + 3.5vw, 104px);
+  height: auto;
+}
+
+.downright .arrow {
+  align-self: flex-end;
+}
+
+.downleft .arrow {
+  align-self: flex-start;
+  transform: scaleX(-1);
+}
+
+.right {
+  flex-direction: row;
+}
+
+.right .arrow {
+  transform: rotate(-28deg);
+}
+
+.left {
+  flex-direction: row-reverse;
+}
+
+.left .arrow {
+  transform: scaleX(-1) rotate(-28deg);
+}

@@ -1,0 +1,178 @@
+.head {
+  display: grid;
+  gap: 16px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .head {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px;
+  }
+}
+
+.intro {
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--k-grey);
+}
+
+.grid {
+  display: grid;
+  gap: 16px;
+  margin-top: clamp(32px, 4vw, 48px);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.cell {
+  display: grid;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  gap: 10px;
+  padding: 16px;
+  border-radius: var(--k-radius);
+  background: var(--k-white);
+  color: var(--k-black);
+  transition: transform 0.4s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.thumb {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 275 / 169;
+  border-radius: 12px;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+
+.card:hover .thumb img {
+  transform: scale(1.05);
+}
+
+.chip {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 5px 12px;
+  border-radius: 120px;
+  background: var(--k-grey);
+  color: var(--k-white);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+  font-size: 1.02rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--k-grey);
+}
+
+.time {
+  font-size: 0.92rem;
+  color: var(--k-grey);
+}
+
+.title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-family: var(--k-display);
+  font-size: clamp(1.2rem, 1rem + 0.6vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+/* The title link covers the card so the whole card is clickable. */
+.title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.excerpt {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.more {
+  justify-self: start;
+  font-size: 0.95rem;
+  color: var(--k-grey);
+  border-bottom: 1px solid currentColor;
+}
+
+.all {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(28px, 3vw, 44px);
+}
+
+/* With only a couple of posts the heading takes the left half and the cards the right. */
+@media (min-width: 1024px) {
+  .few {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(32px, 5vw, 80px);
+  }
+
+  .few .head {
+    grid-template-columns: 1fr;
+    align-content: start;
+    gap: 20px;
+  }
+
+  .few .grid {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0;
+  }
+
+  .few .all {
+    justify-content: flex-start;
+    align-self: start;
+  }
+}

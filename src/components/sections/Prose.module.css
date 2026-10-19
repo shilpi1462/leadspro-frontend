@@ -1,0 +1,439 @@
+.prose {
+  display: grid;
+  gap: 18px;
+  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.08rem);
+  line-height: 1.65;
+  --prose-muted: rgba(252, 252, 252, 0.72);
+}
+
+.onLight {
+  --prose-muted: #4d4d4d;
+}
+
+.p {
+  color: var(--prose-muted);
+}
+
+.p strong {
+  color: inherit;
+  filter: brightness(1.35);
+}
+
+.onLight .p strong {
+  filter: none;
+  color: var(--k-black);
+}
+
+.h3 {
+  margin-top: 10px;
+}
+
+/* Lime-tick list */
+
+.ticks {
+  display: grid;
+  gap: 14px;
+}
+
+.ticks li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.twoCol {
+  gap: 12px 32px;
+}
+
+@media (min-width: 640px) {
+  .twoCol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Numbered list */
+
+.numbers {
+  display: grid;
+  gap: 12px;
+}
+
+.numbers li {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+}
+
+.num {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--k-accent);
+  color: var(--k-black);
+  font-family: var(--k-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  transform: translateY(-2px);
+}
+
+/* Quote card */
+
+.quote {
+  position: relative;
+  margin: 6px 0;
+  padding: 26px 28px 26px 70px;
+  border-radius: 18px;
+  background: var(--k-card);
+  color: var(--k-white);
+  font-family: var(--k-display);
+  font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.quoteMark {
+  position: absolute;
+  top: 12px;
+  left: 22px;
+  font-family: var(--k-display);
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--k-accent);
+}
+
+/* Step chain: grey pills joined by arrows */
+
+.chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.chain li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chainStep {
+  padding: 8px 16px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1px var(--k-line);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.onLight .chainStep {
+  background: var(--k-black);
+  color: var(--k-white);
+  box-shadow: none;
+}
+
+.chainArrow {
+  width: 16px;
+  height: 16px;
+  color: var(--k-accent);
+}
+
+.onLight .chainArrow {
+  color: var(--k-black);
+}
+
+.note {
+  padding-left: 14px;
+  border-left: 2px solid var(--k-accent);
+  font-size: 0.92rem;
+  color: var(--k-grey);
+}
+
+/* Example panel (the research finding has its own component) */
+
+.example {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  margin: 12px 0;
+  padding: clamp(22px, 3vw, 40px);
+  border-radius: var(--k-radius);
+}
+
+.example {
+  background: var(--k-card);
+  color: var(--k-white);
+  box-shadow: inset 0 0 0 1px var(--k-line);
+}
+
+/* the example card is always dark, even inside a light section */
+.example .ticks svg {
+  color: var(--k-accent);
+}
+
+.findingNote {
+  font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem);
+  color: var(--k-black);
+  transform: rotate(-4deg);
+  transform-origin: left;
+}
+
+.example .findingNote {
+  color: var(--k-accent);
+}
+
+.findingTitle {
+  max-width: 34ch;
+}
+
+/* Formula: "Useful Answers + Human Expertise + ..." written as a sum on a dark-green card */
+.formula {
+  display: grid;
+  width: min(100%, 460px);
+  margin: 8px 0;
+  padding: 8px 24px 16px;
+  border-radius: 22px;
+  background:
+    radial-gradient(90% 70% at 100% 0%, rgba(217, 245, 92, 0.16), transparent 60%),
+    linear-gradient(160deg, #17604a, #0f4c3a 55%, #0b3a2c);
+  box-shadow:
+    inset 0 0 0 1px rgba(217, 245, 92, 0.25),
+    0 30px 60px -30px rgba(15, 76, 58, 0.85);
+  color: #fff;
+  text-align: left;
+}
+
+.formula li {
+  display: grid;
+  grid-template-columns: 22px 38px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.16);
+}
+
+/* the rule under the sum */
+.formula li:last-child {
+  border-bottom: 4px double rgba(217, 245, 92, 0.75);
+}
+
+:global(.js) .formula li {
+  opacity: 0;
+  transform: translateX(-16px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(0.15s + var(--i) * 0.12s);
+}
+
+:global(.js) .formula:global(.in) li {
+  opacity: 1;
+  transform: none;
+}
+
+.plus {
+  font-family: var(--k-display);
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
+  color: var(--k-accent);
+}
+
+.termIcon {
+  width: 38px;
+  height: 38px;
+  padding: 8px;
+  border-radius: 11px;
+  background: rgba(217, 245, 92, 0.14);
+  color: var(--k-accent);
+}
+
+.term {
+  font-family: var(--k-display);
+  font-size: clamp(1.05rem, 0.95rem + 0.45vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(.js) .formula li {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ", not artificial "AI content hacks."": the rejected idea, crossed out */
+.notLine {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  padding: 10px 16px 10px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  color: var(--prose-muted);
+  font-weight: 500;
+}
+
+.onLight .notLine {
+  background: #f1f2ef;
+  box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.08);
+}
+
+.notLine s {
+  text-decoration-thickness: 2px;
+  text-decoration-color: #d44a3a;
+}
+
+.notMark {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #2a2d2b;
+  color: #fff;
+  font-size: 0.75rem;
+}
+
+.onLight .notMark {
+  background: var(--k-black);
+}
+
+/* Inside an example: the generic article as a faded card with copies stacked behind it */
+
+.exampleBody {
+  gap: 20px;
+}
+
+.generic {
+  position: relative;
+  margin: 8px 0 18px;
+  max-width: 460px;
+}
+
+.genericStack {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: #2b302d;
+  transform: translate(12px, 12px) rotate(2deg);
+  opacity: 0.6;
+}
+
+.genericStack + .genericStack {
+  transform: translate(24px, 24px) rotate(4deg);
+  opacity: 0.3;
+}
+
+.genericCard {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding: 16px 20px 20px;
+  border-radius: 16px;
+  background: #f4f5f2;
+  color: #2a2d2b;
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.8);
+}
+
+.genericBar {
+  display: flex;
+  gap: 5px;
+}
+
+.genericBar i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cfd3d0;
+}
+
+.genericTitle {
+  font-family: var(--k-display);
+  font-size: clamp(1.1rem, 0.98rem + 0.5vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.genericLines {
+  display: grid;
+  gap: 7px;
+}
+
+.genericLines i {
+  height: 7px;
+  border-radius: 999px;
+  background: #dfe2df;
+}
+
+.genericLines i:last-child {
+  width: 60%;
+}
+
+/* Inside an example: a long chain as a path of numbered stops */
+
+.pathway {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  padding-left: 4px;
+}
+
+@media (min-width: 720px) {
+  .pathway {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 18px;
+  }
+}
+
+.pathway li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px 10px 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.pathDot {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #0f4c3a;
+  color: var(--k-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.pathText {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.pathEnd {
+  background: var(--k-accent) !important;
+  color: #0b2a20;
+  box-shadow: none !important;
+}
+
+.pathEnd .pathDot {
+  background: #0b2a20;
+}
+
+.footnote {
+  font-size: 0.85rem;
+  font-style: italic;
+}

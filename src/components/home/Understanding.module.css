@@ -1,0 +1,488 @@
+/* Signal map: identity signals on the left, trust signals on the right, both wired into
+   the business in the middle. Wires draw outward from the centre once the map is in view. */
+
+.map {
+  --gap: 14px;
+  --arm: 40px;
+  --core: 176px;
+  --wire: rgba(15, 76, 58, 0.28);
+  display: grid;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+@media (min-width: 640px) and (max-width: 999px) {
+  .map {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hub {
+    grid-column: 1 / -1;
+    order: -1;
+  }
+}
+
+/* Stacked layouts keep one thread running through the gaps between the cards. */
+
+@media (max-width: 999px) {
+  .map {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .map::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: var(--wire);
+    z-index: -1;
+  }
+}
+
+@media (min-width: 1000px) {
+  .map {
+    grid-template-columns: minmax(0, 1fr) 240px minmax(0, 1fr);
+    gap: 0;
+  }
+}
+
+.side {
+  position: relative;
+  display: grid;
+  gap: var(--gap);
+}
+
+@media (min-width: 1000px) {
+  .side {
+    grid-auto-rows: 1fr;
+  }
+
+  .left {
+    padding-right: var(--arm);
+  }
+
+  .right {
+    padding-left: var(--arm);
+  }
+
+  /* The spine that gathers each side's three wires. */
+  .side::after {
+    content: "";
+    position: absolute;
+    top: calc((100% - 2 * var(--gap)) / 6);
+    bottom: calc((100% - 2 * var(--gap)) / 6);
+    width: 1px;
+    background: var(--wire);
+  }
+
+  .left::after {
+    right: 0;
+  }
+
+  .right::after {
+    left: 0;
+  }
+}
+
+.signal {
+  position: relative;
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  padding: 20px 22px;
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--line);
+  transition:
+    background-color 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+.signal:hover {
+  background: var(--mint);
+  box-shadow: inset 0 0 0 1px rgba(15, 76, 58, 0.25);
+}
+
+@media (min-width: 1000px) {
+  /* Wire from the card to the spine, and the dot where it meets the card. */
+  .signal::after,
+  .signal::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+  }
+
+  .signal::after {
+    width: var(--arm);
+    height: 1px;
+    background: var(--wire);
+  }
+
+  .signal::before {
+    width: 9px;
+    height: 9px;
+    margin-top: -4.5px;
+    border-radius: 50%;
+    background: var(--lime-2);
+    box-shadow: 0 0 0 3px var(--paper);
+    z-index: 1;
+  }
+
+  .left .signal::after {
+    left: 100%;
+    transform-origin: right;
+  }
+
+  .left .signal::before {
+    right: -4.5px;
+  }
+
+  .right .signal::after {
+    right: 100%;
+    transform-origin: left;
+  }
+
+  .right .signal::before {
+    left: -4.5px;
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.index {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted-2);
+}
+
+.key {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.text {
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+/* The business at the centre. */
+
+.hub {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding-block: 8px;
+}
+
+@media (min-width: 1000px) {
+  .hub::before,
+  .hub::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: calc(50% - var(--core) / 2);
+    height: 1px;
+    background: var(--wire);
+  }
+
+  .hub::before {
+    left: 0;
+    transform-origin: right;
+  }
+
+  .hub::after {
+    right: 0;
+    transform-origin: left;
+  }
+}
+
+.core {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  width: var(--core);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--panel-ink);
+  color: var(--paper);
+  box-shadow:
+    0 0 0 10px rgba(217, 245, 92, 0.1),
+    0 0 0 22px rgba(217, 245, 92, 0.05);
+}
+
+@media (max-width: 999px) {
+  .core {
+    --core: 132px;
+  }
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--lime);
+}
+
+.diamond {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  background: var(--ink);
+  transform: rotate(45deg);
+}
+
+.hubLabel {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Build order once the map is in view: centre, arms, spines, card wires, cards. */
+
+:global(.js) .map .core {
+  opacity: 0;
+  transform: scale(0.85);
+  transition:
+    opacity 0.6s var(--ease),
+    transform 0.8s var(--ease);
+}
+
+:global(.js) .map .diamond {
+  transform: rotate(-135deg);
+  transition: transform 1.2s var(--ease) 0.2s;
+}
+
+:global(.js) .map .hub::before,
+:global(.js) .map .hub::after {
+  transform: scaleX(0);
+  transition: transform 0.5s var(--ease) 0.35s;
+}
+
+:global(.js) .map .side::after {
+  transform: scaleY(0);
+  transition: transform 0.5s var(--ease) 0.7s;
+}
+
+:global(.js) .map .signal::after {
+  transform: scaleX(0);
+  transition: transform 0.4s var(--ease) calc(0.95s + var(--d) * 0.08s);
+}
+
+:global(.js) .map .signal {
+  opacity: 0;
+  transition:
+    opacity 0.6s var(--ease) calc(0.25s + var(--d) * 0.1s),
+    transform 0.8s var(--ease) calc(0.25s + var(--d) * 0.1s),
+    background-color 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+:global(.js) .map .left .signal {
+  transform: translateX(-24px);
+}
+
+:global(.js) .map .right .signal {
+  transform: translateX(24px);
+}
+
+:global(.js) .map:global(.in) .core,
+:global(.js) .map:global(.in) .signal {
+  opacity: 1;
+  transform: none;
+}
+
+:global(.js) .map:global(.in) .diamond {
+  transform: rotate(45deg);
+}
+
+:global(.js) .map:global(.in) .hub::before,
+:global(.js) .map:global(.in) .hub::after,
+:global(.js) .map:global(.in) .side::after,
+:global(.js) .map:global(.in) .signal::after {
+  transform: none;
+}
+
+/* The same signals as one chain: a track that fills node by node. */
+
+.chain {
+  display: grid;
+  gap: 24px;
+  margin-top: 28px;
+  padding: clamp(24px, 3.4vw, 44px);
+  border-radius: var(--radius-lg);
+  background: var(--green-panel);
+  color: var(--paper);
+}
+
+.chainLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.track {
+  --node: 38px;
+  position: relative;
+  display: grid;
+  gap: 14px;
+}
+
+.track::before,
+.track::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--node) / 2);
+  bottom: calc(var(--node) / 2);
+  left: calc(var(--node) / 2 - 1px);
+  width: 2px;
+}
+
+.track::before {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.track::after {
+  background: var(--lime);
+  transform-origin: top;
+}
+
+.track li {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--node) minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+}
+
+@media (min-width: 760px) {
+  .track {
+    grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .track::before,
+  .track::after {
+    top: calc(var(--node) / 2 - 1px);
+    bottom: auto;
+    left: calc(100% / var(--n) / 2);
+    right: calc(100% / var(--n) / 2);
+    width: auto;
+    height: 2px;
+  }
+
+  .track::after {
+    transform-origin: left;
+  }
+
+  .track li {
+    grid-template-columns: none;
+    justify-items: center;
+    text-align: center;
+    gap: 14px;
+  }
+}
+
+.node {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: var(--node);
+  height: var(--node);
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.step {
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+:global(.js) .chain .track::after {
+  transform: scaleY(0);
+  transition: transform 1.8s var(--ease-power2) 0.3s;
+}
+
+@media (min-width: 760px) {
+  :global(.js) .chain .track::after {
+    transform: scaleX(0);
+  }
+}
+
+:global(.js) .chain .node {
+  background: var(--green-2);
+  color: rgba(255, 255, 255, 0.75);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
+  transition:
+    background-color 0.4s var(--ease) calc(0.3s + var(--i) * 0.34s),
+    color 0.4s var(--ease) calc(0.3s + var(--i) * 0.34s),
+    box-shadow 0.4s var(--ease) calc(0.3s + var(--i) * 0.34s);
+}
+
+:global(.js) .chain:global(.in) .track::after {
+  transform: none;
+}
+
+:global(.js) .chain:global(.in) .node {
+  background: var(--lime);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--lime);
+}
+
+.foot {
+  display: grid;
+  justify-items: start;
+  gap: 20px;
+  padding-top: clamp(22px, 2.6vw, 32px);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+@media (min-width: 900px) {
+  .foot {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: 48px;
+  }
+}
+
+.outro {
+  max-width: 60ch;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.outro a {
+  color: var(--paper);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--lime);
+  transition: text-decoration-thickness 0.2s var(--ease);
+}
+
+.outro a:hover {
+  text-decoration-thickness: 2px;
+}

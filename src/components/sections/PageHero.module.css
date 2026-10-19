@@ -1,0 +1,353 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-content: space-between;
+  gap: 40px;
+  min-height: min(860px, calc(100svh - 64px));
+  padding-block: clamp(40px, 4.7vw, 68px) 28px;
+  overflow: hidden;
+  background: var(--k-black);
+  color: var(--k-white);
+}
+
+/* The photo sits behind a left-heavy wash so the headline always has ink under it. */
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
+  filter: blur(2px) saturate(0.85);
+  transform: scale(1.04);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      90deg,
+      var(--k-black) 0%,
+      rgba(11, 12, 11, 0.9) 34%,
+      rgba(11, 12, 11, 0.55) 68%,
+      rgba(11, 12, 11, 0.4) 100%
+    ),
+    linear-gradient(0deg, var(--k-black) 0%, transparent 30%);
+}
+
+.glow {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  z-index: -1;
+  width: min(900px, 80vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--k-accent) 26%, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: glow 8s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.8;
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.05) translateY(-12px);
+  }
+  to {
+    opacity: 0.85;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.inner {
+  display: grid;
+  align-items: center;
+  gap: 40px;
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.copy {
+  display: grid;
+  justify-items: start;
+  max-width: 660px;
+}
+
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: clamp(16px, 3vw, 40px);
+  font-size: clamp(1rem, 0.85rem + 0.55vw, 1.4rem);
+  color: var(--k-grey);
+}
+
+.crumbs > * + *::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1.05em;
+  margin-inline: 10px;
+  vertical-align: -0.15em;
+  background: currentColor;
+}
+
+.crumbs a:hover {
+  color: var(--k-white);
+}
+
+.crumbs [aria-current] {
+  color: var(--k-white);
+}
+
+.kicker {
+  margin-bottom: 14px;
+  font-size: clamp(1rem, 0.85rem + 0.55vw, 1.4rem);
+  color: var(--k-grey);
+}
+
+.title {
+  max-width: 15ch;
+}
+
+.lead {
+  margin-top: clamp(20px, 3.4vw, 48px);
+  max-width: 44ch;
+  font-size: clamp(1.05rem, 0.9rem + 0.45vw, 1.2rem);
+  line-height: 1.5;
+  color: var(--k-grey);
+}
+
+.points {
+  display: grid;
+  gap: 18px;
+  margin-top: 36px;
+}
+
+.points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.pointIcon {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  color: var(--k-accent);
+}
+
+.points b {
+  font-weight: 700;
+}
+
+.actions {
+  margin-top: clamp(28px, 3.6vw, 52px);
+}
+
+/* Tilted screenshot cards with the dashed doodle */
+
+.visual {
+  position: relative;
+  display: none;
+  min-height: 420px;
+}
+
+@media (min-width: 1024px) {
+  .visual {
+    display: block;
+  }
+}
+
+.swoop {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 46%;
+  color: var(--k-white);
+  stroke-dashoffset: 400;
+  animation: draw 1.6s 0.5s var(--ease) forwards;
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 400;
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.card {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--k-white);
+  outline: 2px dashed var(--k-accent);
+  outline-offset: 4px;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.8);
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardFront {
+  top: 22%;
+  right: 6%;
+  z-index: 2;
+  width: 64%;
+  aspect-ratio: 16 / 10;
+  transform: rotate(-12deg);
+  animation: card-in 1s 0.2s var(--ease) both;
+}
+
+.cardBack {
+  top: 34%;
+  right: -2%;
+  width: 52%;
+  aspect-ratio: 16 / 10;
+  opacity: 0.7;
+  transform: rotate(-7deg);
+  animation: card-in 1s 0.35s var(--ease) both;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    translate: 40px 60px;
+    rotate: 8deg;
+  }
+}
+
+/* A UI scene in place of the photos: the doodle stays behind it, top left */
+
+.staged {
+  min-height: 0;
+  padding: 4% 0 2% 4%;
+}
+
+.staged .swoop {
+  top: -4%;
+  left: -6%;
+  width: 34%;
+  opacity: 0.6;
+}
+
+/* Facts strip along the bottom */
+
+.strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 0;
+}
+
+.stripItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 22px;
+  margin-right: 22px;
+  border-right: 1px solid var(--k-line);
+}
+
+.stripItem:last-child {
+  border-right: 0;
+}
+
+.stripIcon {
+  width: 34px;
+  height: 34px;
+  color: var(--k-white);
+}
+
+.stripItem p {
+  display: grid;
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.stripItem span {
+  font-weight: 400;
+  color: var(--k-grey);
+}
+
+/* Entrance: the copy rises in, a line at a time */
+
+:global(.js) .copy > * {
+  animation: rise 0.8s var(--ease) both;
+}
+
+:global(.js) .copy > :nth-child(2) {
+  animation-delay: 0.08s;
+}
+:global(.js) .copy > :nth-child(3) {
+  animation-delay: 0.16s;
+}
+:global(.js) .copy > :nth-child(4) {
+  animation-delay: 0.24s;
+}
+:global(.js) .copy > :nth-child(5) {
+  animation-delay: 0.32s;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 0;
+  }
+
+  .copy {
+    justify-items: center;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .crumbs {
+    justify-content: center;
+  }
+
+  .points li {
+    text-align: left;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .strip {
+    justify-content: center;
+  }
+}

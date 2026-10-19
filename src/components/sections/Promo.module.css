@@ -1,0 +1,96 @@
+.promo {
+  overflow: hidden;
+  padding-bottom: calc(var(--k-pad) + 40px);
+}
+
+.title {
+  max-width: 24ch;
+}
+
+/* Paragraphs read as the big centred lead; lists and cards keep a narrower column. */
+.copy {
+  max-width: 880px;
+  margin: clamp(24px, 3vw, 40px) auto 0;
+}
+
+.copy p {
+  font-size: clamp(1.05rem, 0.85rem + 0.75vw, 1.42rem);
+  line-height: 1.5;
+  text-align: center;
+  color: inherit;
+}
+
+.copy ul,
+.copy ol,
+.copy blockquote {
+  width: 100%;
+  max-width: 660px;
+  margin-inline: auto;
+}
+
+.list {
+  display: grid;
+  gap: 22px;
+  max-width: 660px;
+  margin: clamp(28px, 3vw, 40px) auto 0;
+}
+
+/* A short list sits as a centred block rather than hugging the column's left edge. */
+.list ul {
+  justify-self: center;
+  min-width: min(100%, 320px);
+}
+
+.listLead {
+  font-size: clamp(1rem, 0.9rem + 0.35vw, 1.15rem);
+  line-height: 1.55;
+  text-align: center;
+  color: var(--k-grey);
+}
+
+.note {
+  position: absolute;
+  right: clamp(12px, 5vw, 90px);
+  bottom: 0;
+  color: inherit;
+}
+
+@media (max-width: 899px) {
+  .note {
+    display: none;
+  }
+}
+
+.visual {
+  position: relative;
+  max-width: 1120px;
+  margin: clamp(56px, 7vw, 104px) auto 0;
+}
+
+/* the hand-written note points down into the scene from above its top-left corner */
+.visualNote {
+  position: absolute;
+  top: clamp(-150px, -9vw, -96px);
+  left: clamp(-12px, 1vw, 24px);
+  z-index: 4;
+  color: inherit;
+}
+
+@media (max-width: 639px) {
+  .visual {
+    margin-top: 40px;
+    margin-bottom: 36px;
+  }
+  .visualNote {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0 0 6px 4px;
+  }
+  .visualNote > span:first-child {
+    font-size: 1.45rem;
+  }
+  .visualNote > svg {
+    width: 46px;
+  }
+}

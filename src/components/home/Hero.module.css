@@ -1,0 +1,593 @@
+.hero {
+  padding-top: 24px;
+  padding-bottom: 40px;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 32px;
+  margin-bottom: 20px;
+}
+
+.wordmark {
+  font-size: clamp(2.75rem, 9vw, 8.1rem);
+  overflow-wrap: anywhere;
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 0.8;
+  /* the clip has to reach past the ® and the leading underscore, and the
+     negative margin puts the original box back */
+  overflow: clip;
+  padding: 0.24em 0.04em 0.26em;
+  margin: -0.14em -0.04em -0.26em;
+}
+
+.wordmark sup {
+  font-size: 0.45em;
+  vertical-align: top;
+  top: -0.2em;
+  position: relative;
+}
+
+.founder {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 12px 10px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-xs);
+  background: var(--green);
+  color: var(--lime);
+  font-weight: 600;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+}
+
+.founderText {
+  display: grid;
+  gap: 2px;
+}
+
+.founderName {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.founderRole {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.founderCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding: 5px 6px 5px 12px;
+  border-radius: var(--radius-xs);
+  background: var(--lime);
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  width: max-content;
+}
+
+.founderBadge {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--lime);
+}
+
+/* Frame, ink and evergreen for every service; the lime glow, photo and corner card
+   follow the active one */
+
+@property --flow-x {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 18%;
+}
+@property --flow-y {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 18%;
+}
+
+.frame {
+  --accent: var(--lime);
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 24px;
+  min-height: clamp(590px, calc(100svh - 285px), 760px);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--paper);
+  background:
+    radial-gradient(
+      34% 42% at var(--flow-x) var(--flow-y),
+      rgba(217, 245, 92, 0.16),
+      transparent 70%
+    ),
+    radial-gradient(80% 90% at 100% 100%, rgba(29, 106, 82, 0.55), transparent 70%),
+    linear-gradient(125deg, #0b0c0b 0%, #10261d 48%, var(--green) 100%);
+  box-shadow: 0 34px 84px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    --flow-x 620ms var(--ease),
+    --flow-y 620ms var(--ease);
+}
+
+.frame > * {
+  position: relative;
+  z-index: 5;
+}
+
+/* Photo on the right, blended into the gradient and fading in from the left */
+
+.frame > .photos {
+  position: absolute;
+  inset: -4% -4% -4% 38%;
+  z-index: 1;
+  opacity: 0.32;
+  mix-blend-mode: luminosity;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 24%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 24%, #000 100%);
+}
+
+.photos img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  filter: contrast(1.08);
+  transform: scale(1.04);
+  transition:
+    opacity 300ms ease,
+    transform 720ms var(--ease),
+    filter 420ms ease;
+}
+
+.photos .photoActive {
+  opacity: 1;
+}
+
+.swapping .photos .photoActive {
+  filter: contrast(1.14);
+  transform: scale(1.095) translateX(1.4rem);
+}
+
+/* Sheen that flows across on each change, and the diagonal light sweep */
+
+.frame > .sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(circle at 20% 72%, rgba(255, 255, 255, 0.2), transparent 0 16%),
+    radial-gradient(circle at 76% 24%, rgba(255, 255, 255, 0.18), transparent 0 18%),
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.3) 44%,
+      rgba(255, 255, 255, 0.08) 72%
+    );
+  mix-blend-mode: screen;
+  opacity: 0.22;
+  pointer-events: none;
+  transform: translateX(-10%);
+}
+
+.swapping > .sheen {
+  animation: colour-flow 760ms var(--ease);
+}
+
+.frame > .sweep {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      color-mix(in srgb, var(--accent) 74%, transparent) 44%,
+      rgba(255, 255, 255, 0.82) 50%,
+      color-mix(in srgb, var(--accent) 68%, transparent) 56%,
+      transparent 100%
+    ),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.12) 0 1px, transparent 1px 8px);
+  mix-blend-mode: screen;
+  transform: translateX(-120%) skewX(-13deg);
+}
+
+.swapping > .sweep {
+  animation: light-sweep 680ms ease;
+}
+
+.frame > .corner {
+  position: absolute;
+  top: clamp(1.4rem, 2.2vw, 2.4rem);
+  right: clamp(1.4rem, 2.2vw, 2.4rem);
+  z-index: 6;
+  width: clamp(42px, 4vw, 58px);
+  height: clamp(42px, 4vw, 58px);
+  border-top: 2px solid var(--accent);
+  border-right: 3px solid var(--accent);
+  opacity: 0.75;
+  transition: border-color 320ms ease;
+}
+
+@keyframes colour-flow {
+  0% {
+    opacity: 0.24;
+    transform: translateX(-28%) scaleX(1.05);
+  }
+  46% {
+    opacity: 0.76;
+  }
+  100% {
+    opacity: 0.42;
+    transform: translateX(18%) scaleX(1.1);
+  }
+}
+
+@keyframes light-sweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-120%) skewX(-13deg);
+  }
+  18%,
+  70% {
+    opacity: 0.68;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(120%) skewX(-13deg);
+  }
+}
+
+/* Corner card naming the active service */
+
+.feature {
+  display: grid;
+  gap: 4px;
+  justify-self: start;
+  min-width: clamp(190px, 18vw, 280px);
+  max-width: 340px;
+  padding: clamp(0.8rem, 1vw, 1rem);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.25);
+}
+
+.featureIndex {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  transition: color 320ms ease;
+}
+
+.featureName {
+  font-size: clamp(1.05rem, 1.35vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.featureText {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.7);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Copy */
+
+.copy {
+  display: grid;
+  gap: 22px;
+  align-content: end;
+  justify-items: start;
+  max-width: min(760px, 56%);
+  padding-right: 24px;
+}
+
+.panelMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  transition: background-color 320ms ease;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+}
+
+.secondary {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(255, 255, 255, 0.5);
+}
+
+.title {
+  max-width: 20ch;
+  font-size: clamp(1.75rem, 3.25vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.3);
+}
+
+.frame > .social {
+  position: absolute;
+  top: 50%;
+  right: 32px;
+  transform: translateY(-50%);
+  flex-direction: column;
+}
+
+/* Service dock */
+
+.dock {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(200px, 1fr);
+  gap: clamp(0.6rem, 0.85vw, 1rem);
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+
+@media (min-width: 1200px) {
+  .dock {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    overflow: visible;
+  }
+}
+
+.chip {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(50px, 38%) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "image number"
+    "image title";
+  align-items: center;
+  gap: 4px clamp(0.58rem, 0.8vw, 0.8rem);
+  min-height: clamp(74px, 5.6vw, 96px);
+  padding: clamp(0.52rem, 0.7vw, 0.7rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: var(--paper);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
+  scroll-snap-align: start;
+  overflow: hidden;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease,
+    background-color 220ms ease;
+}
+
+.chip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.chipThumb {
+  grid-area: image;
+  align-self: stretch;
+  min-height: 58px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.chipThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85);
+  transition:
+    transform 420ms ease,
+    filter 420ms ease;
+}
+
+.chipIndex {
+  grid-area: number;
+  align-self: end;
+  font-size: clamp(0.72rem, 0.76vw, 0.9rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 220ms ease;
+}
+
+.chipName {
+  grid-area: title;
+  align-self: start;
+  font-size: clamp(0.78rem, 0.86vw, 1rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+}
+
+.chip:hover,
+.chip:focus-visible,
+.chipActive {
+  border-color: rgba(217, 245, 92, 0.6);
+  background: rgba(255, 255, 255, 0.12);
+  outline: none;
+  transform: translateY(-6px);
+  box-shadow: 0 18px 42px rgba(217, 245, 92, 0.12);
+}
+
+.chip:hover .chipIndex,
+.chipActive .chipIndex {
+  color: var(--lime);
+}
+
+.chip:hover .chipThumb img,
+.chipActive .chipThumb img {
+  transform: scale(1.08);
+  filter: saturate(1.1);
+}
+
+.chipActive::after {
+  border-color: rgba(217, 245, 92, 0.75);
+  box-shadow:
+    inset 0 0 0 1px rgba(217, 245, 92, 0.2),
+    0 0 24px rgba(217, 245, 92, 0.22);
+}
+
+@media (max-width: 760px) {
+  .frame {
+    min-height: 0;
+    padding: 20px;
+    gap: 20px;
+  }
+  .feature {
+    display: none;
+  }
+  .frame > .photos {
+    inset: 0;
+    opacity: 0.28;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 76%);
+    mask-image: linear-gradient(180deg, #000 0%, transparent 76%);
+  }
+  .copy {
+    max-width: none;
+    padding-right: 0;
+    padding-top: 24px;
+  }
+  .frame > .social {
+    position: static;
+    transform: none;
+    flex-direction: row;
+  }
+  .dock {
+    margin-inline: -20px;
+    padding-inline: 20px;
+    grid-auto-columns: minmax(220px, 72vw);
+    scroll-snap-type: x mandatory;
+  }
+  .chip {
+    min-height: 88px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame,
+  .frame > .sheen,
+  .frame > .sweep,
+  .photos img,
+  .chip,
+  .chipThumb img {
+    transition: none;
+    animation: none;
+  }
+  .chip:hover,
+  .chipActive {
+    transform: none;
+  }
+}
+
+/* On-load choreography: the wordmark rides up out of its own clip, then the panel
+   settles in and the service chips follow one by one. */
+
+.wordmarkInner {
+  display: block;
+}
+
+:global(.js) .wordmarkInner {
+  animation: wordmark-rise 0.9s var(--ease) both;
+}
+
+:global(.js) .founder {
+  animation: settle 0.8s var(--ease) both;
+  animation-delay: 0.3s;
+}
+
+:global(.js) .frame {
+  animation: settle 0.9s var(--ease) both;
+  animation-delay: 0.12s;
+}
+
+:global(.js) .dock > * {
+  animation: settle 0.6s var(--ease) both;
+  animation-delay: 0.55s;
+}
+
+:global(.js) .feature {
+  animation: settle 0.6s var(--ease) both;
+  animation-delay: 0.45s;
+}
+
+@keyframes wordmark-rise {
+  from {
+    transform: translateY(calc(100% + 0.6em));
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}

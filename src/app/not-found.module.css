@@ -1,0 +1,13 @@
+.wrap {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+  max-width: 720px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+}

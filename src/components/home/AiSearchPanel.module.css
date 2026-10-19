@@ -1,0 +1,910 @@
+/* Green panel: label, the flip stage, then the numbered steps that follow the animation */
+
+.panel {
+  display: grid;
+  gap: 18px;
+  height: 100%;
+  padding: 24px;
+  border-radius: var(--radius-sm);
+  background: var(--green-panel);
+  color: var(--paper);
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Flip stage. The card always turns the same way: front to back is the first half-turn, back to    front the second, and it dips back a little at the edge-on moment so the turn has weight. */
+
+.stage {
+  position: relative;
+  height: 400px;
+  perspective: 1400px;
+}
+
+/* soft floor shadow that narrows while the card is edge-on */
+.stage::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -14px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.45), transparent);
+  pointer-events: none;
+}
+
+.stage:has(.toBack)::after,
+.stage:has(.toFront)::after {
+  animation: floor 1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@keyframes floor {
+  50% {
+    transform: scaleX(0.45);
+    opacity: 0.5;
+  }
+}
+
+.flipper {
+  position: relative;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.toBack {
+  animation: to-back 1s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+.toFront {
+  animation: to-front 1s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+@keyframes to-back {
+  0% {
+    transform: rotateY(0deg) scale(1);
+  }
+  50% {
+    transform: rotateY(90deg) scale(0.9);
+  }
+  100% {
+    transform: rotateY(180deg) scale(1);
+  }
+}
+
+@keyframes to-front {
+  0% {
+    transform: rotateY(180deg) scale(1);
+  }
+  50% {
+    transform: rotateY(270deg) scale(0.9);
+  }
+  100% {
+    transform: rotateY(360deg) scale(1);
+  }
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 30px 60px -24px rgba(0, 0, 0, 0.6);
+}
+
+/* a glint crosses each face as it turns */
+.face::after {
+  content: "";
+  position: absolute;
+  inset: -20% -60%;
+  z-index: 5;
+  background: linear-gradient(
+    100deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.16) 48%,
+    rgba(217, 245, 92, 0.12) 52%,
+    transparent 62%
+  );
+  transform: translateX(-70%);
+  pointer-events: none;
+}
+
+.toBack .face::after,
+.toFront .face::after {
+  animation: glint 1.1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@keyframes glint {
+  to {
+    transform: translateX(70%);
+  }
+}
+
+/* Front: the question being typed and sent */
+
+.front {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+  padding: 20px;
+  background:
+    radial-gradient(70% 60% at 85% 0%, rgba(217, 245, 92, 0.16), transparent 70%),
+    linear-gradient(160deg, #13261f, #0a1410 70%);
+}
+
+.frontTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(217, 245, 92, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(217, 245, 92, 0.35);
+  color: var(--lime);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mode {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* the front clears itself before the next question */
+.front > * {
+  transition: opacity 0.4s ease;
+}
+
+.clearing > * {
+  opacity: 0;
+}
+
+.question {
+  align-self: center;
+  font-size: clamp(1.25rem, 1.9vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 3px;
+  vertical-align: -0.15em;
+  background: var(--lime);
+  animation: caret 1s steps(1) infinite;
+}
+
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+.composer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px 10px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.plus {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.mic {
+  display: grid;
+  margin-left: auto;
+}
+
+.send {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.6);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.25s ease;
+}
+
+.ready {
+  background: var(--lime);
+  color: var(--green);
+  animation: ready 1.2s ease-out infinite;
+}
+
+@keyframes ready {
+  0% {
+    box-shadow: 0 0 0 0 rgba(217, 245, 92, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(217, 245, 92, 0);
+  }
+}
+
+.pressed {
+  transform: scale(0.82);
+}
+
+/* Front, second time round: the question as a sent message, then the answer writing itself and
+   the business card it cites */
+
+.thread {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-height: 0;
+}
+
+.bubble {
+  justify-self: end;
+  max-width: 82%;
+  padding: 9px 13px;
+  border-radius: 14px 14px 4px 14px;
+  background: rgba(217, 245, 92, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(217, 245, 92, 0.25);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.reply {
+  display: flex;
+  gap: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.replyMark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--green);
+}
+
+.pick {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 10px;
+  margin-left: 34px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f7f9f5;
+  color: var(--ink);
+  box-shadow: 0 18px 36px -14px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transform: translateY(14px) scale(0.96);
+  transition:
+    opacity 0.4s ease,
+    transform 0.6s cubic-bezier(0.34, 1.5, 0.64, 1);
+}
+
+.pickIn {
+  opacity: 1;
+  transform: none;
+}
+
+.pickMark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--lime);
+  font-weight: 700;
+}
+
+.pickText {
+  display: grid;
+  min-width: 0;
+}
+
+.pickText b {
+  font-size: 0.875rem;
+}
+
+.pickText small {
+  overflow: hidden;
+  font-size: 0.6875rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--muted);
+}
+
+.cited {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--lime);
+  color: var(--green);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.pickSources {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.pickSources i {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #e9eee9;
+  font-size: 0.625rem;
+  font-style: normal;
+  color: var(--ink-3);
+}
+
+/* Back: the fan-out. Everything is placed in % of the face so the wires line up. */
+
+.back {
+  transform: rotateY(180deg);
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 100% 28px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 28px 100%,
+    radial-gradient(60% 60% at 50% 55%, rgba(217, 245, 92, 0.08), transparent 70%),
+    #08120e;
+}
+
+.backTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+}
+
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+
+.live i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime);
+  animation: live 1.4s ease-in-out infinite;
+}
+
+@keyframes live {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.count {
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.wires {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.wires path {
+  fill: none;
+  stroke-width: 0.45;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.out {
+  stroke: rgba(217, 245, 92, 0.55);
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--n) * 0.16s);
+}
+
+.in {
+  stroke: rgba(255, 255, 255, 0.28);
+  transition: stroke-dashoffset 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(0.3s + var(--n) * 0.12s);
+}
+
+.s2 .out,
+.s3 .in {
+  stroke-dashoffset: 0;
+}
+
+/* data keeps flowing back along the inbound wires while sources are pulled */
+.s3 .in {
+  stroke: rgba(217, 245, 92, 0.6);
+  stroke-dasharray: 0.14 0.06;
+  animation: pull 0.9s linear infinite;
+}
+
+@keyframes pull {
+  to {
+    stroke-dashoffset: -0.2;
+  }
+}
+
+.s4 .in {
+  animation: none;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  stroke: rgba(255, 255, 255, 0.22);
+}
+
+/* The question, and what the AI reads in it */
+
+.origin {
+  position: absolute;
+  left: 3%;
+  top: 18%;
+  width: 22%;
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(217, 245, 92, 0.3);
+}
+
+.originHead {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+
+.origin p {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.intents {
+  display: grid;
+  gap: 5px;
+}
+
+.intents li {
+  display: grid;
+  gap: 1px;
+  padding: 5px 7px;
+  border-radius: 7px;
+  background: rgba(217, 245, 92, 0.1);
+  font-size: 0.6875rem;
+  line-height: 1.25;
+  opacity: 0;
+  transform: translateX(-8px) scale(0.95);
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s cubic-bezier(0.34, 1.6, 0.64, 1);
+  transition-delay: calc(var(--n) * 0.25s);
+}
+
+.intents b {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+
+.s1 .intents li {
+  opacity: 1;
+  transform: none;
+}
+
+/* Fan-out searches */
+
+.queries li {
+  position: absolute;
+  left: 31%;
+  top: calc(17% + var(--n) * 12.6%);
+  width: 42%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 9px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-14px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.55s cubic-bezier(0.34, 1.5, 0.64, 1),
+    box-shadow 0.4s ease,
+    background-color 0.4s ease;
+  transition-delay: calc(0.25s + var(--n) * 0.16s);
+}
+
+.s2 .queries li {
+  opacity: 1;
+  transform: none;
+}
+
+.kind {
+  flex: none;
+  padding: 2px 5px;
+  border-radius: 5px;
+  background: var(--lime);
+  color: var(--green);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.qText {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 0.6875rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* a scan bar runs under each search while its sources come back */
+.scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.scan i {
+  display: block;
+  height: 100%;
+  background: var(--lime);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.1s cubic-bezier(0.65, 0, 0.35, 1);
+  transition-delay: calc(var(--n) * 0.14s);
+}
+
+.s3 .scan i {
+  transform: none;
+}
+
+.found {
+  flex: none;
+  margin-left: auto;
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: var(--lime);
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.34, 1.8, 0.64, 1);
+  transition-delay: calc(0.9s + var(--n) * 0.14s);
+}
+
+.s3 .found {
+  opacity: 1;
+  transform: none;
+}
+
+/* Sources, ranked */
+
+.merge {
+  position: absolute;
+  left: 77%;
+  top: 28%;
+  width: 21%;
+  display: grid;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.4s;
+}
+
+.s3 .merge {
+  opacity: 1;
+}
+
+.mergeHead {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.sources {
+  display: grid;
+  gap: 5px;
+}
+
+.sources li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  padding: 5px 6px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.07);
+  font-size: 0.625rem;
+  line-height: 1.2;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    transform 0.5s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+.rank {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 0.5625rem;
+  font-weight: 700;
+}
+
+/* evaluated: the business's own page comes out on top */
+.s4 .sources .top {
+  background: var(--lime);
+  color: var(--green);
+  font-weight: 600;
+  transform: scale(1.06);
+}
+
+.s4 .sources .top .rank {
+  background: var(--green);
+  color: var(--lime);
+}
+
+/* Last beat on the back: the answer is being written, then the card turns round */
+
+.writing {
+  position: absolute;
+  right: 3%;
+  bottom: 5%;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--lime);
+  color: var(--green);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.34, 1.5, 0.64, 1);
+}
+
+.writing i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: dot 0.9s ease-in-out infinite;
+}
+
+.writing i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.writing i:nth-child(3) {
+  margin-right: 4px;
+  animation-delay: 0.3s;
+}
+
+@keyframes dot {
+  50% {
+    transform: translateY(-3px);
+    opacity: 0.4;
+  }
+}
+
+.s5 .writing {
+  opacity: 1;
+  transform: none;
+}
+
+.caption {
+  margin-top: -6px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Steps list, lit in step with the animation */
+
+.list {
+  display: grid;
+}
+
+.list li {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 11px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  transition:
+    opacity 0.4s ease,
+    color 0.4s ease;
+}
+
+.n {
+  flex: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0.75;
+  transition: color 0.3s ease;
+}
+
+/* while a step is playing the others step back, and a lime line runs along its top edge */
+.list:has(.current) li {
+  opacity: 0.5;
+}
+
+.list:has(.current) .done {
+  opacity: 0.75;
+}
+
+.list .current {
+  opacity: 1;
+}
+
+.current .n {
+  color: var(--lime);
+  opacity: 1;
+}
+
+.current::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--lime);
+  transform-origin: left;
+  animation: run 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes run {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* Narrow panels: the stage gets taller and the fan-out stacks instead of spreading */
+
+@media (max-width: 559px) {
+  .panel {
+    padding: 20px 16px;
+  }
+  .stage {
+    height: 560px;
+  }
+  .wires {
+    display: none;
+  }
+  .origin {
+    left: 4%;
+    top: 9%;
+    width: 92%;
+  }
+  .origin p {
+    -webkit-line-clamp: 2;
+  }
+  .intents {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .queries li {
+    left: calc(4% + var(--c) * 47%);
+    top: calc(38% + var(--r) * 9.8%);
+    width: 45%;
+    height: 8.8%;
+  }
+  .kind {
+    display: none;
+  }
+  /* two lines per search on a phone, so the query still reads */
+  .qText {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    line-height: 1.25;
+  }
+  .merge {
+    left: 4%;
+    top: 69%;
+    width: 92%;
+  }
+  .pick {
+    margin-left: 0;
+  }
+  /* three sources are enough here, and leave room for the "writing" chip */
+  .sources li:nth-child(4) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flipper,
+  .face,
+  .face *,
+  .face::after,
+  .stage::after,
+  .list li {
+    transition: none !important;
+    animation: none !important;
+  }
+  .current::before {
+    animation: none;
+  }
+}

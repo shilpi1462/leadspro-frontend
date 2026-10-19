@@ -1,0 +1,302 @@
+.grid {
+  display: grid;
+  gap: 16px;
+  perspective: 1600px;
+}
+
+.slot {
+  display: grid;
+}
+
+.panel {
+  --mx: 50%;
+  --my: 50%;
+  --rx: 0deg;
+  --ry: 0deg;
+  position: relative;
+  display: grid;
+  gap: 20px;
+  align-content: start;
+  justify-items: start;
+  padding: clamp(24px, 3vw, 40px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  overflow: hidden;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition:
+    transform 0.6s var(--ease),
+    box-shadow 0.6s var(--ease);
+}
+
+.panel:global(.is-live) {
+  transition: transform 0.12s linear;
+  box-shadow: 0 40px 90px rgba(17, 17, 17, 0.14);
+}
+
+.panel > * {
+  position: relative;
+}
+
+/* Light that follows the pointer */
+
+.panel > .light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    360px circle at var(--mx) var(--my),
+    rgba(217, 245, 92, 0.35),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+.panelTint > .light {
+  background: radial-gradient(
+    360px circle at var(--mx) var(--my),
+    rgba(217, 245, 92, 0.32),
+    transparent 70%
+  );
+}
+
+.panel:global(.is-live) > .light {
+  opacity: 1;
+}
+
+.panelTint {
+  background:
+    radial-gradient(60% 50% at 100% 100%, rgba(217, 245, 92, 0.22), transparent 70%), var(--paper-2);
+}
+
+.title {
+  font-size: clamp(1.625rem, 2.4vw, 2.25rem);
+  letter-spacing: -0.045em;
+}
+
+.text {
+  display: grid;
+  gap: 8px;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.sub {
+  font-size: 1rem;
+}
+
+/* Chips pop in with a small overshoot, one after another, once the panel is on screen */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+}
+
+.chips li {
+  --accent: var(--lime);
+  transform: translateZ(24px);
+}
+
+:global(.js) .chips li {
+  opacity: 0;
+  transform: translateZ(24px) scale(0.6) rotate(-6deg);
+  transition:
+    opacity 0.35s ease-out calc(var(--i) * 0.045s),
+    transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--i) * 0.045s);
+}
+
+:global(.js) :global(.reveal.in) .chips li {
+  opacity: 1;
+  transform: translateZ(24px);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 8px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  background: var(--paper);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.05);
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.3s var(--ease),
+    border-color 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+.chip:hover {
+  transform: translateY(-3px) scale(1.06);
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.chipStatic:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+.chipDot,
+.pin {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
+  transition: box-shadow 0.3s var(--ease);
+}
+
+.chip:hover .chipDot,
+.chip:hover .pin {
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5);
+}
+
+.pin {
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+}
+
+/* Industries, full width: heading beside the copy, then a grid of icon tiles */
+
+.panelWide {
+  gap: 28px;
+}
+
+.head {
+  display: grid;
+  gap: 16px 48px;
+  width: 100%;
+}
+
+@media (min-width: 1000px) {
+  .head {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: end;
+  }
+}
+
+.headTitle {
+  display: grid;
+  gap: 14px;
+  justify-items: start;
+}
+
+.sectors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+@media (min-width: 560px) {
+  .sectors {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .sectors {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .sectors {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}
+
+.sectors li {
+  display: grid;
+  transform: translateZ(24px);
+}
+
+:global(.js) .sectors li {
+  opacity: 0;
+  transform: translateZ(24px) translateY(18px) scale(0.92);
+  transition:
+    opacity 0.4s ease-out calc(var(--i) * 0.04s),
+    transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--i) * 0.04s);
+}
+
+:global(.js) :global(.reveal.in) .sectors li {
+  opacity: 1;
+  transform: translateZ(24px);
+}
+
+.sector {
+  display: grid;
+  justify-items: start;
+  align-content: space-between;
+  gap: 18px;
+  min-height: 132px;
+  padding: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--paper);
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.05);
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+.sector:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--green) 30%, var(--line));
+  box-shadow: 0 16px 34px rgba(17, 17, 17, 0.1);
+}
+
+.sectorIcon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--green);
+  color: var(--lime);
+  box-shadow: 0 8px 18px -8px rgba(15, 76, 58, 0.7);
+  transition:
+    background-color 0.3s var(--ease),
+    color 0.3s var(--ease),
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sectorIcon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.sector:hover .sectorIcon {
+  background: var(--lime);
+  color: var(--green);
+  transform: rotate(-6deg) scale(1.06);
+}
+
+.sectorName {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sector,
+  :global(.js) .sectors li,
+  .panel,
+  .chip,
+  :global(.js) .chips li {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}

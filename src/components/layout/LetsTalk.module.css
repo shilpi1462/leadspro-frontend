@@ -1,0 +1,154 @@
+/* One card in two halves: an ink panel on the left, the white form on the right */
+
+.panel {
+  display: grid;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  box-shadow:
+    0 0 0 1px var(--line),
+    0 40px 80px -40px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 1000px) {
+  .panel {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+}
+
+/* Left: ink with a dark-green glow, a faint grid and lime accents */
+
+.left {
+  display: grid;
+  gap: 32px;
+  align-content: start;
+  padding: clamp(28px, 3.4vw, 48px);
+  color: var(--paper);
+  background:
+    radial-gradient(70% 55% at 100% 0%, rgba(15, 76, 58, 0.95), transparent 72%),
+    radial-gradient(55% 45% at 0% 100%, rgba(217, 245, 92, 0.12), transparent 72%),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 100% 48px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 48px 100%,
+    #0d100f;
+}
+
+.follow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.followLabel {
+  font-weight: 600;
+}
+
+.offer {
+  padding-top: 28px;
+  border-top: 1px solid var(--line-dark);
+}
+
+.offerTitle {
+  margin-bottom: 16px;
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+}
+
+.offerList {
+  display: grid;
+  gap: 12px 24px;
+}
+
+@media (min-width: 560px) {
+  .offerList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.offerList li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.tick {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  color: var(--lime);
+}
+
+.details {
+  display: grid;
+  gap: 20px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line-dark);
+}
+
+/* side by side only when there is room for the full address on one line */
+@media (min-width: 560px) {
+  .details {
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  }
+}
+
+.detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.detailIcon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--lime);
+  color: var(--green);
+}
+
+.detailTitle {
+  margin-bottom: 4px;
+  font-size: 1rem;
+}
+
+.detailText {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.7);
+  overflow-wrap: anywhere;
+}
+
+a.detailText:hover {
+  color: var(--lime);
+}
+
+/* Right: the form */
+
+/* The form half stays white on every page, dark home included, so it carries its own
+   text and border colours rather than inheriting the page's. */
+.right {
+  --line: #e3e3e3;
+  --muted: #5d5d5d;
+  --muted-2: #8a8a8a;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: clamp(28px, 3.4vw, 48px);
+  color: var(--ink);
+}
+
+.formTitle {
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.formText {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+}

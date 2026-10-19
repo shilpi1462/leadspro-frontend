@@ -1,0 +1,351 @@
+.block {
+  --x: -600px;
+  --y: -600px;
+  /* Radius of the torch beam. */
+  --beam: clamp(115px, 11vw, 170px);
+  position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 640px;
+  background: #1a1c18;
+  color: var(--paper);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Socials at the top, links and copyright at the bottom; sits above both layers */
+
+.chrome {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px var(--gutter) 28px;
+  pointer-events: none;
+}
+
+.chrome a {
+  pointer-events: auto;
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+}
+
+.bottom {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+}
+
+.links a {
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 2px;
+}
+
+.links a:hover {
+  border-color: var(--lime);
+}
+
+@media (max-width: 639px) {
+  .links {
+    gap: 4px 22px;
+  }
+
+  .links a {
+    padding-top: 8px;
+  }
+}
+
+.copy {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* The two stacked layers: plain, and the photo + outline version shown only inside the torch */
+
+.layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: 0 var(--gutter);
+}
+
+/* The beam: a clear round edge with a short soft falloff, like a torch on a wall. */
+
+.reveal {
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  -webkit-mask-image: radial-gradient(
+    circle at var(--x) var(--y),
+    #000 0,
+    #000 calc(var(--beam) * 0.7),
+    rgba(0, 0, 0, 0.6) calc(var(--beam) * 0.9),
+    transparent var(--beam)
+  );
+  mask-image: radial-gradient(
+    circle at var(--x) var(--y),
+    #000 0,
+    #000 calc(var(--beam) * 0.7),
+    rgba(0, 0, 0, 0.6) calc(var(--beam) * 0.9),
+    transparent var(--beam)
+  );
+}
+
+/* Warm light on whatever the beam falls on. */
+
+.reveal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--x) var(--y),
+    rgba(255, 238, 200, 0.5),
+    rgba(255, 214, 150, 0.16) calc(var(--beam) * 0.5),
+    transparent var(--beam)
+  );
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.lit .reveal {
+  opacity: 1;
+  animation: switchOn 0.5s steps(1, end) both;
+}
+
+@media (hover: hover) {
+  .lit {
+    cursor: none;
+  }
+
+  .lit a,
+  .lit button {
+    cursor: pointer;
+  }
+}
+
+.layer > .photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.05) saturate(1.15) contrast(1.05);
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  width: min(1008px, 100%);
+  text-align: center;
+}
+
+.title {
+  max-width: 14ch;
+  font-size: clamp(2.75rem, 8.8vw, 7.9rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.8;
+  text-wrap: balance;
+}
+
+@media (max-width: 639px) {
+  .title {
+    line-height: 0.96;
+  }
+}
+
+.outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #fff;
+  paint-order: stroke fill;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 28px;
+}
+
+.secondary {
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 2px;
+}
+
+.secondary:hover {
+  border-color: var(--lime);
+}
+
+.torch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: calc(var(--beam) * 3);
+  height: calc(var(--beam) * 3);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 250, 236, 0.5) 0%,
+      rgba(255, 238, 198, 0.2) 12%,
+      rgba(255, 226, 170, 0.06) 34%,
+      transparent 46%
+    ),
+    radial-gradient(
+      circle,
+      transparent 58%,
+      rgba(255, 240, 212, 0.14) 63%,
+      rgba(255, 240, 212, 0.05) 65.5%,
+      transparent 67%
+    ),
+    radial-gradient(circle, rgba(255, 225, 170, 0.07) 62%, transparent 100%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(calc(var(--x) - var(--beam) * 1.5), calc(var(--y) - var(--beam) * 1.5), 0);
+  transition: opacity 0.3s ease;
+}
+
+.lit .torch {
+  opacity: 1;
+  animation: switchOn 0.5s steps(1, end) both;
+}
+
+/* The little torch in the middle of the beam, pointing the way the light goes. */
+
+.device {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 6;
+  width: 64px;
+  height: 64px;
+  opacity: 0;
+  pointer-events: none;
+  /* Held just below and right of the beam's centre, so its head points into the middle. */
+  transform: translate3d(calc(var(--x) - 20px), calc(var(--y) - 18px), 0);
+  scale: 0.6;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 0 10px rgba(255, 233, 168, 0.35));
+  transition:
+    opacity 0.25s ease,
+    scale 0.35s var(--ease-out-quart);
+}
+
+.device svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* The head tipped away from the viewer, so the torch reads as shining into the screen. */
+  transform: perspective(220px) rotateX(24deg) rotateY(14deg);
+}
+
+.lit .device {
+  opacity: 1;
+  scale: 1;
+}
+
+/* A torch catching as it is switched on. */
+
+@keyframes switchOn {
+  0% {
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.85;
+  }
+  22% {
+    opacity: 0.15;
+  }
+  34% {
+    opacity: 1;
+  }
+  44% {
+    opacity: 0.45;
+  }
+  56%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lit .torch,
+  .lit .reveal {
+    animation: none;
+  }
+}
+
+.badge {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  .badge {
+    display: none;
+  }
+  .content {
+    gap: 40px;
+  }
+}
+
+.badgeRing {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: spin 14s linear infinite;
+  fill: var(--ink);
+}
+
+.badgeArrow {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badgeRing {
+    animation: none;
+  }
+  .reveal,
+  .torch {
+    display: none;
+  }
+}

@@ -1,0 +1,120 @@
+/* Proportions follow a 6.1" phone: 393 x 852 points, ~55pt screen corners. */
+
+.phone {
+  --w: 300px;
+  position: relative;
+  width: var(--w);
+  aspect-ratio: 393 / 852;
+  padding: calc(var(--w) * 0.034);
+  border-radius: calc(var(--w) * 0.175);
+  background: linear-gradient(145deg, #3a3c40, #1a1b1d 40%, #2c2d31 70%, #121314);
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.14),
+    inset 0 0 0 calc(var(--w) * 0.012) #0b0b0c,
+    0 50px 90px rgba(0, 0, 0, 0.45),
+    0 16px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Side buttons sit just proud of the frame. */
+
+.button {
+  position: absolute;
+  width: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #2a2b2f, #4a4c51);
+}
+
+.action {
+  left: -2px;
+  top: 17%;
+  height: 5%;
+}
+
+.volUp {
+  left: -2px;
+  top: 25%;
+  height: 9%;
+}
+
+.volDown {
+  left: -2px;
+  top: 36%;
+  height: 9%;
+}
+
+.power {
+  right: -2px;
+  top: 28%;
+  height: 14%;
+  background: linear-gradient(270deg, #2a2b2f, #4a4c51);
+}
+
+.screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: calc(var(--w) * 0.142);
+  overflow: hidden;
+  background: #fff;
+  color: #0d0d0d;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-body), system-ui, sans-serif;
+}
+
+.status {
+  position: relative;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(var(--w) * 0.15);
+  padding: calc(var(--w) * 0.035) calc(var(--w) * 0.085) 0;
+}
+
+.time {
+  font-size: calc(var(--w) * 0.048);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icons svg {
+  width: auto;
+  height: calc(var(--w) * 0.036);
+}
+
+.island {
+  position: absolute;
+  top: calc(var(--w) * 0.03);
+  left: 50%;
+  width: calc(var(--w) * 0.31);
+  height: calc(var(--w) * 0.09);
+  border-radius: 999px;
+  background: #000;
+  transform: translateX(-50%);
+}
+
+.content {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.home {
+  position: absolute;
+  bottom: calc(var(--w) * 0.022);
+  left: 50%;
+  width: 36%;
+  height: 4px;
+  border-radius: 3px;
+  background: #0d0d0d;
+  transform: translateX(-50%);
+}

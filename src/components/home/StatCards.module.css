@@ -1,0 +1,411 @@
+.wrap {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 900px) {
+  .wrap {
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "tall mid right"
+      "tall wide wide";
+  }
+  .tall {
+    grid-area: tall;
+  }
+  .middle {
+    grid-area: mid;
+  }
+  .tallRight {
+    grid-area: right;
+  }
+  .wide {
+    grid-area: wide;
+  }
+}
+
+@media (min-width: 560px) and (max-width: 899px) {
+  .wrap {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "tall mid"
+      "right right"
+      "wide wide";
+  }
+  .tall {
+    grid-area: tall;
+  }
+  .middle {
+    grid-area: mid;
+  }
+  .tallRight {
+    grid-area: right;
+    min-height: 260px;
+  }
+  .wide {
+    grid-area: wide;
+  }
+}
+
+.middle {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 12px;
+}
+
+.card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 24px;
+  border-radius: 24px;
+  overflow: hidden;
+  color: var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.tall,
+.tallRight {
+  min-height: 300px;
+}
+
+@media (min-width: 900px) {
+  .tall {
+    min-height: 560px;
+  }
+}
+
+/* each card rises in turn, then its figure rolls */
+:global(.js) .card {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:global(.js) .wrap:global(.in) .card {
+  opacity: 1;
+  transform: none;
+}
+
+.middle .card:first-child {
+  transition-delay: 0.08s;
+}
+.middle .card:last-child {
+  transition-delay: 0.16s;
+}
+.tallRight {
+  transition-delay: 0.24s;
+}
+.wide {
+  transition-delay: 0.32s;
+}
+
+/* Washes */
+
+.forest {
+  background:
+    radial-gradient(55% 40% at 60% 72%, rgba(217, 245, 92, 0.3), transparent 72%),
+    radial-gradient(70% 50% at 100% 0%, rgba(255, 255, 255, 0.08), transparent 70%),
+    linear-gradient(165deg, #1a6a51, var(--green) 55%, #0a3227);
+}
+
+.ink {
+  background:
+    radial-gradient(70% 80% at 100% 100%, rgba(15, 76, 58, 0.9), transparent 72%),
+    linear-gradient(150deg, #181d1a, #0b0c0b);
+}
+
+.night {
+  background:
+    radial-gradient(70% 55% at 92% 6%, rgba(217, 245, 92, 0.16), transparent 70%),
+    radial-gradient(80% 60% at 0% 100%, rgba(15, 76, 58, 0.85), transparent 72%),
+    linear-gradient(165deg, #161b18, #0b0c0b);
+}
+
+.plain {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Textures, each faded out with a mask so they only show in one corner */
+
+.forest::before,
+.ink::before,
+.night::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.forest::before {
+  background:
+    linear-gradient(90deg, rgba(217, 245, 92, 0.12) 50%, transparent 50%) 0 0 / 64px 64px,
+    linear-gradient(rgba(217, 245, 92, 0.12) 50%, transparent 50%) 0 0 / 64px 64px;
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(60% 42% at 50% 66%, #000, transparent 75%);
+  mask-image: radial-gradient(60% 42% at 50% 66%, #000, transparent 75%);
+}
+
+/* square grid in the top-right */
+.ink::before {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 26px 26px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 26px 26px;
+  -webkit-mask-image: radial-gradient(60% 70% at 100% 0%, #000, transparent 75%);
+  mask-image: radial-gradient(60% 70% at 100% 0%, #000, transparent 75%);
+}
+
+/* lime dot field */
+.night::before {
+  background: radial-gradient(circle, rgba(217, 245, 92, 0.28) 1px, transparent 1.5px) 0 0 / 16px
+    16px;
+  -webkit-mask-image: linear-gradient(200deg, #000 10%, transparent 65%);
+  mask-image: linear-gradient(200deg, #000 10%, transparent 65%);
+}
+
+/* Figures */
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tag {
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(217, 245, 92, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(217, 245, 92, 0.35);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--lime);
+}
+
+.figure {
+  font-size: clamp(3.5rem, 5.6vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.digits {
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+/* the window takes the width of its final digit (the hidden sizer); the reel is centred on it
+   and only clipped top and bottom, so wider digits can pass through without opening a gap */
+.window {
+  position: relative;
+  display: inline-block;
+  height: 1em;
+  overflow-x: visible;
+  overflow-y: clip;
+}
+
+.sizer {
+  visibility: hidden;
+}
+
+.reel {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: grid;
+  justify-items: center;
+  translate: -50% 0;
+}
+
+.reel span {
+  display: block;
+  height: 1em;
+}
+
+.up {
+  transform: translateY(-90%);
+}
+
+.down {
+  transform: none;
+}
+
+:global(.js) .reel {
+  transition: transform 2.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(0.35s + var(--k) * 0.14s);
+}
+
+:global(.js) .up {
+  transform: none;
+}
+
+:global(.js) .down {
+  transform: translateY(-90%);
+}
+
+:global(.js) .wrap:global(.in) .up {
+  transform: translateY(-90%);
+}
+
+:global(.js) .wrap:global(.in) .down {
+  transform: none;
+}
+
+.suffix {
+  color: var(--lime);
+}
+
+/* Copy */
+
+.copy {
+  display: grid;
+  gap: 8px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.titleSm {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+}
+
+.text {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.plain .text {
+  font-size: 0.875rem;
+}
+
+.plain {
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 24px;
+}
+
+.middle .plain {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.icons,
+.places {
+  display: flex;
+  flex: none;
+  padding: 4px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.icons li,
+.places li {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #151a17;
+  transition: transform 0.3s cubic-bezier(0.34, 1.6, 0.64, 1);
+}
+
+.icons li + li,
+.places li + li {
+  margin-left: -8px;
+}
+
+.icons li:hover,
+.places li:hover {
+  z-index: 1;
+  transform: translateY(-4px);
+}
+
+.icons li {
+  background: #1c221f;
+  color: var(--lime);
+  box-shadow:
+    0 0 0 2px #151a17,
+    inset 0 0 0 1px rgba(217, 245, 92, 0.3);
+}
+
+.places li {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.places li:nth-child(5n + 1) {
+  background: var(--lime);
+  color: var(--green);
+}
+.places li:nth-child(5n + 2) {
+  background: var(--green);
+  color: var(--lime);
+  box-shadow:
+    0 0 0 2px #151a17,
+    inset 0 0 0 1px rgba(217, 245, 92, 0.35);
+}
+.places li:nth-child(5n + 3) {
+  background: #fff;
+  color: var(--green);
+}
+.places li:nth-child(5n + 4) {
+  background: #b9d3c3;
+  color: var(--green);
+}
+.places li:nth-child(5n) {
+  background: #2a312d;
+  color: #fff;
+}
+
+.places .more {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 0 0 2px #151a17,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+@media (max-width: 559px) {
+  .wide {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(.js) .card,
+  :global(.js) .reel {
+    transition: none;
+  }
+}

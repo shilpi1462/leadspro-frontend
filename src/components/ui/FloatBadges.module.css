@@ -1,0 +1,128 @@
+.floats {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 899px) {
+  .floats {
+    display: none;
+  }
+}
+
+.badge {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  transform: translateY(calc((var(--progress, 0.5) - 0.5) * var(--drift, 40px)))
+    rotate(var(--tilt, 0deg));
+  animation: bob var(--bob, 7s) ease-in-out infinite;
+}
+
+.badge svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Kept in the band above the heading and out in the right-hand space, so nothing ever
+   lands on the H1 or the description. */
+
+.b1 {
+  top: 2%;
+  left: 38%;
+  --tilt: -8deg;
+  --drift: 54px;
+  --bob: 6.5s;
+}
+
+.b2 {
+  top: 6%;
+  right: 6%;
+  --tilt: 7deg;
+  --drift: -46px;
+  --bob: 8s;
+}
+
+.b3 {
+  top: 30%;
+  right: 30%;
+  --tilt: 5deg;
+  --drift: 38px;
+  --bob: 7.4s;
+}
+
+.b4 {
+  top: 44%;
+  right: 13%;
+  --tilt: -6deg;
+  --drift: -60px;
+  --bob: 9s;
+}
+
+/* Centred headers keep their text column clear, so the badges move out to the edges. */
+
+.centered .b1 {
+  top: 12%;
+  left: 4%;
+  right: auto;
+}
+
+.centered .b2 {
+  top: 10%;
+  right: 5%;
+}
+
+.centered .b3 {
+  top: 44%;
+  left: 12%;
+  right: auto;
+}
+
+.centered .b4 {
+  top: 48%;
+  right: 12%;
+}
+
+.sky {
+  background: linear-gradient(150deg, #f3f7f4, var(--sky));
+}
+
+.violet {
+  background: linear-gradient(150deg, #f4f6f2, var(--violet));
+}
+
+.amber {
+  background: linear-gradient(150deg, #f7f8ee, var(--amber));
+}
+
+.aqua {
+  background: linear-gradient(150deg, #f1f7f3, var(--aqua));
+}
+
+.pink {
+  background: linear-gradient(150deg, #f5f5f0, var(--pink));
+}
+
+.lime {
+  background: linear-gradient(150deg, #f0ffb8, var(--lime));
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(calc((var(--progress, 0.5) - 0.5) * var(--drift, 40px) - 8px))
+      rotate(calc(var(--tilt, 0deg) * -1));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge {
+    animation: none;
+  }
+}

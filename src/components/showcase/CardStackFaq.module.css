@@ -1,0 +1,163 @@
+.grid {
+  display: grid;
+  gap: 48px;
+}
+
+.stage {
+  position: relative;
+}
+
+.card {
+  border: 1px solid var(--k-black);
+  border-radius: var(--k-radius);
+  background: var(--k-white);
+  color: var(--k-black);
+}
+
+.card:nth-child(odd) {
+  background: var(--k-accent);
+}
+
+.inner {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  height: 100%;
+  padding: clamp(1.25rem, 3vw, 3.125rem);
+}
+
+.index {
+  justify-self: start;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--k-black);
+  color: var(--k-accent);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.question {
+  margin: 0;
+  font-family: var(--k-display);
+  font-size: clamp(1.35rem, 1rem + 1.2vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.answer {
+  margin: 0;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.2rem);
+  line-height: 1.5;
+}
+
+.side {
+  display: grid;
+  align-content: start;
+  gap: 28px;
+}
+
+.list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  padding: 20px 0;
+  border: 0;
+  border-bottom: 1px solid var(--k-line);
+  background: none;
+  color: var(--k-grey-2);
+  font: inherit;
+  font-size: 1.125rem;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.trigger:hover,
+.on {
+  color: var(--k-white);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--k-accent);
+  outline-offset: 4px;
+}
+
+.arrow {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--k-white);
+  color: var(--k-black);
+  transform: rotate(180deg);
+  transition:
+    transform 0.3s,
+    background-color 0.3s;
+}
+
+.arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.on .arrow {
+  background: var(--k-accent);
+  transform: none;
+}
+
+/* Desktop: the fanned pile (perspective 1200px, every card centred on the same spot). */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 7.5rem;
+  }
+
+  .stage {
+    min-height: clamp(28.125rem, 0.7277rem + 34.2466vw, 37.5rem);
+    perspective: 1200px;
+  }
+
+  .card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    translate: -50% -50%;
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    transition:
+      transform 0.5s,
+      z-index 0.3s;
+    will-change: transform;
+  }
+}
+
+@media (max-width: 1023px) {
+  .stage {
+    display: grid;
+    gap: 16px;
+    order: 2;
+  }
+
+  .card {
+    transform: none !important;
+  }
+
+  .list {
+    display: none;
+  }
+}

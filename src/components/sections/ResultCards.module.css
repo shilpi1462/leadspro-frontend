@@ -1,0 +1,212 @@
+.title {
+  max-width: 24ch;
+}
+
+.intro {
+  max-width: 900px;
+  margin-top: clamp(18px, 2.4vw, 32px);
+}
+
+.grid {
+  display: grid;
+  gap: 32px;
+  margin-top: clamp(32px, 4vw, 48px);
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* An odd one out takes the full row instead of leaving a hole. */
+  .cell:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+.cell {
+  display: grid;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  min-height: clamp(360px, 30vw, 412px);
+  overflow: hidden;
+  padding: clamp(20px, 2.2vw, 30px) 0 clamp(22px, 2.4vw, 32px) clamp(24px, 3.3vw, 48px);
+  border-radius: var(--k-radius);
+  background: var(--k-white);
+  color: var(--k-black);
+}
+
+.copy {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 10px;
+  max-width: 47%;
+}
+
+.label {
+  font-family: var(--k-display);
+  font-size: clamp(0.85rem, 0.75rem + 0.3vw, 1rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--k-grey);
+}
+
+.value {
+  display: inline-block;
+  font-family: var(--k-display);
+  font-size: clamp(3rem, 2rem + 3.2vw, 4.6rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.metric {
+  font-size: clamp(1rem, 0.92rem + 0.3vw, 1.18rem);
+  line-height: 1.35;
+}
+
+.points {
+  display: grid;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  color: #6f6f6f;
+}
+
+.tick {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--k-black);
+  --tick-mark: var(--k-white);
+}
+
+.link {
+  margin-top: 18px;
+}
+
+.device {
+  position: absolute;
+  right: -9%;
+  bottom: -16%;
+  width: 54%;
+  pointer-events: none;
+}
+
+.laptop {
+  transform: rotate(-9deg);
+  transform-origin: bottom right;
+  filter: drop-shadow(0 30px 30px rgba(0, 0, 0, 0.25));
+}
+
+.screen {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border: 9px solid #1b1b1d;
+  border-bottom-width: 12px;
+  border-radius: 16px 16px 4px 4px;
+  background: #0f0f10;
+  transform-origin: bottom center;
+}
+
+.screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.base {
+  display: block;
+  width: 116%;
+  height: 16px;
+  margin-left: -8%;
+  border-radius: 2px 2px 14px 14px;
+  background: linear-gradient(180deg, #e7e8ea, #b9bbbf 70%, #9d9fa3);
+}
+
+.badge {
+  position: absolute;
+  left: 6%;
+  bottom: 24%;
+  max-width: 64%;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: var(--k-white);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.35);
+  font-family: var(--k-display);
+  font-size: clamp(0.85rem, 0.75rem + 0.35vw, 1.05rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Hover: the screen folds open from its hinge and the badge fades in after it */
+@media (any-hover: hover) {
+  .card:hover .screen {
+    animation: open 1s ease-out both;
+  }
+
+  .card:hover .badge {
+    animation: fade 1s 0.5s ease both;
+  }
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+    transform: perspective(900px) rotateX(90deg);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .cell:last-child:nth-child(odd) .copy {
+    max-width: 44%;
+  }
+
+  .cell:last-child:nth-child(odd) .device {
+    right: 4%;
+    bottom: -18%;
+    width: 44%;
+  }
+}
+
+@media (max-width: 639px) {
+  .card {
+    padding-right: clamp(24px, 3.3vw, 48px);
+  }
+
+  .copy {
+    max-width: none;
+  }
+
+  .device {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 92%;
+    margin: 28px -18% -46px auto;
+  }
+}

@@ -1,0 +1,105 @@
+/* Shared look of the UI cut-outs. A part sets --em (its width in em) and the type then scales
+   with the piece it sits in; everything inside is sized in em. */
+
+.root {
+  --ui-ink: #16181a;
+  --ui-muted: #6c726e;
+  --ui-faint: #a3a9a5;
+  --ui-line: #eaecea;
+  --ui-soft: #f4f6f3;
+  --ui-green: #0f4c3a;
+  --ui-green-2: #1d8a5a;
+  --ui-sage: #b9d3c3;
+  --ui-lime: #d9f55c;
+  --ui-lime-deep: #93b51d;
+  --ui-star: #f2c230;
+  font-size: calc(100cqi / var(--em, 24));
+  line-height: 1.35;
+  color: var(--ui-ink);
+}
+
+.card {
+  composes: root;
+  position: relative;
+  padding: 1.1em 1.2em;
+  border-radius: 0.95em;
+  background: #fff;
+  border: 1px solid rgba(17, 17, 17, 0.07);
+  box-shadow:
+    0 0.15em 0.4em rgba(0, 0, 0, 0.06),
+    0 1.8em 3.4em -1.2em rgba(0, 0, 0, 0.6);
+}
+
+.sticker {
+  outline: 0.12em dashed var(--ui-lime);
+  outline-offset: 0.38em;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  margin-bottom: 0.9em;
+  font-size: 0.82em;
+  font-weight: 600;
+}
+
+.head small {
+  margin-left: auto;
+  font-size: 0.86em;
+  font-weight: 500;
+  color: var(--ui-muted);
+}
+
+.icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 0.5em;
+  background: var(--ui-soft);
+  color: var(--ui-green);
+}
+
+.icon svg {
+  width: 1.05em;
+  height: 1.05em;
+}
+
+.label {
+  font-size: 0.68em;
+  font-weight: 500;
+  color: var(--ui-muted);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.3em 0.7em;
+  border-radius: 999px;
+  background: var(--ui-soft);
+  border: 1px solid var(--ui-line);
+  font-size: 0.66em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.bar {
+  display: block;
+  height: 0.48em;
+  border-radius: 999px;
+  background: var(--ui-line);
+}
+
+.stars {
+  display: inline-flex;
+  gap: 0.08em;
+  color: var(--ui-star);
+}
+
+.stars svg {
+  width: 1em;
+  height: 1em;
+}

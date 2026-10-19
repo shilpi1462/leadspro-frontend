@@ -1,0 +1,203 @@
+/* A research report on cream paper: badge and source, the finding as a headline, the story as
+   numbered beats on a line, the caveat flagged, and the lesson on dark green. */
+
+.finding {
+  position: relative;
+  container-type: inline-size;
+  margin: 14px 0;
+  padding: clamp(24px, 3.2vw, 44px);
+  border-radius: var(--k-radius);
+  background:
+    linear-gradient(rgba(15, 76, 58, 0.05) 1px, transparent 1px) 0 0 / 100% 32px,
+    var(--k-cream);
+  color: var(--k-black);
+  text-align: left;
+  box-shadow:
+    inset 0 0 0 1px rgba(15, 76, 58, 0.12),
+    0 30px 60px -36px rgba(17, 17, 17, 0.45);
+  overflow: hidden;
+}
+
+/* a lime margin rule, like a lab notebook */
+.finding::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 6px;
+  background: linear-gradient(180deg, var(--k-accent), #8fb31c);
+}
+
+.inner {
+  display: grid;
+  gap: 20px;
+}
+
+/* Given the room, the story reads down the left and the lesson it led to sits beside it */
+@container (min-width: 900px) {
+  .split {
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+    column-gap: clamp(28px, 4cqi, 56px);
+  }
+
+  .split .head,
+  .split .title {
+    grid-column: 1 / -1;
+  }
+
+  .lesson {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: start;
+    margin-top: 0;
+  }
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #0f4c3a;
+  color: var(--k-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.source {
+  font-size: 0.8125rem;
+  color: #6b716d;
+}
+
+.title {
+  max-width: 28ch;
+}
+
+/* The story */
+
+.story {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  counter-reset: beat;
+}
+
+.story::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: 17px;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(15, 76, 58, 0.35), rgba(15, 76, 58, 0.08));
+}
+
+.story > li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.node {
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    inset 0 0 0 2px #0f4c3a,
+    0 0 0 5px var(--k-cream);
+  color: #0f4c3a;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.beat {
+  display: grid;
+  gap: 10px;
+  padding-top: 6px;
+}
+
+/* The honest caveat: amber-free, just a quieter boxed note with its own flag */
+.caveat .node {
+  background: #0f4c3a;
+  color: var(--k-accent);
+  font-size: 0.9rem;
+}
+
+.caveat .beat {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(15, 76, 58, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(15, 76, 58, 0.14);
+}
+
+.caveatLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0f4c3a;
+}
+
+/* The lesson */
+
+.lesson {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  margin-top: 6px;
+  padding: clamp(22px, 3vw, 36px);
+  border-radius: 18px;
+  background:
+    radial-gradient(70% 90% at 100% 0%, rgba(217, 245, 92, 0.22), transparent 70%),
+    linear-gradient(160deg, #17604a, #0f4c3a 55%, #0b3a2c);
+  color: #fff;
+}
+
+.lesson::after {
+  content: "“";
+  position: absolute;
+  top: -6px;
+  right: 20px;
+  font-family: var(--k-display);
+  font-size: 7rem;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(217, 245, 92, 0.22);
+}
+
+.lessonLabel {
+  font-size: clamp(1.3rem, 1.05rem + 0.9vw, 1.8rem);
+  color: var(--k-accent);
+  transform: rotate(-3deg);
+  transform-origin: left;
+}
+
+.lessonLead {
+  position: relative;
+  max-width: 30ch;
+  font-family: var(--k-display);
+  font-size: clamp(1.35rem, 1.05rem + 1.2vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.lessonRest {
+  --prose-muted: rgba(255, 255, 255, 0.78);
+}

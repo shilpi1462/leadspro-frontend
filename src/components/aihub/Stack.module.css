@@ -1,0 +1,25 @@
+.stack {
+  display: grid;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* each card pins under the site header and the next one slides over it */
+.item {
+  position: sticky;
+  top: 104px;
+}
+
+.card {
+  transform-origin: 50% 0;
+  will-change: transform, filter;
+}
+
+@media (max-width: 767px) {
+  .item {
+    position: relative;
+    top: 0;
+  }
+}

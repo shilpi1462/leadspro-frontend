@@ -1,0 +1,32 @@
+.nav {
+  font-size: 0.8125rem;
+  color: var(--crumb-color, var(--muted));
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+@media (max-width: 639px) {
+  .list a {
+    display: inline-block;
+    padding-block: 7px;
+  }
+}
+
+.list a:hover {
+  color: var(--crumb-current, var(--ink));
+}
+
+.sep {
+  margin: 0 6px;
+  color: var(--muted-2);
+}
+
+.current {
+  color: var(--crumb-current, var(--ink));
+  font-weight: 500;
+}

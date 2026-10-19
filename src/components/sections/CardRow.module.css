@@ -1,0 +1,150 @@
+.title {
+  max-width: 26ch;
+}
+
+.intro {
+  max-width: 62ch;
+  margin-top: 18px;
+}
+
+.grid {
+  display: grid;
+  gap: 18px;
+  margin-top: clamp(32px, 4vw, 56px);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  }
+}
+
+.cell {
+  display: grid;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  align-content: start;
+  justify-items: center;
+  gap: 12px;
+  padding: clamp(22px, 2.2vw, 30px);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.cardTitle {
+  font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.cardText {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* G.R.A.G. framework cards */
+
+.letter {
+  gap: 28px 18px;
+  padding-top: 12px;
+}
+
+.letter .card {
+  padding-top: clamp(26px, 2.6vw, 36px);
+  background:
+    linear-gradient(#201f1f, #201f1f) padding-box,
+    linear-gradient(252deg, #555252, #2b2a2a) border-box;
+  border: 1px solid transparent;
+  transition:
+    transform 0.4s var(--ease),
+    border-color 0.4s var(--ease);
+}
+
+.letter .card:hover {
+  transform: translateY(-6px);
+  background:
+    linear-gradient(#201f1f, #201f1f) padding-box,
+    linear-gradient(252deg, var(--k-accent), #2b2a2a) border-box;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--k-accent);
+  color: var(--k-black);
+  font-family: var(--k-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  translate: -22% -30%;
+}
+
+.initial {
+  font-family: var(--k-display);
+  font-size: clamp(3.4rem, 2.4rem + 3vw, 4.6rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--k-accent);
+}
+
+.letter .cardTitle {
+  font-family: var(--k-display);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.letter .cardText {
+  color: var(--k-grey);
+}
+
+/* Black cards on cream */
+
+.plain .card {
+  background: var(--k-black);
+  color: var(--k-white);
+  transition: transform 0.4s var(--ease);
+}
+
+.plain .card:hover {
+  transform: translateY(-6px) rotate(-1deg);
+}
+
+.plain .cardTitle {
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.35rem);
+}
+
+.plain .cardText {
+  color: #a3a3a3;
+}
+
+/* Outlined cards */
+
+.outline .card {
+  border: 2px solid var(--k-black);
+  background: transparent;
+}
+
+.outline .cardText {
+  color: var(--k-grey);
+}
+
+.after {
+  max-width: 760px;
+  margin: clamp(32px, 4vw, 48px) auto 0;
+  text-align: center;
+}

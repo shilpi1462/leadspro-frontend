@@ -1,0 +1,379 @@
+.hero {
+  padding-top: clamp(7rem, 4rem + 6vw, 10.5rem);
+  overflow-x: clip;
+}
+
+.crumbs {
+  --crumb-color: var(--b-muted);
+  --crumb-current: var(--b-head);
+  margin-bottom: 28px;
+}
+
+.crumbs ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-bottom: 1.875rem;
+}
+
+.title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.12em 0.22em;
+  text-align: center;
+}
+
+.title > span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.markWrap {
+  position: relative;
+}
+
+/* The brand mark (an ink disc with the lime diamond) stands in for "&". */
+.mark {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background: var(--b-lime);
+  vertical-align: middle;
+}
+
+.mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0.36em;
+  height: 0.36em;
+  margin: auto;
+  border-radius: 0.06em;
+  background: var(--b-ink);
+  transform: rotate(45deg);
+}
+
+.description {
+  width: min(60%, 640px);
+  text-align: center;
+}
+
+/* Cards: three photos and the brand card, tilted -5°, 5°, -9° and 5°. */
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr minmax(200px, 1fr) 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.card,
+.brandCard {
+  position: relative;
+  height: 550px;
+  margin: 0;
+  border-radius: 1.875rem;
+  overflow: clip;
+  transition: transform 0.2s var(--b-power1-out);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 1.25rem 1.25rem;
+}
+
+.c1 {
+  --r: -5deg;
+}
+
+.c2,
+.c4 {
+  --r: 5deg;
+}
+
+.c3 {
+  --r: -9deg;
+}
+
+.card,
+.brandCard {
+  transform: translateX(var(--x, 0)) rotate(var(--r)) scale(var(--s, 1));
+}
+
+@media (min-width: 992px) and (hover: hover) {
+  .cards:has(.c1:hover) .c1,
+  .cards:has(.c2:hover) .c2,
+  .cards:has(.c3:hover) .c3,
+  .cards:has(.c4:hover) .c4 {
+    --r: 0deg;
+    --s: 1.1;
+    z-index: 3;
+  }
+
+  .cards:has(.c1:hover) .c2 {
+    --x: 100px;
+  }
+  .cards:has(.c1:hover) .c3 {
+    --x: 80px;
+  }
+  .cards:has(.c1:hover) .c4 {
+    --x: -50px;
+  }
+
+  .cards:has(.c2:hover) .c1 {
+    --x: -100px;
+  }
+  .cards:has(.c2:hover) .c3 {
+    --x: 100px;
+  }
+  .cards:has(.c2:hover) .c4 {
+    --x: 80px;
+  }
+
+  .cards:has(.c3:hover) .c1 {
+    --x: -80px;
+  }
+  .cards:has(.c3:hover) .c2 {
+    --x: -100px;
+  }
+  .cards:has(.c3:hover) .c4 {
+    --x: 100px;
+  }
+
+  .cards:has(.c4:hover) .c1,
+  .cards:has(.c4:hover) .c2 {
+    --x: -50px;
+  }
+  .cards:has(.c4:hover) .c3 {
+    --x: -100px;
+  }
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(17, 17, 17, 0.85), transparent 55%);
+}
+
+.cardBadge {
+  position: relative;
+  z-index: 1;
+}
+
+.badge {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  padding: 0.25rem 0.75rem 0.25rem 0.25rem;
+  border-radius: 6.25rem;
+  background: var(--b-white);
+  color: var(--b-ink);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+
+.badge b {
+  font-weight: 500;
+}
+
+.badgeIcon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--b-lime);
+}
+
+.badgeIcon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.tick {
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--b-green);
+  color: var(--b-white);
+}
+
+.tick svg {
+  width: 9px;
+  height: 9px;
+  stroke-width: 3.5;
+}
+
+.cardBadge .badge {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.brandCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.875rem;
+  background:
+    radial-gradient(120% 70% at 50% 0%, rgba(217, 245, 92, 0.22), transparent 60%), var(--b-green);
+  color: var(--b-white);
+}
+
+.brandTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 2.5rem 1.5rem 0;
+  text-align: center;
+}
+
+.brandInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.swatches {
+  display: flex;
+}
+
+.swatches i {
+  width: 40px;
+  height: 40px;
+  margin-left: -10px;
+  border: 2px solid var(--b-green);
+  border-radius: 50%;
+  background: var(--c);
+}
+
+.swatches i:first-child {
+  margin-left: 0;
+}
+
+.brandText {
+  max-width: 220px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.counter {
+  color: var(--b-white);
+  font-size: var(--b-h1-md);
+}
+
+.brandBottom {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+}
+
+.platforms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-top: 1.875rem;
+}
+
+.line {
+  max-width: 640px;
+  color: var(--b-text);
+  text-align: center;
+}
+
+.line p {
+  margin: 0;
+}
+
+.strip {
+  width: 100%;
+}
+
+.platform {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  padding: 0.25rem 1rem 0.25rem 0.25rem;
+  border-radius: 6.25rem;
+  background: var(--b-surface);
+  color: var(--b-head);
+}
+
+.platformIcon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--b-surface-2);
+}
+
+.platformIcon svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 991px) {
+  .cards {
+    grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
+  }
+
+  .card,
+  .brandCard {
+    --r: 0deg;
+    height: 400px;
+  }
+
+  .description {
+    width: 80%;
+  }
+}
+
+@media (max-width: 767px) {
+  .card,
+  .brandCard {
+    border-radius: 1.25rem;
+  }
+
+  .description {
+    width: 100%;
+  }
+}
+
+@media (max-width: 479px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}

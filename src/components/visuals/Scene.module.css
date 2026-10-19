@@ -1,0 +1,108 @@
+/* The stage keeps its ratio; pieces sit on it by percentage. */
+
+.scene {
+  --px: 0;
+  --py: 0;
+  --progress: 0.5;
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--ratio);
+}
+
+/* Each piece is its own size container, so the card inside can size its type in cqi and
+   look the same whether the piece is 600px wide on a desktop or 260px on a phone. */
+
+.piece {
+  /* micro-animations inside the cards start once the piece itself has landed */
+  --late: calc(var(--i) * 110ms + 760ms);
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: var(--z);
+  width: var(--w);
+  container-type: inline-size;
+  opacity: 0;
+  transform: translate3d(0, 56px, 0) rotate(calc(var(--r) + 9deg)) scale(0.9);
+  transition:
+    opacity 0.6s ease,
+    transform 1.15s cubic-bezier(0.34, 1.42, 0.64, 1);
+  transition-delay: calc(var(--i) * 110ms + 120ms);
+}
+
+.scene:global(.in) .piece,
+:global(html:not(.js)) .piece {
+  opacity: 1;
+  transform: rotate(var(--r));
+}
+
+.drift {
+  transform: translate3d(
+    calc(var(--px) * var(--depth) * 22px),
+    calc(var(--py) * var(--depth) * 18px + (var(--progress) - 0.5) * var(--depth) * -56px),
+    0
+  );
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bob {
+  animation: bob 7s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -1.7s);
+}
+
+@keyframes bob {
+  50% {
+    transform: translate3d(0, -7px, 0);
+  }
+}
+
+.note {
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(11, 12, 11, 0.6);
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+@media (max-width: 639px) {
+  .scene {
+    aspect-ratio: var(--ratio-m);
+  }
+  .piece {
+    left: var(--x-m, var(--x));
+    top: var(--y-m, var(--y));
+    z-index: var(--z-m, var(--z));
+    width: var(--w-m, var(--w));
+  }
+  .note {
+    top: calc(100% + 14px);
+    bottom: auto;
+  }
+  .scene:global(.in) .piece {
+    transform: rotate(var(--r-m, var(--r)));
+  }
+  .minor {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .piece {
+    opacity: 1;
+    transform: rotate(var(--r));
+    transition: none;
+  }
+  .drift {
+    transform: none;
+  }
+  .bob {
+    animation: none;
+  }
+}

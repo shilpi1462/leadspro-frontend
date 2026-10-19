@@ -1,0 +1,110 @@
+.box {
+  --open: 0;
+  --r: 0em;
+  --flip: 0deg;
+  --turn: 0deg;
+  /* 0 to 1 to 0 while the stage cards leave the ring (set by StageDeck). */
+  --burst: 0;
+  --u: min(16px, 2.2755vw);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(60em, 100%);
+  height: 60em;
+  margin: 0 auto;
+  font-size: var(--u);
+}
+
+@media (max-width: 767px) {
+  .box {
+    height: 50em;
+  }
+}
+
+.wrapper {
+  position: relative;
+  width: 0;
+  height: 0;
+  transform: rotateZ(var(--turn));
+  will-change: transform;
+}
+
+.item {
+  position: absolute;
+  top: -7.5em;
+  left: -7.5em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 15em;
+  height: 15em;
+  perspective: 1000px;
+  transform: rotateZ(calc(var(--i) * -30deg * var(--open)));
+  transform-style: preserve-3d;
+}
+
+.card {
+  width: 10em;
+  height: 10em;
+  margin-left: 2.5em;
+  border-radius: 12px;
+  overflow: hidden;
+  transform: translate3d(0, calc((var(--r) + var(--burst) * 2.5em) * -1), 0) rotateY(var(--flip));
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(30 * var(--u));
+  max-width: 100%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: clamp(1.75rem, 3.2vw, 3.25rem);
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+@media (max-width: 767px) {
+  .title {
+    width: calc(28 * var(--u));
+    font-size: 1.375rem;
+  }
+}
+
+/* As the stage cards leave the ring, a soft light opens in its middle and the title steps back. */
+
+.box::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26em;
+  height: 26em;
+  margin: -13em 0 0 -13em;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--lime) 55%, transparent),
+    color-mix(in srgb, var(--lime) 12%, transparent) 45%,
+    transparent 68%
+  );
+  opacity: calc(var(--burst) * 0.6);
+  transform: scale(calc(0.55 + var(--burst) * 0.55));
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.box .title {
+  opacity: calc(1 - var(--burst) * 0.35);
+}

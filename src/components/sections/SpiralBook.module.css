@@ -1,0 +1,450 @@
+/* An open spiral notebook on a dark-green desk */
+
+.section {
+  position: relative;
+  color: var(--k-white);
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgba(217, 245, 92, 0.1), transparent 70%),
+    radial-gradient(70% 60% at 50% 100%, rgba(15, 76, 58, 0.55), transparent 72%),
+    linear-gradient(180deg, #0f1a16, #0b0c0b);
+}
+
+.title {
+  max-width: 26ch;
+  margin-inline: auto;
+}
+
+/* Pinned book: the section is as tall as the turns need, plus a little time on the last
+   spread; the stage sticks under the header */
+
+.pinned {
+  height: calc(100svh + (var(--turns) + 0.5) * var(--per) * 100vh);
+}
+
+.stage {
+  position: sticky;
+  top: 65px;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  justify-items: center;
+  gap: 18px;
+  height: calc(100svh - 65px);
+  padding: 22px var(--gutter) 22px;
+  overflow: hidden;
+}
+
+.top {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+
+.top .title {
+  max-width: none;
+  font-size: clamp(1.4rem, 0.6rem + 1.8vw, 2.3rem);
+  text-wrap: balance;
+}
+
+@media (max-height: 800px) {
+  .stage {
+    gap: 10px;
+    padding-block: 14px;
+  }
+
+  .top .title {
+    font-size: clamp(1.3rem, 0.6rem + 1.4vw, 1.9rem);
+  }
+}
+
+.hint {
+  font-size: 1.25rem;
+  color: var(--k-accent);
+  transform: rotate(-3deg);
+}
+
+/* the book takes whatever room is left between the title and the tabs, keeping its shape */
+.desk {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  container-type: size;
+}
+
+/* As wide as the room allows; on shorter screens the pages go landscape rather than the
+   whole book shrinking. */
+.book {
+  position: relative;
+  width: min(100cqw - 32px, 1240px);
+  height: min(100cqh - 28px, (100cqw - 32px) / 1.45, 860px);
+  perspective: 2600px;
+}
+
+/* the hard cover behind the pages */
+.cover {
+  position: absolute;
+  inset: -14px -16px;
+  border-radius: 18px;
+  background:
+    radial-gradient(80% 60% at 30% 20%, rgba(255, 255, 255, 0.08), transparent 70%),
+    linear-gradient(160deg, #1a5a46, #0f4c3a 50%, #0a3227);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 50px 90px -30px rgba(0, 0, 0, 0.9);
+}
+
+.base {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Paper: cream, ruled, with the spiral's punched holes along the spine */
+
+.leftPage,
+.rightPage {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  color: #1c1f1d;
+  --holes: radial-gradient(circle, #13201b 0 5px, transparent 5.6px);
+  --ruled: repeating-linear-gradient(180deg, transparent 0 31px, rgba(15, 76, 58, 0.09) 31px 32px);
+}
+
+.leftPage {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 7% 11% 7% 9%;
+  border-radius: 10px 0 0 10px;
+  background:
+    var(--holes) calc(100% - 4px) 0 / 22px calc(100% / 13) repeat-y,
+    linear-gradient(90deg, transparent 0 calc(100% - 46px), rgba(0, 0, 0, 0.1) 100%),
+    linear-gradient(
+      90deg,
+      transparent 0 6%,
+      rgba(217, 245, 92, 0.6) 6% calc(6% + 2px),
+      transparent calc(6% + 2px)
+    ),
+    var(--ruled),
+    #fbf8ef;
+}
+
+.rightPage {
+  padding: 7% 8% 7% 11%;
+  border-radius: 0 10px 10px 0;
+  background:
+    var(--holes) 4px 0 / 22px calc(100% / 13) repeat-y,
+    linear-gradient(270deg, transparent 0 calc(100% - 46px), rgba(0, 0, 0, 0.12) 100%),
+    var(--ruled),
+    #fbf8ef;
+}
+
+.kicker {
+  font-size: 1.3rem;
+  color: #0f4c3a;
+  transform: rotate(-3deg);
+  transform-origin: left;
+}
+
+/* the page number, written by hand and circled */
+.bigNum {
+  position: absolute;
+  right: 11%;
+  bottom: 12%;
+  display: grid;
+  place-items: center;
+  width: clamp(5.5rem, 26cqh, 9.5rem);
+  aspect-ratio: 1.25;
+  font-family: var(--k-script);
+  font-size: clamp(3.4rem, 17cqh, 6.4rem);
+  line-height: 1;
+  color: #0f4c3a;
+  transform: rotate(-6deg);
+  pointer-events: none;
+}
+
+.bigNum svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.bigNum path {
+  fill: none;
+  stroke: #9cc21e;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.pageTitle {
+  position: relative;
+  max-width: 16ch;
+  color: #111;
+}
+
+/* marker highlight under the title, line by line */
+.pageTitle span {
+  background: linear-gradient(
+    180deg,
+    transparent 58%,
+    rgba(217, 245, 92, 0.85) 58% 90%,
+    transparent 90%
+  );
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.lead {
+  position: relative;
+  max-width: min(36ch, 62%);
+  font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.1rem);
+  line-height: 1.55;
+  color: #34403a;
+}
+
+.lead::before {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  background: var(--k-accent);
+}
+
+.body {
+  height: 100%;
+  overflow: hidden;
+  font-size: calc(clamp(0.8rem, 2.6cqh, 0.95rem) * var(--fit, 1));
+}
+
+.body > * {
+  gap: 12px;
+  font-size: inherit;
+  line-height: 1.55;
+}
+
+.folio {
+  position: absolute;
+  bottom: 3.5%;
+  font-family: var(--k-script);
+  font-size: 1.1rem;
+  color: rgba(15, 76, 58, 0.55);
+}
+
+.leftPage .folio {
+  left: 9%;
+}
+
+.rightPage .folio {
+  right: 8%;
+}
+
+/* Turning leaves: each sits on the right half and turns over the spine */
+
+.leaf {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+  z-index: var(--z);
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition:
+    transform 1.15s cubic-bezier(0.645, 0.045, 0.355, 1),
+    z-index 0s linear 0.57s;
+}
+
+.turned {
+  transform: rotateY(-180deg);
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.face > * {
+  height: 100%;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+/* the shade that runs across a page while it is in the air */
+.face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.28), transparent 60%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.front::after {
+  border-radius: 0 10px 10px 0;
+}
+
+.back::after {
+  border-radius: 10px 0 0 10px;
+  background: linear-gradient(270deg, rgba(0, 0, 0, 0.28), transparent 60%);
+}
+
+.turned .face::after,
+.leaf:not(.turned) .face::after {
+  animation: shade 1.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@keyframes shade {
+  45%,
+  55% {
+    opacity: 1;
+  }
+}
+
+/* The spiral, over everything at the spine */
+
+.spiral {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 48px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.spiral i {
+  display: block;
+  height: 13px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f2f4f3 0%, #a9b0ac 40%, #4d5450 62%, #d7dbd9 100%);
+  box-shadow:
+    0 3px 4px rgba(0, 0, 0, 0.45),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Page tabs under the book */
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.tabs li {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.65);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.tabs li span {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.tabs b {
+  max-width: 0;
+  overflow: hidden;
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    max-width 0.5s ease,
+    margin 0.5s ease;
+}
+
+.tabs .tabOn {
+  padding-right: 14px;
+  background: var(--k-accent);
+  color: #0b2a20;
+}
+
+.tabs .tabOn b {
+  max-width: 40ch;
+  margin-left: 8px;
+}
+
+.tabs .tabOn span {
+  background: #0b2a20;
+  color: var(--k-accent);
+}
+
+/* Flat: a stack of notepad sheets with the spiral along the top */
+
+.pad {
+  display: grid;
+  gap: 28px;
+  max-width: 760px;
+  margin: clamp(28px, 4vw, 48px) auto 0;
+}
+
+.sheet {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fbf8ef;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+}
+
+.padSpiral {
+  display: block;
+  height: 30px;
+  background:
+    radial-gradient(circle at 50% 70%, #13201b 0 5px, transparent 5.6px) 0 0 / 34px 100% repeat-x,
+    linear-gradient(180deg, #0f4c3a, #0b3a2c);
+}
+
+.sheet .leftPage,
+.sheet .rightPage {
+  height: auto;
+  padding: 26px 22px;
+  border-radius: 0;
+  background:
+    repeating-linear-gradient(180deg, transparent 0 31px, rgba(15, 76, 58, 0.09) 31px 32px), #fbf8ef;
+}
+
+.sheet .rightPage {
+  padding-top: 0;
+}
+
+.sheet .body {
+  height: auto;
+  font-size: 0.95rem;
+}
+
+.sheet .lead {
+  max-width: none;
+}
+
+.sheet .folio,
+.sheet .bigNum {
+  display: none;
+}

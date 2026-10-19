@@ -1,0 +1,88 @@
+.grid {
+  display: grid;
+  gap: 40px;
+}
+
+@media (min-width: 1000px) {
+  .grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 64px;
+    align-items: center;
+  }
+}
+
+.copy {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+}
+
+.title {
+  max-width: 14ch;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: -0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.text {
+  max-width: 44ch;
+  color: var(--muted);
+}
+
+.steps {
+  display: grid;
+  gap: 18px;
+}
+
+.steps li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent, var(--lime));
+  color: var(--ink);
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.stepName {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.stepText {
+  display: block;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.videos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* Six boxes, three across; the middle column sits a little lower, like the original three */
+@media (min-width: 640px) {
+  .videos {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding-bottom: 24px;
+  }
+  .videos > :nth-child(3n + 2) {
+    transform: translateY(24px);
+  }
+}

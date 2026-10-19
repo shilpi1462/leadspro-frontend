@@ -1,0 +1,20 @@
+.glow {
+  position: absolute;
+  inset: 0;
+  /* under the panel's content; the panel isolates so it stays above the panel's fill */
+  z-index: -1;
+  background: radial-gradient(
+    clamp(180px, 22vw, 320px) circle at 50% 50%,
+    rgba(217, 245, 92, 0.16),
+    transparent 70%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s cubic-bezier(0.5, 1, 0.89, 1);
+}
+
+.on {
+  opacity: 1;
+}

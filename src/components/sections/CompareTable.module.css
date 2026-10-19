@@ -1,0 +1,216 @@
+/* A real table, read row by row: typical habit on the left (set back, with a cross), Goodfaith's
+   answer on the right (bold, ticked, on a lit strip). */
+
+.wrap {
+  margin-top: clamp(28px, 3vw, 48px);
+  border-radius: var(--k-radius);
+  overflow: hidden;
+}
+
+.dark {
+  background: #121514;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 40px 80px -40px rgba(0, 0, 0, 0.8);
+  --c-text: var(--k-white);
+  --c-muted: rgba(255, 255, 255, 0.55);
+  --c-line: rgba(255, 255, 255, 0.08);
+  --c-hl: rgba(15, 76, 58, 0.45);
+  --c-hl-text: #fff;
+  --c-head: rgba(255, 255, 255, 0.04);
+}
+
+.light {
+  background: var(--k-white);
+  box-shadow:
+    inset 0 0 0 1px var(--k-line-dark),
+    0 30px 60px -36px rgba(17, 17, 17, 0.35);
+  --c-text: var(--k-black);
+  --c-muted: #6b716d;
+  --c-line: rgba(17, 17, 17, 0.08);
+  --c-hl: color-mix(in srgb, var(--k-accent) 18%, #fff);
+  --c-hl-text: var(--k-black);
+  --c-head: #f4f5f2;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--c-text);
+}
+
+.table th,
+.table td {
+  padding: 18px 24px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--c-line);
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Head */
+
+.table thead th {
+  padding-block: 20px;
+  background: var(--c-head);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
+.table thead th.hl {
+  background: linear-gradient(160deg, #17604a, #0f4c3a 60%, #0b3a2c);
+  color: var(--k-accent);
+  box-shadow: inset 0 3px 0 var(--k-accent);
+}
+
+.headInner,
+.cellInner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Body */
+
+.table td {
+  width: 50%;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.pair td:not(.hl) {
+  color: var(--c-muted);
+}
+
+.pair td:not(.hl) .cellInner > span {
+  flex: 1;
+}
+
+.table td.hl {
+  background: var(--c-hl);
+  color: var(--c-hl-text);
+  font-weight: 600;
+}
+
+.label {
+  font-weight: 600;
+  width: auto;
+}
+
+.table:not(.pair) td {
+  width: auto;
+}
+
+.table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover td:not(.hl),
+.table tbody tr:hover th {
+  background: color-mix(in srgb, var(--c-text) 4%, transparent);
+}
+
+.table tbody tr:hover td.hl {
+  background: color-mix(in srgb, var(--k-accent) 26%, var(--c-hl));
+}
+
+.tick,
+.cross {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+.tick {
+  color: var(--k-accent);
+}
+
+.cross {
+  color: var(--c-muted);
+  opacity: 0.8;
+}
+
+.arrow {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  color: var(--k-accent);
+}
+
+.light .arrow {
+  color: var(--k-black);
+  opacity: 0.4;
+}
+
+/* Phones: each row becomes a small card, the typical habit, then Goodfaith's answer. */
+
+@media (max-width: 719px) {
+  .pair thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .pair,
+  .pair tbody,
+  .pair tr,
+  .pair td {
+    display: block;
+    width: auto;
+  }
+
+  .pair tr {
+    border-bottom: 1px solid var(--c-line);
+  }
+
+  .pair tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  .pair td {
+    padding: 14px 18px;
+    border-bottom: 0;
+  }
+
+  .pair td::before {
+    content: attr(data-head);
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-muted);
+  }
+
+  .pair td.hl::before {
+    color: var(--k-accent);
+  }
+
+  .light .pair td.hl::before {
+    color: #0f4c3a;
+  }
+
+  .pair .arrow {
+    display: none;
+  }
+
+  /* wider tables keep their columns and scroll sideways */
+  .wrap:not(:has(.pair)) {
+    overflow-x: auto;
+  }
+
+  .table:not(.pair) {
+    min-width: 640px;
+  }
+}

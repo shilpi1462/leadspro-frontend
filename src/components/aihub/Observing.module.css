@@ -1,0 +1,633 @@
+.index {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--r-accent);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Picture cards: the photo fills the card, the copy sits on a dark fade at the bottom */
+
+.photoCard {
+  display: grid;
+  align-items: end;
+  min-height: 360px;
+  isolation: isolate;
+}
+
+.photo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* several of these photos are bright rooms, so the fade is deep enough to carry white copy */
+.photoCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(9, 10, 12, 0.05) 10%, rgba(9, 10, 12, 0.96) 78%);
+}
+
+.bentoWide::before {
+  background:
+    linear-gradient(90deg, rgba(9, 10, 12, 0.9) 10%, rgba(9, 10, 12, 0) 60%),
+    linear-gradient(180deg, rgba(9, 10, 12, 0) 40%, rgba(9, 10, 12, 0.85));
+}
+
+.photoCard:hover .photo {
+  transform: scale(1.04);
+}
+
+.photoCopy {
+  display: grid;
+  gap: 10px;
+  padding: clamp(24px, 3vw, 36px);
+}
+
+.photoLabel {
+  color: var(--r-accent);
+  font-size: 15px;
+}
+
+.photoText {
+  color: var(--r-head);
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* 01 · Home V3 bento */
+
+.bento {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.bentoWide {
+  grid-column: 1 / -1;
+  min-height: clamp(420px, 42vw, 560px);
+}
+
+.bentoWide .photoCopy {
+  max-width: 640px;
+  padding: clamp(28px, 4vw, 56px);
+}
+
+.textCard {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  padding: clamp(24px, 3vw, 36px);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  padding: 6px 14px;
+  border-radius: 48px;
+  background: var(--r-raised);
+  color: var(--r-head);
+  font-size: 15px;
+}
+
+.strike {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  color: var(--r-head);
+  font-size: clamp(19px, 1.6vw, 22px);
+  font-weight: 500;
+  line-height: 1.3;
+  text-decoration: line-through;
+  text-decoration-color: rgba(254, 86, 107, 0.75);
+  text-decoration-thickness: 2px;
+}
+
+.cross {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(254, 86, 107, 0.18);
+  color: #fe566b;
+  text-decoration: none;
+}
+
+.cross svg {
+  width: 16px;
+  height: 16px;
+}
+
+.framework {
+  display: grid;
+  gap: 12px;
+  grid-column: 1 / -1;
+  padding: clamp(28px, 3.4vw, 48px);
+}
+
+.framework :global(ol) {
+  margin-top: 16px;
+}
+
+.after {
+  margin-top: 12px;
+  color: var(--r-muted);
+}
+
+/* 02 · About's values, then "To promote a more efficient future" */
+
+.reviews {
+  margin-top: clamp(100px, 12vw, 160px);
+}
+
+.values {
+  display: grid;
+  justify-items: center;
+  gap: 24px;
+  max-width: 980px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.valuesTitle {
+  max-width: 760px;
+}
+
+.statement {
+  max-width: 780px;
+  color: var(--r-muted);
+  font-size: clamp(20px, 1.9vw, 24px);
+  line-height: 1.45;
+}
+
+.valueGrid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  gap: 18px 48px;
+  margin: 8px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.valueGrid li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--r-head);
+  font-size: 18px;
+}
+
+.valueGrid svg {
+  width: 20px;
+  height: 20px;
+  color: var(--r-accent);
+}
+
+.valuesNote {
+  max-width: 720px;
+  color: var(--r-muted);
+  font-size: 16px;
+}
+
+.promote {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 24px 64px;
+  margin: clamp(64px, 8vw, 100px) 0 32px;
+}
+
+.promoteHead {
+  display: grid;
+  gap: 10px;
+}
+
+.say {
+  color: var(--r-head);
+}
+
+.promoteText {
+  color: var(--r-muted);
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.pairWide,
+.pairNarrow {
+  position: relative;
+  height: clamp(300px, 32vw, 440px);
+  border-radius: var(--r-radius);
+  isolation: isolate;
+}
+
+.pairWide:hover .photo,
+.pairNarrow:hover .photo {
+  transform: scale(1.04);
+}
+
+/* 03 · The FAQs page */
+
+.faq {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 32px clamp(32px, 5vw, 80px);
+  margin-top: clamp(100px, 12vw, 160px);
+}
+
+.faqSide {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+}
+
+.faqPhoto {
+  position: relative;
+  aspect-ratio: 1.55;
+  margin-bottom: 16px;
+  border-radius: var(--r-radius);
+  isolation: isolate;
+}
+
+.tabsLabel {
+  margin-bottom: 12px;
+}
+
+.tabs {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tabs li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: var(--r-head);
+  font-size: 16px;
+}
+
+.tabs li:first-child {
+  background: var(--r-card);
+}
+
+.tabs svg {
+  width: 16px;
+  height: 16px;
+  color: var(--r-accent);
+}
+
+.faqList {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.faqCard {
+  display: grid;
+  gap: 12px;
+  padding: clamp(24px, 3vw, 40px);
+  border-radius: var(--r-radius);
+  background: var(--r-card);
+  transition: transform 0.3s;
+}
+
+.faqCard:hover {
+  transform: scale3d(1.01, 1.01, 1);
+}
+
+.faqLead {
+  background:
+    radial-gradient(70% 100% at 100% 0%, rgba(217, 245, 92, 0.12), transparent 70%), var(--r-card);
+}
+
+.faqRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: var(--r-head);
+}
+
+.faqRow :global(span) {
+  color: var(--r-accent);
+  font-size: 18px;
+}
+
+.faqStudies {
+  padding: 14px 8px 4px;
+}
+
+.faqJoin {
+  padding: 8px 8px 0;
+  font-size: 16px;
+}
+
+.faqFramework {
+  margin-top: 16px;
+}
+
+/* 04 · Home V1's pointer map */
+
+.fanout {
+  margin-top: clamp(100px, 12vw, 160px);
+}
+
+.fanoutHead {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  max-width: 820px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.fanoutLead {
+  display: grid;
+  gap: 8px;
+}
+
+.map {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px) minmax(0, 1fr);
+  align-items: center;
+  min-height: 560px;
+  margin-bottom: 16px;
+}
+
+.mapRobot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  width: min(700px, 90%);
+  translate: -50% -50%;
+  opacity: 0.55;
+}
+
+.mapRobot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.query {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding: 36px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--r-radius);
+  background: rgba(18, 20, 24, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  text-align: center;
+}
+
+.queryText {
+  color: var(--r-head);
+  font-size: clamp(20px, 1.8vw, 24px);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.queryNeeds {
+  color: var(--r-accent);
+  font-size: 16px;
+}
+
+.needs {
+  display: grid;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.needs li {
+  display: flex;
+  align-items: center;
+}
+
+.right li {
+  flex-direction: row-reverse;
+}
+
+.need {
+  flex: none;
+  padding: 10px 16px;
+  border: 1px solid var(--r-edge);
+  border-radius: 48px;
+  background: rgba(5, 6, 7, 0.7);
+  color: var(--r-head);
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.needLine {
+  flex: 1;
+  min-width: 24px;
+}
+
+.right .needLine {
+  flex-direction: row-reverse;
+}
+
+.right .needLine > :first-child::before {
+  inset: 0 0 0 auto;
+}
+
+/* 05 · "Real robotics. Real impact." */
+
+.impactWrap {
+  margin-top: clamp(100px, 12vw, 160px);
+}
+
+.impact {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: center;
+  justify-items: end;
+  min-height: clamp(480px, 46vw, 640px);
+  padding: clamp(32px, 5vw, 72px);
+  border-radius: var(--r-radius-lg);
+  overflow: hidden;
+}
+
+.impactPhoto {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.impactPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 20% 50%;
+}
+
+.impactShade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(5, 6, 7, 0) 20%, rgba(5, 6, 7, 0.88) 58%);
+}
+
+.impactCopy {
+  display: grid;
+  gap: 14px;
+  max-width: 440px;
+}
+
+.impactCards {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.checks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--r-head);
+  font-size: 16px;
+}
+
+.checks svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--r-accent);
+  color: #050607;
+}
+
+.takeawayCard {
+  background:
+    radial-gradient(80% 90% at 100% 0%, rgba(217, 245, 92, 0.12), transparent 70%), var(--r-card);
+}
+
+.impactTakeaway p:last-child {
+  color: var(--r-head);
+}
+
+.impactTakeaway {
+  display: grid;
+  gap: 6px;
+  padding-top: 16px;
+  border-top: 1px solid var(--r-edge);
+}
+
+@media (max-width: 991px) {
+  .bento,
+  .faq,
+  .promote,
+  .impactCards {
+    grid-template-columns: 1fr;
+  }
+
+  .valueGrid {
+    grid-template-columns: repeat(2, auto);
+    gap: 16px 32px;
+  }
+
+  .map {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    min-height: 0;
+  }
+
+  .query {
+    grid-row: 1;
+  }
+
+  .mapRobot {
+    top: 0;
+    translate: -50% 0;
+    width: min(420px, 100%);
+  }
+
+  .needs {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .needs li,
+  .right li {
+    flex-direction: row;
+  }
+
+  .needLine {
+    display: none;
+  }
+
+  .need {
+    flex: 1;
+    text-align: center;
+  }
+
+  .impact {
+    align-items: end;
+    justify-items: start;
+  }
+
+  .impactShade {
+    background: linear-gradient(180deg, rgba(5, 6, 7, 0) 15%, rgba(5, 6, 7, 0.92) 62%);
+  }
+}
+
+@media (max-width: 767px) {
+  .valueGrid {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    justify-self: center;
+  }
+
+  .pair,
+  .checks,
+  .needs {
+    grid-template-columns: 1fr;
+  }
+
+  .photoCard {
+    min-height: 300px;
+  }
+}

@@ -1,0 +1,145 @@
+.wrap {
+  position: relative;
+  margin-top: clamp(32px, 4vw, 56px);
+}
+
+.note {
+  margin-bottom: 12px;
+  color: var(--k-white);
+}
+
+.list {
+  --fill: 0%;
+  position: relative;
+  display: grid;
+  gap: 28px;
+}
+
+/* The centre line: a grey rail with the lime fill drawn over it */
+.list::before,
+.list::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  translate: -50% 0;
+}
+
+.list::before {
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.list::after {
+  height: var(--fill);
+  background: var(--k-accent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--k-accent) 60%, transparent);
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 90px minmax(0, 1fr);
+  align-items: center;
+}
+
+.stop {
+  grid-column: 2;
+  grid-row: 1;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--k-card);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+  color: var(--k-accent);
+  font-family: var(--k-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition:
+    background-color 0.4s var(--ease),
+    color 0.4s var(--ease),
+    transform 0.4s var(--ease);
+}
+
+.active .stop {
+  background: var(--k-accent);
+  color: var(--k-black);
+  transform: scale(1.1);
+}
+
+.card {
+  grid-row: 1;
+  position: relative;
+  display: grid;
+  gap: 14px;
+  padding: clamp(22px, 2.4vw, 32px);
+  border-radius: var(--k-radius);
+  background: var(--k-cream);
+  color: var(--k-black);
+  transition: box-shadow 0.5s var(--ease);
+}
+
+.active .card {
+  box-shadow: 0 0 0 2px var(--k-accent);
+}
+
+.right .card {
+  grid-column: 3;
+}
+
+.left .card {
+  grid-column: 1;
+}
+
+.chip {
+  justify-self: end;
+  padding: 4px 10px;
+  border: 1px solid rgba(17, 17, 17, 0.2);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  color: #6b6b6b;
+}
+
+.title {
+  margin-top: -6px;
+  font-family: var(--k-display);
+  font-size: clamp(1.3rem, 1.05rem + 0.8vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.body {
+  display: grid;
+  gap: 10px;
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+/* Phones: the rail moves to the left edge and every card sits to its right. */
+@media (max-width: 759px) {
+  .list::before,
+  .list::after {
+    left: 21px;
+  }
+
+  .step {
+    grid-template-columns: 44px minmax(0, 1fr);
+    column-gap: 14px;
+    align-items: start;
+  }
+
+  .stop {
+    grid-column: 1;
+  }
+
+  .right .card,
+  .left .card {
+    grid-column: 2;
+  }
+}

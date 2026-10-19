@@ -1,0 +1,240 @@
+.wrap {
+  display: grid;
+  gap: 40px;
+}
+
+.grid {
+  display: grid;
+  gap: 40px;
+}
+
+@media (min-width: 1000px) {
+  .grid {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+  }
+}
+
+.list {
+  border-top: 1px solid var(--line);
+}
+
+.item {
+  border-bottom: 1px solid var(--line);
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) 40px;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.q {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--muted);
+}
+
+.question {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.icon {
+  position: relative;
+  justify-self: end;
+  width: 28px;
+  height: 28px;
+}
+
+.icon::before,
+.icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 2px;
+  background: var(--lime-2);
+  transform: translate(-50%, -50%) rotate(-20deg);
+  transition: transform 0.3s var(--ease);
+}
+
+.icon::after {
+  transform: translate(-50%, -50%) rotate(20deg);
+}
+
+.item[open] .icon::before,
+.item[open] .icon::after {
+  transform: translate(-50%, -50%) rotate(0);
+}
+
+.answer {
+  display: grid;
+  gap: 10px;
+  padding: 0 0 24px 88px;
+  color: var(--muted);
+  max-width: 68ch;
+}
+
+@media (max-width: 640px) {
+  .summary {
+    grid-template-columns: 56px minmax(0, 1fr) 28px;
+  }
+  .answer {
+    padding-left: 0;
+  }
+}
+
+.aside {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  align-self: start;
+  justify-items: start;
+  padding: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--panel-violet);
+  color: var(--paper);
+}
+
+.asideLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.asideTitle {
+  font-size: 1.75rem;
+  letter-spacing: -0.04em;
+}
+
+.asideText {
+  font-size: 0.9375rem;
+  opacity: 0.85;
+  margin-bottom: 8px;
+}
+
+/* Dark tone (home): hairline rows on ink, the open question's number lights up lime, and the
+   prompt panel flips to lime so it still stands apart from the section. */
+
+.dark .list {
+  border-top-color: var(--line-dark);
+}
+
+.dark .item {
+  border-bottom-color: var(--line-dark);
+}
+
+.dark .q {
+  color: rgba(255, 255, 255, 0.38);
+  transition: color 0.3s ease;
+}
+
+.dark .item[open] .q {
+  color: var(--lime);
+}
+
+.dark .question {
+  transition: color 0.3s ease;
+}
+
+.dark .summary:hover .question {
+  color: var(--lime);
+}
+
+.dark .icon::before,
+.dark .icon::after {
+  background: var(--lime);
+}
+
+.dark .answer {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.dark .aside {
+  background:
+    radial-gradient(90% 80% at 100% 0%, rgba(255, 255, 255, 0.45), transparent 60%), var(--lime);
+  color: var(--ink);
+  box-shadow: 0 30px 80px rgba(217, 245, 92, 0.14);
+}
+
+.dark .asideLabel {
+  color: rgba(17, 17, 17, 0.6);
+}
+
+/* the usual graphite button goes muddy on lime */
+.dark .asideCta {
+  background: var(--ink);
+}
+
+.dark .asideCta:hover {
+  background: #000;
+}
+
+.iconOne,
+.iconTwo {
+  display: none;
+  grid-area: 1 / 1;
+  width: 15px;
+  height: 15px;
+  transition:
+    transform 0.6s var(--ease-power2),
+    opacity 0.6s var(--ease-power2);
+}
+
+.iconTwo {
+  transform: translate(-200%, 200%);
+  opacity: 0;
+}
+
+:global(.page-inner) .icon {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--line);
+  transition:
+    background-color 0.6s var(--ease-power2),
+    box-shadow 0.6s var(--ease-power2);
+}
+
+:global(.page-inner) .icon::before,
+:global(.page-inner) .icon::after {
+  display: none;
+}
+
+:global(.page-inner) .iconOne,
+:global(.page-inner) .iconTwo {
+  display: block;
+}
+
+:global(.page-inner) .item[open] .icon {
+  background: var(--lime);
+  box-shadow: inset 0 0 0 1px var(--lime);
+}
+
+:global(.page-inner) .item[open] .iconOne {
+  transform: translate(200%, -200%);
+  opacity: 0;
+}
+
+:global(.page-inner) .item[open] .iconTwo {
+  transform: rotate(180deg);
+  opacity: 1;
+}

@@ -1,0 +1,29 @@
+.list {
+  display: flex;
+  gap: 6px;
+}
+
+.list a {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-xs);
+  background: var(--ink);
+  color: var(--paper);
+  transition: background-color 0.2s var(--ease);
+}
+
+.list a:hover {
+  background: var(--green);
+}
+
+.dark a {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--paper);
+}
+
+.dark a:hover {
+  background: var(--lime);
+  color: var(--ink);
+}

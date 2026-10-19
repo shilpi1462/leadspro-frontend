@@ -1,0 +1,57 @@
+.text {
+  --progress: 0;
+}
+
+/* Without scripting every word stays lit, so the copy is never left greyed out. */
+
+:global(.js) .word {
+  opacity: clamp(0.22, calc(var(--progress) * (var(--words) + 6) - var(--i)), 1);
+  transition: opacity 0.25s linear;
+}
+
+/* Green tone: the word's colour, not its opacity, follows the scroll */
+
+.green {
+  color: var(--green);
+}
+
+:global(.js) .green .word {
+  --lit: clamp(0, calc(var(--progress) * (var(--words) + 6) - var(--i)), 1);
+  opacity: 1;
+  color: color-mix(in srgb, var(--green) calc(var(--lit) * 100%), #cdd5d0);
+  transition: color 0.25s linear;
+}
+
+/* the highlighter runs under the marked phrase word by word as it lights */
+.marked {
+  background: linear-gradient(var(--lime), var(--lime)) no-repeat 0 88% / 100% 0.42em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+:global(.js) .marked {
+  background-size: calc(var(--lit, 1) * 100%) 0.42em;
+}
+
+/* Lime tone, for dark blocks: words warm from a dim grey to lime; a marked phrase lights white
+   instead, so it reads apart from the rest */
+
+.lime {
+  color: var(--lime);
+}
+
+:global(.js) .lime .word {
+  --lit: clamp(0, calc(var(--progress) * (var(--words) + 6) - var(--i)), 1);
+  opacity: 1;
+  color: color-mix(in srgb, var(--lime) calc(var(--lit) * 100%), rgba(255, 255, 255, 0.18));
+  transition: color 0.25s linear;
+}
+
+.lime .marked {
+  color: #fff;
+  background: none;
+}
+
+:global(.js) .lime .marked {
+  color: color-mix(in srgb, #fff calc(var(--lit) * 100%), rgba(255, 255, 255, 0.18));
+}

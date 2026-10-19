@@ -1,0 +1,323 @@
+.social {
+  --s-bg: #0b0c0b;
+  --s-text: rgba(255, 255, 255, 0.65);
+  --s-white: #fff;
+  --s-card: #1f211f;
+  --s-card-2: #2c2f2c;
+  --s-line: rgba(255, 255, 255, 0.15);
+  --s-green: #5fd08f;
+  --s-lime: var(--lime);
+  --s-grad: linear-gradient(90deg, var(--s-green), var(--s-lime));
+  --s-grad-v: linear-gradient(180deg, var(--s-green), var(--s-lime));
+  --s-h1: 7.25vw;
+  --s-pad: clamp(120px, 13vw, 200px);
+  --s-out-quad: cubic-bezier(0.5, 1, 0.89, 1);
+  --s-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --s-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  position: relative;
+  background: var(--s-bg);
+  color: var(--s-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.container {
+  position: relative;
+  z-index: 5;
+  width: 90%;
+  margin-inline: auto;
+}
+
+.section {
+  position: relative;
+  padding-top: var(--s-pad);
+}
+
+.h2,
+.h3 {
+  margin: 0;
+  color: var(--s-white);
+  font-family: inherit;
+  font-weight: 400;
+  text-transform: none;
+  text-wrap: balance;
+}
+
+.h2 {
+  font-size: clamp(2.25rem, 1.6rem + 1.9vw, 2.8125rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.h3 {
+  font-size: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.center {
+  text-align: center;
+}
+
+.grad {
+  background: var(--s-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Copy beside a phone or under a heading: short paragraphs, lists as tags. */
+
+.copy {
+  display: grid;
+  gap: 14px;
+}
+
+.copy p {
+  margin: 0;
+}
+
+.copy strong {
+  color: var(--s-white);
+  font-weight: 500;
+}
+
+.copy blockquote {
+  margin: 0;
+  padding: 10px 14px;
+  border-left: 2px solid var(--s-lime);
+  border-radius: 0 8px 8px 0;
+  background: var(--s-card);
+  color: var(--s-white);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  padding: 6px 12px;
+  border: 1px solid var(--s-line);
+  border-radius: 60px;
+  color: var(--s-white);
+  font-size: 0.875rem;
+  line-height: 1.3;
+}
+
+.chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chain li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--s-white);
+  font-size: 0.9375rem;
+}
+
+.chain li + li::before {
+  content: attr(data-sep);
+  color: var(--s-lime);
+}
+
+.chain span {
+  padding: 6px 12px;
+  border-radius: 60px;
+  background: var(--s-card);
+}
+
+/* Centred copy blocks under headings */
+
+.centerCopy {
+  justify-items: center;
+  text-align: center;
+}
+
+.centerCopy .tags,
+.centerChain,
+.centerCopy .chain {
+  justify-content: center;
+}
+
+.narrow {
+  max-width: 760px;
+  display: grid;
+  gap: 24px;
+}
+
+.closingCopy {
+  position: relative;
+  padding-top: 40px;
+}
+
+.closingCopy .copy {
+  max-width: 760px;
+  margin-inline: auto;
+  color: var(--s-white);
+  font-size: 1.125rem;
+}
+
+.closingButton {
+  margin-top: 28px;
+}
+
+.end {
+  height: var(--s-pad);
+}
+
+.primary {
+  position: relative;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 12px 20px;
+  border-radius: 100px;
+  background: var(--s-grad);
+  color: var(--s-bg);
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+}
+
+.primaryText {
+  position: relative;
+  z-index: 20;
+  line-height: 22px;
+  transition: color 0.3s;
+}
+
+.bubble {
+  position: absolute;
+  z-index: 5;
+  left: -16px;
+  bottom: -400%;
+  display: none;
+  width: 125%;
+  height: 400%;
+  border-radius: 100%;
+  background: var(--s-card-2);
+}
+
+.primary[data-hover="in"] .bubble {
+  display: block;
+  animation: bubble-in 0.5s var(--s-out-quad) forwards;
+}
+
+.primary[data-hover="out"] .bubble {
+  display: block;
+  animation: bubble-out 0.4s var(--s-out-quad) forwards;
+}
+
+.primary[data-hover="in"] .primaryText {
+  color: var(--s-white);
+}
+
+@keyframes bubble-in {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes bubble-out {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(-125%);
+  }
+}
+
+.primary:focus-visible,
+.secondary:focus-visible,
+.tertiary:focus-visible {
+  outline: 2px solid var(--s-lime);
+  outline-offset: 3px;
+}
+
+.secondary,
+.tertiary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 60px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    color 0.3s,
+    background-color 0.3s;
+}
+
+.secondary {
+  background: var(--s-white);
+  color: var(--s-bg);
+}
+
+.secondary:hover {
+  background: #32343a;
+  color: var(--s-white);
+}
+
+.tertiary {
+  background: var(--s-card-2);
+  color: var(--s-white);
+}
+
+.tertiary:hover {
+  background: #3a3d3a;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(10vh);
+  transition:
+    opacity 0.7s var(--s-in-out-cubic),
+    transform 0.7s var(--s-in-out-cubic);
+}
+
+.fade:global(.in) {
+  opacity: 1;
+  transform: none;
+}
+
+:global(html:not(.js)) .fade {
+  opacity: 1;
+  transform: none;
+}
+
+@media (min-width: 1920px) {
+  .h3 {
+    font-size: 2rem;
+  }
+
+  .secondary,
+  .tertiary {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .h2 {
+    font-size: 2.25rem;
+  }
+}

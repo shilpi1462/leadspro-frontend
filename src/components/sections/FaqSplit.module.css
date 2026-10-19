@@ -1,0 +1,152 @@
+.title {
+  max-width: 22ch;
+}
+
+.layout {
+  display: grid;
+  gap: clamp(32px, 7vw, 100px);
+  margin-top: clamp(32px, 4vw, 56px);
+}
+
+@media (min-width: 760px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.photo {
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 594 / 774;
+  object-fit: cover;
+}
+
+@media (max-width: 759px) {
+  .photo {
+    order: 2;
+  }
+
+  .photo img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.list {
+  display: grid;
+  align-content: start;
+  column-gap: 32px;
+}
+
+@media (min-width: 900px) {
+  .twoCol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.item {
+  border-bottom: 1px solid var(--k-line);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 22px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.q {
+  font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.42rem);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--k-grey);
+  transition: color 0.3s var(--ease);
+}
+
+.summary:hover .q,
+.item[open] .q {
+  color: inherit;
+}
+
+.arrow {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: clamp(48px, 3vw + 30px, 62px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--k-white);
+  color: var(--k-black);
+  transition:
+    transform 0.4s var(--ease),
+    background-color 0.3s var(--ease);
+}
+
+.arrow svg {
+  width: 45%;
+  height: 45%;
+  transform: rotate(180deg);
+  transition: transform 0.4s var(--ease);
+}
+
+.item[open] .arrow svg {
+  transform: none;
+}
+
+.summary:hover .arrow {
+  background: var(--k-accent);
+}
+
+.a {
+  padding-bottom: 24px;
+  font-size: clamp(1rem, 0.92rem + 0.3vw, 1.2rem);
+  line-height: 1.6;
+  color: rgba(252, 252, 252, 0.72);
+  animation: reveal 0.45s var(--ease);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(32px, 4vw, 48px);
+}
+
+/* Light pages: black arrow buttons on white, darker answer copy */
+
+.onLight .item {
+  border-bottom-color: var(--k-line-dark);
+}
+
+.onLight .arrow {
+  background: var(--k-black);
+  color: var(--k-white);
+}
+
+.onLight .summary:hover .arrow {
+  background: var(--k-black);
+  color: var(--k-accent);
+}
+
+.onLight .a {
+  color: #4d4d4d;
+}

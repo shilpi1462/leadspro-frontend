@@ -1,0 +1,78 @@
+.section {
+  position: relative;
+  padding-top: var(--s-pad);
+}
+
+.block {
+  width: min(650px, 90%);
+  margin-inline: auto;
+}
+
+.fill {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: 3.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.text {
+  margin: 0;
+}
+
+.text em {
+  font-style: italic;
+}
+
+.veil {
+  position: absolute;
+  top: calc(var(--i) * 1.2em);
+  right: 0;
+  z-index: 3;
+  width: 100%;
+  height: 1.2em;
+  background: rgba(11, 12, 11, 0.85);
+  pointer-events: none;
+}
+
+:global(html:not(.js)) .veil {
+  display: none;
+}
+
+.small {
+  display: grid;
+  gap: 4px;
+  color: var(--s-text);
+}
+
+.small p {
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .block {
+    width: min(500px, 90%);
+  }
+
+  .fill {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .block {
+    width: min(300px, 90%);
+  }
+
+  .fill {
+    font-size: 1.9rem;
+    line-height: 1.3;
+  }
+
+  .veil {
+    top: calc(var(--i) * 1.3em);
+    height: 1.3em;
+  }
+}

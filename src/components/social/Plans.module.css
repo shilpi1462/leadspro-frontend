@@ -1,0 +1,236 @@
+.headRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.title {
+  max-width: 760px;
+}
+
+.toggle {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggleText {
+  color: var(--s-white);
+  font-size: 0.95rem;
+}
+
+.switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 80px;
+  height: 38px;
+  padding: 0 2%;
+  border: 0;
+  border-radius: 60px;
+  background: var(--s-grad);
+  cursor: pointer;
+}
+
+.switch:focus-visible {
+  outline: 2px solid var(--s-white);
+  outline-offset: 3px;
+}
+
+.indicator {
+  width: 48%;
+  height: 30px;
+  border-radius: 40px;
+  background: #fff;
+  transition: transform 0.3s var(--s-in-out-cubic);
+}
+
+.typical .indicator {
+  transform: translateX(-86%);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.75fr 1fr;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 0 clamp(16px, 2.4vw, 40px);
+}
+
+.card:first-child {
+  padding-left: 0;
+}
+
+.card:last-child {
+  padding-right: 0;
+}
+
+.wide {
+  border-inline: 1px solid var(--s-line);
+}
+
+.label {
+  color: var(--s-white);
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.separator {
+  width: 100%;
+  height: 2px;
+  margin: 30px 0;
+  background: var(--s-card-2);
+}
+
+.rows {
+  display: grid;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.icon {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: var(--s-grad);
+  color: var(--s-bg);
+  transition: background 0.3s;
+}
+
+.icon svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 3;
+  transition: opacity 0.3s;
+}
+
+.cross {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--s-white);
+  font-size: 11px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.typical .icon {
+  background: var(--s-card-2);
+}
+
+.typical .icon svg {
+  opacity: 0;
+}
+
+.typical .cross {
+  opacity: 1;
+}
+
+/* Both versions of a line sit side by side in a window; the switch slides them by half. */
+.window {
+  display: block;
+  flex: 1;
+  overflow: hidden;
+}
+
+.slide {
+  display: flex;
+  width: 200%;
+  transition: transform 0.3s var(--s-in-out-cubic);
+}
+
+.slide > span {
+  width: 50%;
+  padding-right: 12px;
+}
+
+.typical .slide {
+  transform: translateX(-50%);
+}
+
+.row .slide {
+  color: var(--s-white);
+  font-size: 1.0625rem;
+  line-height: 1.4;
+}
+
+.button {
+  align-self: stretch;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 991px) {
+  .headRow {
+    align-items: flex-end;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .card,
+  .card:first-child,
+  .card:last-child {
+    padding: 0;
+  }
+
+  .wide {
+    padding-block: 48px;
+    border-inline: 0;
+    border-block: 1px solid var(--s-line);
+  }
+}
+
+@media (max-width: 767px) {
+  .headRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toggleText {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .switch {
+    width: 65px;
+    height: 30px;
+  }
+
+  .indicator {
+    height: 26px;
+  }
+}

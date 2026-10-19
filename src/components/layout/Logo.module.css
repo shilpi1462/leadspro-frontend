@@ -1,0 +1,47 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--lime);
+}
+
+.diamond {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--ink);
+  transform: rotate(45deg);
+  transition: transform 0.5s var(--ease);
+}
+
+.logo:hover .diamond {
+  transform: rotate(225deg);
+}
+
+.word {
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.light {
+  color: var(--paper);
+}
+
+.light .mark {
+  background: var(--lime);
+}
+
+.light .diamond {
+  background: var(--ink);
+}

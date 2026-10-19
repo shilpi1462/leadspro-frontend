@@ -1,0 +1,96 @@
+.card {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: var(--shadow);
+}
+
+.frame {
+  position: relative;
+  aspect-ratio: 9 / 13;
+  background: #000;
+}
+
+.frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.poster {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 20px;
+  padding: 20px;
+  background-position: center;
+  background-size: cover;
+}
+
+.ink {
+  background-image: var(--panel-ink);
+}
+
+.violet {
+  background-image: var(--panel-violet);
+}
+
+.ocean {
+  background-image: var(--panel-ocean);
+}
+
+.client {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.play {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  position: relative;
+}
+
+.play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  width: 0;
+  height: 0;
+  border-left: 14px solid var(--paper);
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  transform: translate(-50%, -50%);
+}
+
+.caption {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px 14px;
+  text-align: center;
+}
+
+.label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lime);
+}
+
+.text {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+}

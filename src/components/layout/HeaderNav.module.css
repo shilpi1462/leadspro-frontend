@@ -1,0 +1,233 @@
+/* The bar stays put the whole way down the page (Naitik, 2026-10-07). */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.burger {
+  position: relative;
+  width: 44px;
+  height: 44px;
+}
+
+.burger span {
+  position: absolute;
+  right: 10px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+}
+
+.burger span:nth-child(1) {
+  top: 14px;
+  width: 22px;
+}
+
+.burger span:nth-child(2) {
+  top: 21px;
+  width: 14px;
+}
+
+.burger span:nth-child(3) {
+  top: 28px;
+  width: 22px;
+}
+
+/* Dropdown panel */
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: var(--paper);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-12px);
+  transition:
+    opacity 0.25s var(--ease),
+    transform 0.35s var(--ease),
+    visibility 0s linear 0.35s;
+}
+
+.menuOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.menuBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  border-bottom: 1px solid var(--line);
+}
+
+.close {
+  position: relative;
+  width: 44px;
+  height: 44px;
+}
+
+.close span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 2px;
+  background: var(--ink);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.close span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.menuBody {
+  padding-block: 32px 40px;
+}
+
+.cols {
+  display: grid;
+  gap: 32px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+@media (min-width: 760px) {
+  .cols {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 48px;
+  }
+}
+
+.col {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.col ul {
+  display: grid;
+  gap: 2px;
+}
+
+.colTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  font-size: 1rem;
+  color: var(--ink);
+  transition: color 0.2s var(--ease);
+}
+
+.link:hover {
+  color: var(--green);
+}
+
+/* The panel deals its columns and links in once it is open. */
+
+.menuOpen .col {
+  animation: menu-in 0.5s var(--ease) both;
+}
+
+.menuOpen .col:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.menuOpen .col:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.menuOpen .link {
+  animation: menu-in 0.45s var(--ease) both;
+  animation-delay: calc(0.12s + var(--i) * 0.035s);
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+.linkCurrent {
+  font-weight: 600;
+}
+
+.index {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.promo {
+  display: grid;
+  gap: 40px;
+  align-content: space-between;
+  padding: 18px;
+  min-height: 150px;
+  border-radius: var(--radius);
+  background: var(--green-panel);
+  color: var(--paper);
+}
+
+.promoLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.email {
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.menuFoot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: 16px;
+  padding: 18px 8px 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.menuFoot > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot,
+.dotLime {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.dotLime {
+  background: var(--lime-2);
+}

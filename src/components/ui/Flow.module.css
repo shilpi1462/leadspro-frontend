@@ -1,0 +1,61 @@
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 6px;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.step {
+  display: inline-block;
+  padding: 7px 13px;
+  border-radius: var(--radius-pill);
+  background: var(--flow-bg, var(--paper-2));
+  box-shadow: var(--flow-ring, none);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--flow-fg, var(--ink));
+}
+
+.sep {
+  color: var(--flow-sep, var(--muted-2));
+  font-size: 0.875rem;
+  padding-inline: 2px;
+}
+
+.sm .step {
+  padding: 5px 10px;
+  font-size: 0.8125rem;
+}
+
+.lg .step {
+  padding: 10px 18px;
+  font-size: 1rem;
+}
+
+.dark .step {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--paper);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.dark .sep {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.lime .step {
+  background: var(--lime);
+  color: var(--ink);
+}
+
+.lime .sep {
+  color: var(--lime);
+}

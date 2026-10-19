@@ -1,0 +1,166 @@
+.title {
+  max-width: 24ch;
+}
+
+.intro {
+  max-width: 64ch;
+  margin-top: 18px;
+  color: var(--k-grey);
+}
+
+.group {
+  margin-top: clamp(40px, 5vw, 72px);
+}
+
+.groupHead {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.groupName {
+  text-align: center;
+}
+
+/* Room for the hand-written note beside the first group label, clear of the heading above. */
+@media (min-width: 900px) {
+  .withNote {
+    align-items: flex-end;
+    min-height: 120px;
+  }
+}
+
+.note {
+  position: absolute;
+  left: clamp(0px, 8vw, 140px);
+  bottom: 0;
+  color: var(--k-black);
+}
+
+@media (max-width: 899px) {
+  .note {
+    display: none;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 22px;
+}
+
+@media (min-width: 720px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* One or two cards sit centred at their normal width rather than stretching or hugging left. */
+@media (min-width: 720px) {
+  .few {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 380px));
+    justify-content: center;
+  }
+}
+
+.cell {
+  display: grid;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 16px;
+  padding: clamp(24px, 2.4vw, 34px);
+  border-radius: 16px;
+  background: var(--k-card);
+  color: var(--k-white);
+  text-align: center;
+  transition:
+    transform 0.5s var(--ease),
+    box-shadow 0.5s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 50px -30px rgba(0, 0, 0, 0.6);
+}
+
+@media (min-width: 1024px) {
+  .tilted {
+    z-index: 1;
+    transform: rotate(-7deg) translateY(-6px);
+    box-shadow:
+      inset 0 0 0 2px var(--k-accent),
+      0 30px 50px -30px rgba(0, 0, 0, 0.6);
+  }
+
+  .tilted:hover {
+    transform: rotate(-2deg) translateY(-10px);
+  }
+}
+
+.ring {
+  display: grid;
+  place-items: center;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: var(--k-black);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.icon {
+  width: 34px;
+  height: 34px;
+  color: var(--k-accent);
+}
+
+.name {
+  font-size: clamp(1.15rem, 1rem + 0.5vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.text {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #a3a3a3;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.tags li {
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.link {
+  margin-top: 8px;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+}
+
+/* The whole card is the hit area; the button is only its visible label. */
+.stretch {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}

@@ -1,0 +1,115 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(30px, 5vw, 80px);
+}
+
+.left {
+  position: relative;
+  display: flex;
+  gap: 16px;
+}
+
+.photo {
+  position: relative;
+  flex: 1;
+  height: 390px;
+  border-radius: 1.875rem;
+  overflow: clip;
+}
+
+.offset {
+  margin-top: 3.125rem;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6.25rem;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+}
+
+.badge svg {
+  width: 15px;
+  height: 15px;
+}
+
+.b1 {
+  top: 30px;
+  left: -30px;
+  background: var(--b-ink);
+  color: var(--b-white);
+  transform: rotate(-20deg);
+}
+
+.b1 svg {
+  color: var(--b-lime);
+}
+
+.b2 {
+  bottom: 130px;
+  left: -48px;
+  background: var(--b-grey-2);
+  color: var(--b-ink);
+  transform: rotate(-20deg);
+}
+
+.b3 {
+  top: 33px;
+  right: 25px;
+  background: var(--b-white);
+  color: var(--b-ink);
+  transform: rotate(19deg);
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.right > div:first-child {
+  align-self: flex-start;
+}
+
+.copy {
+  font-size: 1.0625rem;
+}
+
+@media (max-width: 991px) {
+  .photo {
+    height: 300px;
+  }
+
+  .b1 {
+    left: -12px;
+  }
+
+  .b2 {
+    display: none;
+  }
+
+  .right {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .b1 {
+    left: 8px;
+  }
+}

@@ -1,0 +1,288 @@
+.section {
+  padding-bottom: var(--b-space);
+  overflow-x: clip;
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  max-width: 760px;
+  padding-bottom: 1.875rem;
+  text-align: center;
+}
+
+.intro {
+  font-size: 1.125rem;
+}
+
+.intro p {
+  margin: 0;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 720px;
+  padding-block: 3.75rem;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.marquee {
+  --fade: var(--b-bg);
+  gap: 30px;
+}
+
+.marquee > div {
+  gap: 30px;
+}
+
+.card {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 20px;
+  width: 400px;
+  padding: 1.875rem;
+  border-radius: 1.875rem;
+  --b-head: var(--b-ink);
+  --b-text: #4c4c4c;
+  --b-surface: #f0f1ee;
+  --b-surface-2: #ececec;
+  --b-line: rgba(139, 139, 139, 0.4);
+  --b-sep: var(--b-green);
+  --b-btn: var(--b-ink);
+  --b-btn-fg: #fff;
+  background: var(--b-white);
+}
+
+.cardLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--b-ink);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.cardIcon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--b-lime);
+}
+
+.cardIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.cardText {
+  margin: 0;
+  color: var(--b-text);
+  font-size: 1.125rem;
+  line-height: 1.35;
+}
+
+/* Phone over the middle of the rows. */
+.phone {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  transform: translate(-50%, -50%) rotate(-4deg);
+  filter: drop-shadow(0 40px 60px rgba(17, 17, 17, 0.25));
+}
+
+.frame {
+  --w: 280px;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+  padding: 10px 18px 24px;
+  background: var(--b-light);
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 18px 0 6px;
+}
+
+.profile b {
+  color: var(--b-ink);
+  font-size: 15px;
+}
+
+.profile small {
+  color: var(--b-muted);
+  font-size: 12px;
+}
+
+.logo {
+  position: relative;
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--b-ink);
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 36%;
+  height: 36%;
+  margin: auto;
+  border-radius: 3px;
+  background: var(--b-lime);
+  transform: rotate(45deg);
+}
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.swatches i {
+  height: 48px;
+  border-radius: 12px;
+}
+
+.s1 {
+  background: var(--b-ink);
+}
+
+.s2 {
+  background: var(--b-green);
+}
+
+.s3 {
+  background: var(--b-lime);
+}
+
+.s4 {
+  background: var(--b-cream);
+  box-shadow: inset 0 0 0 1px var(--b-line);
+}
+
+.type {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--b-white);
+}
+
+.type > span:first-child {
+  color: var(--b-ink);
+  font-family: var(--b-display);
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.type > span:last-child {
+  display: grid;
+  flex: 1;
+  gap: 6px;
+}
+
+.type i {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--b-grey);
+}
+
+.type i:first-child {
+  width: 80%;
+  background: var(--b-ink);
+}
+
+.tiles {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.tiles > span {
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+}
+
+.tiles .logo {
+  width: 30px;
+  height: 30px;
+}
+
+.tileDark {
+  background: var(--b-ink);
+}
+
+.tileDark .logo {
+  background: var(--b-white);
+}
+
+.tileLime {
+  background: var(--b-lime);
+}
+
+.tileLight {
+  background: var(--b-white);
+}
+
+.outro {
+  max-width: 760px;
+  text-align: center;
+  font-size: 1.125rem;
+}
+
+.outro p {
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .content {
+    min-height: 0;
+  }
+
+  .card {
+    width: 300px;
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+  }
+
+  .phone {
+    position: relative;
+    top: auto;
+    left: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    transform: rotate(-3deg);
+  }
+
+  .frame {
+    --w: 230px;
+  }
+}

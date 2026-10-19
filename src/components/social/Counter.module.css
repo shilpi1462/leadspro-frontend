@@ -1,0 +1,115 @@
+.number {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 150px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  font-size: 8rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.roll {
+  position: relative;
+  display: inline-block;
+}
+
+.sizer {
+  visibility: hidden;
+}
+
+.digit {
+  position: absolute;
+  inset: 0;
+  transform: translateY(100%);
+}
+
+.firstDigit {
+  transform: none;
+}
+
+/* Each middle digit rises into place and straight on out in 300 ms, starting 150 ms after
+   the one before; the first only leaves, the last only arrives (with the out-back). */
+.number:global(.in) .digit {
+  animation: roll-through 0.3s linear both;
+  animation-delay: calc((var(--k) - 1) * 0.15s);
+}
+
+.number:global(.in) .firstDigit {
+  animation: roll-out 0.15s linear both;
+}
+
+.number:global(.in) .lastDigit {
+  animation: roll-in 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: calc((var(--k) - 1) * 0.15s);
+}
+
+@keyframes roll-through {
+  from {
+    transform: translateY(100%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes roll-out {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes roll-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+:global(html:not(.js)) .digit {
+  transform: translateY(-100%);
+}
+
+:global(html:not(.js)) .lastDigit {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .digit {
+    transform: translateY(-100%);
+  }
+
+  .lastDigit {
+    transform: none;
+  }
+}
+
+.text {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  color: var(--s-white);
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.text small {
+  color: var(--s-text);
+  font-size: 1rem;
+}
+
+@media (max-width: 479px) {
+  .number {
+    height: 85px;
+    font-size: 5rem;
+  }
+}

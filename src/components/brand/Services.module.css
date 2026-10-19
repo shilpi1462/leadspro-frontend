@@ -1,0 +1,132 @@
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.title {
+  max-width: 640px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: stretch;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 1.875rem;
+  --b-head: var(--b-ink);
+  --b-text: #4c4c4c;
+  --b-surface: #f0f1ee;
+  --b-surface-2: #ececec;
+  --b-line: rgba(139, 139, 139, 0.4);
+  --b-sep: var(--b-green);
+  --b-btn: var(--b-ink);
+  --b-btn-fg: #fff;
+  background: var(--b-white);
+  color: var(--b-ink);
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 1.1rem 1.25rem;
+  border-radius: 1.25rem;
+  background: var(--b-grey-2);
+}
+
+.cardHead h3 {
+  margin: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.badge {
+  flex: none;
+  padding: 0.2rem 0.7rem;
+  border-radius: 6.25rem;
+  background: var(--b-ink);
+  color: var(--b-lime);
+  font-size: 0.8125rem;
+}
+
+.cardBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 24px;
+  padding: 1.5rem 1.25rem 1.25rem;
+}
+
+.text {
+  margin: 0;
+  color: inherit;
+  opacity: 0.8;
+  font-size: 1.0625rem;
+  line-height: 1.35;
+}
+
+.list {
+  display: grid;
+  flex: 1;
+  align-content: start;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+}
+
+.list svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 3;
+  color: var(--b-green);
+}
+
+.button {
+  align-self: flex-start;
+}
+
+.lit {
+  background: var(--b-lime);
+}
+
+.lit .cardHead {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.lit .list svg {
+  color: var(--b-ink);
+}
+
+.dark .cardHead {
+  background: var(--b-ink);
+  color: var(--b-white);
+}
+
+@media (max-width: 991px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

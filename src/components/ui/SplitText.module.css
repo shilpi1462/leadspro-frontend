@@ -1,0 +1,34 @@
+.mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding: 0.25em 0.08em 0.28em;
+  margin: -0.25em -0.08em -0.28em;
+}
+
+.word {
+  display: inline-block;
+}
+
+:global(.js) .word {
+  transform: translateY(calc(100% + 0.8em));
+  transition: transform 0.85s var(--ease);
+  transition-delay: calc(min(var(--i), 12) * 0.045s);
+}
+
+:global(.js) .split:global(.in) .word {
+  transform: none;
+}
+
+:global(.js) .immediate .word {
+  transform: none;
+  transition: none;
+  animation: rise 0.85s var(--ease) both;
+  animation-delay: calc(0.08s + min(var(--i), 12) * 0.045s);
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(calc(100% + 0.8em));
+  }
+}

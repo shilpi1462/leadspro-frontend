@@ -1,0 +1,196 @@
+/* .section.home-v1-hero, with less robot above the headline so it clears the fold */
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding-top: clamp(280px, 28vw, 400px);
+  padding-bottom: clamp(64px, 8vw, 100px);
+  overflow: hidden;
+}
+
+.art {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background: url("/images/aihub/ax-grid.svg") 50% 0 / 1920px auto no-repeat;
+  opacity: 0.35;
+}
+
+/* .home-hero-bg-shape-one / -two: long blurred beams falling from the top corners */
+.beam {
+  position: absolute;
+  top: 0;
+  width: 60vw;
+  height: 8.3vw;
+  border-radius: 100%;
+  opacity: 0.45;
+  filter: blur(10.4vw);
+}
+
+.beamLeft {
+  left: 0;
+  background-image: linear-gradient(72deg, var(--r-accent) 55%, var(--r-head));
+  transform: rotate(40deg);
+  transform-origin: 0 0;
+}
+
+.beamRight {
+  right: 0;
+  background-image: linear-gradient(72deg, var(--r-head), var(--r-accent) 45%);
+  transform: rotate(-40deg);
+  transform-origin: 100% 0;
+}
+
+/* .background-image.home-v1-hero: contained, top-centred, lighten into the page */
+.robot {
+  position: absolute;
+  inset: 0 0 auto;
+  max-width: 1000px;
+  margin-inline: auto;
+  mix-blend-mode: lighten;
+  /* the render stops at its shoulders; fade that edge into the page */
+  -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 99%);
+  mask-image: linear-gradient(180deg, #000 62%, transparent 99%);
+}
+
+.robot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  inset: auto 0 0;
+  height: 62%;
+  background: linear-gradient(180deg, rgba(5, 6, 7, 0), var(--r-bg) 64%);
+}
+
+.copy {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  max-width: 960px;
+  text-align: center;
+}
+
+.crumbs {
+  --muted: var(--r-muted);
+  --muted-2: var(--r-edge);
+  --crumb-current: var(--r-head);
+  margin-bottom: 20px;
+}
+
+.titleFrame {
+  margin-top: 18px;
+}
+
+.title {
+  max-width: 900px;
+  font-size: clamp(40px, 4.6vw, 66px);
+  line-height: 1.08;
+}
+
+.lead {
+  max-width: 560px;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  font-size: 20px;
+}
+
+.buttons {
+  max-width: 980px;
+}
+
+.implementation {
+  margin-top: 28px;
+  color: var(--r-muted);
+  font-size: 16px;
+}
+
+.implementation a {
+  color: var(--r-head);
+  text-decoration: underline;
+  text-decoration-color: var(--r-edge);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.3s;
+}
+
+.implementation a:hover {
+  text-decoration-color: var(--r-accent);
+}
+
+/* Home V2's logo strip: the "Infinity Loop Left To Right 40s" */
+
+.strip {
+  position: relative;
+  padding-block: 24px 8px;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: loop 40s linear infinite;
+}
+
+.track li {
+  display: flex;
+  align-items: center;
+  color: var(--r-muted);
+  font-size: clamp(26px, 2.6vw, 36px);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.track li::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-inline: clamp(24px, 3vw, 40px);
+  border-radius: 50%;
+  background: var(--r-edge);
+}
+
+@keyframes loop {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.edgeLeft,
+.edgeRight {
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: 1;
+  width: min(318px, 22%);
+  background: linear-gradient(90deg, var(--r-bg) 27%, rgba(5, 6, 7, 0));
+  pointer-events: none;
+}
+
+.edgeRight {
+  inset: 0 0 0 auto;
+  background: linear-gradient(270deg, var(--r-bg) 27%, rgba(5, 6, 7, 0));
+}
+
+@media (max-width: 767px) {
+  .lead {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

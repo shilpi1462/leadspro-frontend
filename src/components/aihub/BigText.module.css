@@ -1,0 +1,22 @@
+/* .video-section-bg-text: sized to the sheet's width through cqw */
+.text {
+  display: flex;
+  justify-content: center;
+  color: var(--r-raised);
+  font-size: clamp(16px, 22cqw, 300px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.char {
+  display: inline-block;
+}
+
+:global(.js) .char {
+  opacity: 0;
+  transform: translate3d(0, 25%, 0);
+}

@@ -1,0 +1,187 @@
+/* Signal board */
+
+.board {
+  --em: 22;
+}
+
+.board ul {
+  display: grid;
+  gap: 0.5em;
+}
+
+.board li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 4.2em;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 0.72em;
+  font-weight: 500;
+}
+
+.rowIcon {
+  display: grid;
+  place-items: center;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 0.45em;
+  background: var(--ui-soft);
+  color: var(--ui-green);
+}
+
+.rowIcon svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.rowText {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meter {
+  height: 0.5em;
+  border-radius: 999px;
+  background: var(--ui-soft);
+  overflow: hidden;
+}
+
+.meter i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--ui-green), var(--ui-green-2));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--late) + var(--n) * 120ms);
+}
+
+:global(.in) .meter i {
+  transform: scaleX(var(--fill));
+}
+
+/* Sticky note */
+
+.note {
+  --em: 10;
+  position: relative;
+  aspect-ratio: 1;
+  padding: 1.3em 1em 1em;
+  background: linear-gradient(170deg, #e9f8a0, #d9f55c 70%);
+  box-shadow:
+    0 0.1em 0 rgba(0, 0, 0, 0.05),
+    0 1.4em 2em -1em rgba(0, 0, 0, 0.55);
+  color: #1d2a12;
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 90% 100%, 0 100%);
+}
+
+.cream {
+  background: linear-gradient(170deg, #fffaf0, #f3efe4 70%);
+  color: #2a2a26;
+}
+
+.tape {
+  position: absolute;
+  top: -0.35em;
+  left: 50%;
+  width: 3.6em;
+  height: 1em;
+  background: rgba(255, 255, 255, 0.55);
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+.note p {
+  font-family: var(--k-script, "Caveat Brush", cursive);
+  font-size: 1.12em;
+  line-height: 1.15;
+}
+
+/* Journey */
+
+.journey {
+  --em: 18;
+}
+
+.journey ol {
+  display: grid;
+  gap: 0.25em;
+}
+
+.journey li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  padding: 0.35em 0;
+  font-size: 0.78em;
+  font-weight: 500;
+}
+
+.journey li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 0.95em;
+  top: 2.15em;
+  width: 0.12em;
+  height: 0.9em;
+  background: var(--ui-line);
+}
+
+.node {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background: var(--ui-soft);
+  color: var(--ui-muted);
+  font-size: 0.8em;
+  font-weight: 700;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    transform 0.45s cubic-bezier(0.34, 1.8, 0.64, 1);
+  transition-delay: calc(var(--late) + var(--n) * 240ms);
+}
+
+:global(.in) .node {
+  background: var(--ui-green);
+  color: var(--ui-lime);
+  transform: scale(1.06);
+}
+
+/* Photo / logo card */
+
+.photo {
+  padding: 0;
+  overflow: hidden;
+  aspect-ratio: 16 / 11;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contain img {
+  position: absolute;
+  inset: 4%;
+  width: 92%;
+  height: 92%;
+  object-fit: contain;
+}
+
+/* AI chat phone at the width of its piece */
+
+.ai {
+  --phone-w: 100cqi;
+}
+
+/* the scene carries its own "Illustrative example" note */
+.ai figcaption {
+  display: none;
+}

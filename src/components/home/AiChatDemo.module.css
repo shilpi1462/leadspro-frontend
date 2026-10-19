@@ -1,0 +1,378 @@
+.figure {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  margin: 0;
+}
+
+/* Everything inside the screen scales with the phone's width (--w, set by PhoneFrame). */
+
+/* --phone-w lets a scene on the inner pages size the phone to its own card */
+.figure .phone {
+  --w: var(--phone-w, clamp(260px, 24vw, 310px));
+}
+
+.app {
+  --fs: calc(var(--w) * 0.045);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: var(--fs);
+  line-height: 1.45;
+}
+
+.bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--w) * 0.02) calc(var(--w) * 0.055) calc(var(--w) * 0.035);
+  color: #0d0d0d;
+}
+
+.bar > svg {
+  width: calc(var(--w) * 0.062);
+  height: auto;
+}
+
+.title {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: calc(var(--fs) * 1.12);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.title svg {
+  color: #8e8e8e;
+}
+
+/* The conversation hugs the bottom, the way a chat scrolls to its newest message. */
+
+.chat {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: calc(var(--w) * 0.035);
+  padding: 0 calc(var(--w) * 0.05) calc(var(--w) * 0.03);
+  overflow: hidden;
+}
+
+.user {
+  align-self: flex-end;
+  max-width: 82%;
+  padding: calc(var(--w) * 0.028) calc(var(--w) * 0.042);
+  border-radius: calc(var(--w) * 0.06);
+  background: #f1f1f1;
+  animation: bubbleIn 0.4s var(--ease) both;
+}
+
+@keyframes bubbleIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+}
+
+.searching,
+.searched {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: calc(var(--fs) * 0.86);
+  color: #8e8e8e;
+}
+
+/* Grey text with a light band sweeping across it, as the app shows while it searches. */
+
+.shimmer {
+  background: linear-gradient(
+      90deg,
+      #9b9b9b 0%,
+      #9b9b9b 35%,
+      #e6e6e6 50%,
+      #9b9b9b 65%,
+      #9b9b9b 100%
+    )
+    0 0 / 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 1.3s linear infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -150% 0;
+  }
+}
+
+.answer {
+  display: grid;
+  gap: calc(var(--w) * 0.028);
+}
+
+.text {
+  color: #0d0d0d;
+}
+
+.list {
+  display: grid;
+  gap: calc(var(--w) * 0.02);
+}
+
+.listLabel {
+  font-weight: 600;
+  animation: rowIn 0.4s var(--ease) both;
+}
+
+/* The top result: the one the page is about. */
+
+.pick {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: start;
+  gap: calc(var(--w) * 0.025);
+  padding: calc(var(--w) * 0.03);
+  border-radius: calc(var(--w) * 0.045);
+  background: #fff;
+  box-shadow:
+    0 0 0 1.5px var(--c-accent),
+    0 8px 22px color-mix(in srgb, var(--c-b) 22%, transparent);
+  animation:
+    pickIn 0.55s var(--ease-out-quart) 0.15s both,
+    pickGlow 2.4s ease-out 0.7s;
+}
+
+@keyframes pickIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94);
+  }
+}
+
+@keyframes pickGlow {
+  0% {
+    box-shadow:
+      0 0 0 1.5px var(--c-accent),
+      0 0 0 0 color-mix(in srgb, var(--c-accent) 70%, transparent);
+  }
+  100% {
+    box-shadow:
+      0 0 0 1.5px var(--c-accent),
+      0 0 0 14px color-mix(in srgb, var(--c-accent) 0%, transparent);
+  }
+}
+
+.rank {
+  display: grid;
+  place-items: center;
+  align-self: center;
+  width: calc(var(--w) * 0.055);
+  font-size: calc(var(--fs) * 0.8);
+  font-weight: 600;
+  color: #8e8e8e;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: calc(var(--w) * 0.1);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--c-accent);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: calc(var(--fs) * 0.95);
+}
+
+.pickBody {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.pickName {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.pickName strong {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.meta {
+  font-size: calc(var(--fs) * 0.78);
+  color: #6b6b6b;
+}
+
+.badge {
+  flex: none;
+  padding: 2px calc(var(--w) * 0.022);
+  border-radius: 999px;
+  background: var(--c-accent);
+  font-size: calc(var(--fs) * 0.7);
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 3px;
+}
+
+.sources span {
+  padding: 1px calc(var(--w) * 0.02);
+  border-radius: 999px;
+  background: #f1f1f1;
+  font-size: calc(var(--fs) * 0.68);
+  color: #5d5d5d;
+}
+
+/* In the top result the rank lines up with the logo, not the middle of the card. */
+
+.pick .rank {
+  align-self: start;
+  height: calc(var(--w) * 0.1);
+}
+
+/* Everyone else: present, but blurred into the background. */
+
+.other {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: center;
+  gap: calc(var(--w) * 0.025);
+  padding: calc(var(--w) * 0.018) calc(var(--w) * 0.03);
+  opacity: 0.55;
+  filter: blur(0.6px);
+  animation: rowIn 0.4s var(--ease) calc(0.45s + (var(--n) - 2) * 0.12s) both;
+}
+
+@keyframes rowIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.ghostLogo {
+  width: calc(var(--w) * 0.08);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #e9e9e9;
+}
+
+.ghostLines {
+  display: grid;
+  gap: 4px;
+}
+
+.ghostLines span {
+  height: calc(var(--w) * 0.022);
+  border-radius: 4px;
+  background: #ececec;
+}
+
+.ghostLines span + span {
+  width: 60%;
+}
+
+/* Composer */
+
+.composer {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  gap: calc(var(--w) * 0.025);
+  margin: 0 calc(var(--w) * 0.035) calc(var(--w) * 0.075);
+  padding: calc(var(--w) * 0.022) calc(var(--w) * 0.022) calc(var(--w) * 0.022)
+    calc(var(--w) * 0.035);
+  border-radius: calc(var(--w) * 0.07);
+  background: #fff;
+  box-shadow:
+    0 0 0 1px #e3e3e3,
+    0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.plus {
+  align-self: flex-end;
+  display: grid;
+  place-items: center;
+  width: calc(var(--w) * 0.075);
+  aspect-ratio: 1;
+  font-size: calc(var(--fs) * 1.3);
+  line-height: 1;
+  color: #5d5d5d;
+}
+
+/* The field grows to three lines, then keeps the newest line in view as the text runs on. */
+
+.input {
+  flex: 1;
+  min-width: 0;
+  max-height: calc(var(--fs) * 1.45 * 3 + var(--w) * 0.024);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-block: calc(var(--w) * 0.012);
+  mask-image: linear-gradient(to bottom, transparent, #000 calc(var(--fs) * 0.9));
+}
+
+.placeholder {
+  color: #9b9b9b;
+}
+
+.caret {
+  display: inline-block;
+  width: 1.5px;
+  height: 1.05em;
+  margin-left: 1px;
+  vertical-align: -0.15em;
+  background: #0d0d0d;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.send {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: calc(var(--w) * 0.085);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #e5e5e5;
+  color: #fff;
+  transition: background-color 0.25s var(--ease);
+}
+
+.sendReady {
+  background: #0d0d0d;
+}
+
+.caption {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.5);
+}
