@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: false },
   icons: { icon: "/icon.svg" },
 };
 
