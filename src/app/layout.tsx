@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   description: site.description,
   applicationName: site.name,
   robots: { index: false, follow: false },
-  icons: { icon: "/icon.svg" },
+  icons: { icon: "/favicon.webp" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

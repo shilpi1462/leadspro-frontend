@@ -7,11 +7,11 @@ export const site = {
   region: "Dubai Marina, Downtown Dubai, Business Bay, Jumeirah",
   founder: "Sachin Gupta",
   description:
-    "Goodfaith is a Niagara Region digital marketing agency providing SEO, AI Search Optimization, Local SEO, web design, branding, content and digital growth strategy.",
+    "Leads Pro is a Dubai Based digital marketing agency providing SEO, AI Search Optimization, Local SEO, web design, branding, content and digital growth strategy.",
   social: {
-    linkedin: "https://www.linkedin.com/company/goodfaithbranding",
-    instagram: "https://www.instagram.com/goodfaithbranding",
-    facebook: "https://www.facebook.com/goodfaithbranding",
+    linkedin: "https://www.linkedin.com/company/leadsprodubai",
+    instagram: "https://www.instagram.com/leadsprodubai",
+    facebook: "https://www.facebook.com/leadsprodubai",
   },
 };
 
