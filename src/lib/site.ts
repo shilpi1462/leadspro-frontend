@@ -1,11 +1,11 @@
 export const site = {
-  name: "Goodfaith",
-  legalName: "Goodfaith Branding & Digital Marketing",
-  url: "https://www.goodfaithbranding.ca",
-  email: "hello@goodfaithbranding.ca",
-  city: "Thorold",
-  region: "Niagara Region, Ontario",
-  founder: "Lovish Tayal",
+  name: "LeadsPro",
+  legalName: "LeadsPro Branding & Digital Marketing",
+  url: "https://www.leadspro.ae",
+  email: "hello@leadspro.ae",
+  city: "Dubai",
+  region: "Dubai Marina, Downtown Dubai, Business Bay, Jumeirah",
+  founder: "Sachin Gupta",
   description:
     "Goodfaith is a Niagara Region digital marketing agency providing SEO, AI Search Optimization, Local SEO, web design, branding, content and digital growth strategy.",
   social: {
@@ -16,6 +16,7 @@ export const site = {
 };
 
 export const routes = {
+  nolink: "#",
   home: "/",
   service: "/services/seo-strategy-audits/",
   industry: "/industries/",
@@ -32,6 +33,7 @@ export const routes = {
 
 // Service pages referenced from designed sections (home, industries, footer)
 export const services = {
+  nolink: "#",
   seo: "/services/seo-strategy-audits/",
   technicalSeo: "/services/technical-seo/",
   aiSeo: "/services/ai-seo-aio-aeo-geo/",
@@ -54,17 +56,13 @@ export const nav = [
   { name: "H-EDGE", href: routes.hedge },
 ];
 
-export const niagaraCommunities = [
-  "St. Catharines",
-  "Niagara Falls",
-  "Thorold",
-  "Welland",
-  "Niagara-on-the-Lake",
-  "Fort Erie",
-  "Port Colborne",
-  "Pelham",
-  "Lincoln",
-  "Grimsby",
-  "West Lincoln",
-  "Wainfleet",
+export const dubaiCommunities = [
+  "Dubai Marina",
+  "Downtown Dubai",
+  "Business Bay",
+  "Jumeirah",
+  "JLT",
+  "Deira",
+  "Al Barsha",
+  "other Dubai locations",
 ];

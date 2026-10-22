@@ -10,7 +10,7 @@ export function Compare() {
     <section className="container section" aria-labelledby="why-title">
       <div className="heading">
         <SplitText as="h2" id="why-title" className={styles.title} text={why.title} />
-        <span className="eyebrow">Why Goodfaith</span>
+        <span className="eyebrow">Why Leads Pro</span>
       </div>
       <p className={styles.intro}>{why.intro}</p>
 

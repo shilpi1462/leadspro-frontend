@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { home } from "@/data/home";
-import { niagaraCommunities, site } from "@/lib/site";
+import { dubaiCommunities, site } from "@/lib/site";
 import { Reveal } from "@/components/ui/Reveal";
 import { ScrollText } from "@/components/ui/ScrollText";
 import { StatCards } from "./StatCards";
@@ -69,7 +69,7 @@ export function About() {
               label: organic.metrics[0].label,
               note: organic.note,
             }}
-            reach={{ title: areas.listTitle, text: areas.note[0], places: niagaraCommunities }}
+            reach={{ title: areas.listTitle, text: areas.note[0], places: dubaiCommunities }}
           />
         </div>
       </div>

@@ -49,7 +49,7 @@ export function HeaderNav({ groups }: { groups: NavGroup[] }) {
       <header className={styles.header}>
         <div className={`container ${styles.bar}`}>
           <Logo />
-          <button
+          {/* <button
             type="button"
             className={styles.burger}
             aria-expanded={open}
@@ -60,7 +60,7 @@ export function HeaderNav({ groups }: { groups: NavGroup[] }) {
             <span />
             <span />
             <span />
-          </button>
+          </button> */}
         </div>
       </header>
 

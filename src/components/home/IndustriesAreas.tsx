@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { home } from "@/data/home";
-import { niagaraCommunities, routes } from "@/lib/site";
+import { dubaiCommunities, routes } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitText } from "@/components/ui/SplitText";
@@ -79,7 +79,7 @@ export function IndustriesAreas() {
             </div>
             <h3 className={styles.sub}>{areas.listTitle}</h3>
             <ul className={styles.chips}>
-              {niagaraCommunities.map((name, i) => (
+              {dubaiCommunities.map((name, i) => (
                 <li
                   key={name}
                   style={{

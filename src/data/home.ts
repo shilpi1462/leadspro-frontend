@@ -1,34 +1,33 @@
 import { routes, services } from "@/lib/site";
 
 export const home = {
-  seoTitle: "Digital Marketing Agency Niagara Region | SEO & AI Search | Goodfaith",
+  seoTitle: "Digital Marketing Agency Niagara Region | SEO & AI Search | LeadsPro",
   description:
-    "Goodfaith is a Niagara Region digital marketing agency providing SEO, AI Search Optimization, Local SEO, web design, branding, content and digital growth strategy.",
+    "LeadsPro is a Niagara Region digital marketing agency providing SEO, AI Search Optimization, Local SEO, web design, branding, content and digital growth strategy.",
 
   hero: {
-    title:
-      "Digital Marketing Agency in Niagara Region for SEO, AI Search, Web Design & Business Growth",
+    title: "Digital Marketing Agency in Dubai UAE for SEO, AI Search, Web Design & Business Growth",
     intro:
-      "Goodfaith Branding & Digital Marketing helps businesses get found, build trust and turn digital visibility into meaningful business growth. Based in Niagara Region, we support businesses throughout Niagara while also working with organizations across Ontario and Canada.",
-    primary: { label: "Get a Free Digital Growth Audit", href: routes.audit },
-    secondary: { label: "Explore Our Digital Marketing Services", href: services.seo },
+      "Leads Pro Helps Businesses Get Found, Build Trust and Turn Digital Visibility Into Meaningful Business Growth. Based in Dubai, UAE, we support businesses throughout Dubai while also working with organizations across the United Arab Emirates.",
+    primary: { label: "Get a Free Digital Growth Audit", href: routes.nolink },
+    secondary: { label: "Explore Our Digital Marketing Services", href: services.nolink },
   },
 
   ask: {
     title: "SEO Is Changing. People Don't Just Search - They Ask.",
     intro: "Search is becoming more conversational.",
     typedLabel: "Instead of typing:",
-    typed: "basement waterproofing Niagara",
+    typed: "best digital marketing agency Dubai",
     askedLabel: "people may now ask:",
     asked:
-      "My basement leaks after heavy rain. What type of waterproofing do I need, and who provides it near me?",
+      "My website gets traffic but hardly any enquiries. Which digital marketing agency in Dubai can improve my SEO and help me generate more leads?",
     howLabel: "How AI Search Works",
     how: "Customer asks a question → AI understands what they mean → AI runs a query fan-out → AI looks for useful information → Businesses and sources are evaluated → An answer is created",
     // The flip card above the steps. Illustrative: the searches a fan-out could run for the question.
     fanoutDemo: {
       intents: [
         { key: "Problem", text: "Leaks after heavy rain" },
-        { key: "Need", text: "The right waterproofing" },
+        { key: "Need", text: "The right Seo Agency" },
         { key: "Place", text: "Near me" },
       ],
       queries: [
@@ -55,11 +54,11 @@ export const home = {
       "ChatGPT",
       "Gemini",
       "YouTube",
-      "Social media",
-      "Industry platforms",
+      "Social Media",
+      "Industry Platforms",
     ],
-    everywhereLine: "That means modern SEO is becoming more like Search Everywhere Optimization.",
-    cta: { label: "Explore AI Search Optimization", href: services.seo },
+    everywhereLine: "That Means Modern SEO Is Becoming More Like Search Everywhere Optimization.",
+    cta: { label: "Explore AI Search Optimization", href: services.nolink },
   },
 
   aiTerms: {
@@ -84,7 +83,7 @@ export const home = {
       { term: "GEO", text: "strengthens your wider digital presence." },
       { term: "AI SEO", text: "connects it all for modern search." },
     ],
-    cta: { label: "Explore AI SEO, AEO & GEO", href: services.aiSeo },
+    cta: { label: "Explore AI SEO, AEO & GEO", href: services.nolink },
     // Phone demo beside "In Simple Terms". Illustrative until a verified client result (and the
     // client's permission to name them) replaces `pick`.
     demo: {
@@ -107,31 +106,31 @@ export const home = {
     title: "Before AI Can Surface Your Business, It Has to Understand It.",
     intro: "Search and AI systems need clear information about:",
     signals: [
-      { key: "Who", text: "your brand" },
-      { key: "What", text: "your services" },
-      { key: "Where", text: "your locations" },
-      { key: "Knowledge", text: "your expertise" },
-      { key: "Evidence", text: "your projects, reviews and proof" },
-      { key: "Authority", text: "your citations, mentions and relevant sources" },
+      { key: "Who", text: " Your Brand" },
+      { key: "What", text: "Your Services" },
+      { key: "Where", text: "Your Locations" },
+      { key: "Knowledge", text: "Your Expertise" },
+      { key: "Evidence", text: "Your Projects, Reviews and Proof" },
+      { key: "Authority", text: "Your Citations, Mentions and Relevant Sources" },
     ],
     chainLabel: "Clearer Digital Understanding",
     chain: "Brand → Services → Expertise → Content → Evidence → Authority",
     outro:
-      "Goodfaith helps connect these signals through SEO, AI SEO, AEO, GEO, content and technical optimization.",
+      "LeadsPro helps connect these signals through SEO, AI SEO, AEO, GEO, content and technical optimization.",
     outroLinks: {
       SEO: services.seo,
       "AI SEO, AEO, GEO": services.aiSeo,
       content: services.contentMarketing,
       "technical optimization": services.technicalSeo,
     } as Record<string, string>,
-    cta: { label: "Discover Our AI SEO Approach", href: services.aiSeo },
+    cta: { label: "Discover Our AI SEO Approach", href: services.nolink },
   },
 
   team: {
     title: "Experienced Digital Marketing, SEO & Website Strategy Team",
     text: [
       "Successful digital marketing rarely depends on one channel alone. SEO can be limited by website architecture, strong traffic can be wasted by poor UX, and great branding has limited impact when potential customers cannot discover the business.",
-      "Goodfaith combines digital marketing, technology, websites, search and branding experience so each part of the customer journey can support the next.",
+      "Leads Pro combines digital marketing, technology, websites, search and branding experience so each part of the customer journey can support the next.",
     ],
     stats: [
       { value: "10+", unit: "Years", label: "Combined Digital & Technology Experience" },
@@ -157,46 +156,46 @@ export const home = {
         q: "Getting Traffic but Almost No Enquiries?",
         a: "Your website may need stronger UX/UI design, Conversion Rate Optimization, messaging, trust signals or landing pages rather than simply more visitors.",
         cta: "Explore Website Redesign & CRO",
-        href: services.redesign,
+        href: services.nolink,
       },
       {
         q: "Your Website Looks Professional but Nobody Finds It?",
         a: "The issue may involve Technical SEO, On-Page SEO, content gaps, internal linking, search intent or digital authority.",
         cta: "Explore SEO Services",
-        href: services.seo,
+        href: services.nolink,
       },
       {
         q: "Ranking Organically but Competitors Dominate Google Maps?",
         a: "Your Local SEO, Google Business Profile, reviews, citations, service-area relevance or local authority may need improvement.",
         cta: "Explore Local SEO Services",
-        href: services.localSeo,
+        href: services.nolink,
       },
       {
         q: "Customers Don't Understand Why You're Different?",
         a: "Your challenge may involve brand positioning, messaging, visual identity or credibility rather than traffic generation.",
         cta: "Explore Branding & Visual Identity",
-        href: services.branding,
+        href: services.nolink,
       },
       {
         q: "Doing SEO but Rarely Appearing in AI Search?",
         a: "Your digital presence may need stronger AI-search accessibility, answer-focused content, entity clarity, supporting evidence and authority.",
         cta: "Explore AI SEO, AEO & GEO",
-        href: services.aiSeo,
+        href: services.nolink,
       },
       {
         q: "People Discover Your Business but Don't Stay Engaged?",
         a: "Strategic content marketing and social media optimization can help demonstrate expertise, answer customer questions and keep your business visible throughout the buying journey.",
         cta: "Explore Content Marketing",
-        href: services.contentMarketing,
+        href: services.nolink,
       },
     ],
     outro: "Find the bottleneck before adding another marketing channel.",
   },
 
   ecosystem: {
-    title: "The Goodfaith Digital Marketing Ecosystem",
+    title: "The LeadsPro Digital Marketing Ecosystem",
     intro:
-      "The Goodfaith Ecosystem connects branding, website design, development, SEO, Local SEO, Google Business Profile, content, social media and AI-search readiness around the customer journey.",
+      "The LeadsPro Ecosystem connects branding, website design, development, SEO, Local SEO, Google Business Profile, content, social media and AI-search readiness around the customer journey.",
     stages: [
       {
         n: "01",
@@ -206,17 +205,17 @@ export const home = {
           {
             name: "Branding & Visual Identity",
             text: "Build recognizable positioning, messaging and visual consistency.",
-            href: services.branding,
+            href: services.nolink,
           },
           {
             name: "Website Design",
             text: "Create a professional digital experience around your customers, services and business goals.",
-            href: services.websiteDesign,
+            href: services.nolink,
           },
           {
             name: "Web Development",
             text: "Turn strategy and design into fast, responsive, scalable and maintainable websites.",
-            href: services.webDevelopment,
+            href: services.nolink,
           },
         ],
       },
@@ -228,17 +227,17 @@ export const home = {
           {
             name: "AI-First SEO Suite",
             text: "Traditional SEO, Technical SEO, On-Page SEO, Content SEO, Off-Page Authority, AI SEO, AIO, AEO and GEO.",
-            href: services.seo,
+            href: services.nolink,
           },
           {
             name: "Local SEO",
             text: "Build stronger visibility across the communities and service areas that genuinely matter to your business.",
-            href: services.localSeo,
+            href: services.nolink,
           },
           {
             name: "Google Business Profile",
             text: "Strengthen your presence across Google Search and Maps while improving relevance, accuracy and customer actions.",
-            href: services.gbp,
+            href: services.nolink,
           },
         ],
       },
@@ -250,12 +249,12 @@ export const home = {
           {
             name: "Content Marketing",
             text: "Develop service pages, resources and expertise-led content around genuine customer needs and search intent.",
-            href: services.contentMarketing,
+            href: services.nolink,
           },
           {
             name: "Social Media Optimization",
             text: "Build a consistent digital presence across relevant social platforms and communicate expertise beyond the website.",
-            href: services.socialMedia,
+            href: services.nolink,
           },
         ],
       },
@@ -282,15 +281,13 @@ export const home = {
         text: "Clear pages, useful answers, genuine proof and conversion-focused experiences make the next step easier.",
       },
     ],
-    cta: { label: "Explore the Goodfaith Ecosystem", href: routes.ecosystem },
+    cta: { label: "Explore the LeadsPro Ecosystem", href: routes.nolink },
   },
 
   services: {
     title: "Digital Marketing Services for SEO, AI Search, Local SEO, Web Design & Branding",
     intro: [
-      "Goodfaith provides specialized digital marketing services while keeping each service connected to the wider customer journey.",
-      "Some businesses need one focused solution. Others need several disciplines working together.",
-      "The right combination depends on your visibility, competition, website performance, customers and business objectives.",
+      "Leads Pro provides specialized digital marketing services while keeping each service connected to the wider customer journey. Some businesses need one focused solution. Others need several disciplines working together. The right combination depends on your visibility, competition, website performance, customers and business objectives.",
     ],
     items: [
       {
@@ -309,7 +306,7 @@ export const home = {
           "Image SEO",
         ],
         cta: "Explore SEO & AI Search Optimization",
-        href: services.seo,
+        href: services.nolink,
       },
       {
         name: "Local SEO & Google Business Profile",
@@ -323,7 +320,7 @@ export const home = {
           "GBP Optimization",
         ],
         cta: "Explore Local SEO Services",
-        href: services.localSeo,
+        href: services.nolink,
       },
       {
         name: "Website Design & Development",
@@ -337,7 +334,7 @@ export const home = {
           "Website Redesign & CRO",
         ],
         cta: "Explore Website Design & Development",
-        href: services.websiteDesign,
+        href: services.nolink,
       },
       {
         name: "Branding & Visual Identity",
@@ -350,7 +347,7 @@ export const home = {
           "Digital Brand Consistency",
         ],
         cta: "Explore Branding Services",
-        href: services.branding,
+        href: services.nolink,
       },
       {
         name: "Content Marketing",
@@ -363,7 +360,7 @@ export const home = {
           "Digital Content Planning",
         ],
         cta: "Explore Content Marketing Services",
-        href: services.contentMarketing,
+        href: services.nolink,
       },
       {
         name: "Social Media",
@@ -377,7 +374,7 @@ export const home = {
           "Audience Growth & Engagement",
         ],
         cta: "Explore Social Media Services",
-        href: services.socialMedia,
+        href: services.nolink,
       },
     ],
   },
@@ -386,14 +383,14 @@ export const home = {
     title: "Digital Marketing Research, Case Studies & Strategy Examples",
     intro: [
       "Different businesses require different digital strategies. Search competition, customer behaviour, website quality, local visibility and trust can create very different growth constraints.",
-      "Our approach begins by understanding the problem and then connecting the right parts of the Goodfaith Ecosystem around it.",
+      "Our approach begins by understanding the problem and then connecting the right parts of the LeadsPro Ecosystem around it.",
     ],
   },
 
   proof: {
     title: "SEO & Digital Marketing Results: Proof in the Data",
     intro:
-      "Goodfaith measures digital performance across the stages that matter—from being discovered in search to generating meaningful customer actions.",
+      "Leads Pro measures digital performance across the stages that matter, from being discovered in search to generating meaningful customer actions.",
     lead: "Depending on the project, we monitor:",
     items: [
       {
@@ -468,7 +465,7 @@ export const home = {
       title: "Visibility Across AI-Powered Search",
       intro: [
         "Search is evolving beyond traditional blue-link results.",
-        "Where reliable data is available, Goodfaith also reviews how businesses are being discovered and referenced across experiences such as:",
+        "Where reliable data is available, LeadsPro also reviews how businesses are being discovered and referenced across experiences such as:",
       ],
       platforms: ["Google AI Overviews", "Google AI Mode", "ChatGPT", "Gemini"],
       shot: {
@@ -489,15 +486,15 @@ export const home = {
     closingTitle: "Visibility Matters. What Happens After the Visibility Matters Even More.",
     closingFlow: "Impressions → Clicks → Calls → Leads → Business Growth",
     closingText:
-      "Goodfaith connects SEO, local visibility, website performance, AI search and conversion measurement so marketing progress can be evaluated against real customer actions—not rankings alone.",
-    cta: { label: "Explore Our Digital Marketing Research & Case Studies", href: routes.portfolio },
+      "LeadsPro connects SEO, local visibility, website performance, AI search and conversion measurement so marketing progress can be evaluated against real customer actions—not rankings alone.",
+    cta: { label: "Explore Our Digital Marketing Research & Case Studies", href: routes.nolink },
   },
 
   why: {
-    title: "Why Choose Goodfaith as Your Digital Marketing Agency?",
+    title: "Why Choose LeadsPro as Your Digital Marketing Agency?",
     intro:
-      "Goodfaith focuses on solving the business problem rather than maximizing marketing activity.",
-    columns: ["Typical Digital Marketing Approach", "Goodfaith Approach"],
+      "LeadsPro focuses on solving the business problem rather than maximizing marketing activity.",
+    columns: ["Typical Digital Marketing Approach", "LeadsPro Approach"],
     rows: [
       [
         "SEO focused primarily on rankings",
@@ -523,15 +520,15 @@ export const home = {
       ["Reporting focused on activity", "Performance connected to meaningful customer actions"],
     ],
     outro:
-      "Sometimes the best growth strategy is not generating more traffic. It is improving what happens to the traffic you already have.",
+      "Sometimes the Best Growth Strategy Is Not Generating More Traffic. It Is Improving What Happens to the Traffic You Already Have.",
   },
 
   industries: {
     title: "Digital Marketing Services for Different Industries",
     text: [
       "Different industries require different customer journeys, levels of trust and search strategies.",
-      "A homeowner choosing a waterproofing contractor evaluates evidence differently from a patient selecting a clinic, a company researching a SaaS platform or a buyer evaluating a construction firm.",
-      "Goodfaith adapts search, content, website and conversion strategies around those differences.",
+      "A homeowner choosing a maintenance contractor evaluates evidence differently from a patient selecting a clinic, a company researching a SaaS platform or a buyer evaluating a construction firm.",
+      "Leads Pro adapts search, content, website and conversion strategies around those differences.",
     ],
     list: [
       "Healthcare & Wellness",
@@ -552,11 +549,11 @@ export const home = {
   },
 
   areas: {
-    title: "Digital Marketing Agency Serving Niagara Region",
+    title: "Digital Marketing Agency Serving Dubai, UAE",
     text: [
-      "Goodfaith Branding & Digital Marketing is based in Niagara Region and supports businesses across the region with SEO, AI Search Optimization, Local SEO, website services, branding, content and digital growth strategy.",
-      "Different Niagara businesses can face very different markets.",
-      "A tourism business in Niagara Falls, professional practice in St. Catharines, contractor in Welland and winery in Niagara-on-the-Lake may serve completely different customers.",
+      "Leads Pro serves businesses across Dubai with SEO, AI Search Optimization, Local SEO, website services, branding, content and digital growth strategies.",
+      "Different Dubai business areas can serve different markets.",
+      "A tourism business in Dubai Marina, professional practice in Business Bay, real estate agency in Downtown Dubai and logistics company in Jebel Ali may serve completely different customers.",
       "That is why we build strategies around the actual market, customers and competition of each business rather than applying the same local approach everywhere.",
     ],
     listTitle: "Areas We Serve Across Niagara Region",
@@ -568,44 +565,44 @@ export const home = {
 
   faqs: [
     {
-      q: "What Does Goodfaith Branding & Digital Marketing Do?",
-      a: "Goodfaith provides SEO, AI Search Optimization, Local SEO, Google Business Profile services, website design and development, branding, content marketing, social media optimization and conversion-focused digital strategy.",
+      q: "What Does Leads Pro Do?",
+      a: "Leads Pro provides SEO, AI Search Optimization, Local SEO, Google Business Profile services, website design and development, branding, content marketing, social media optimization and conversion-focused digital strategy.",
     },
     {
-      q: "Where Is Goodfaith Branding & Digital Marketing Based?",
-      a: "Goodfaith is based in Niagara Region, Ontario. Niagara is our primary local market, while many of our digital services can also support organizations elsewhere in Ontario and across Canada.",
+      q: "Where Is Leads Pro Based?",
+      a: "Leads Pro serves businesses in Dubai, UAE, offering digital marketing, SEO, web design and AI Search Optimization services.",
     },
     {
-      q: "What Areas of Niagara Region Does Goodfaith Serve?",
-      a: "Goodfaith supports businesses across St. Catharines, Niagara Falls, Thorold, Welland, Niagara-on-the-Lake, Fort Erie, Port Colborne, Pelham, Lincoln, Grimsby, West Lincoln and Wainfleet.",
+      q: "What Areas of Dubai Does Leads Pro Serve?",
+      a: "Leads Pro supports businesses across Dubai Marina, Downtown Dubai, Business Bay, Jumeirah, JLT, Deira, Al Barsha and other Dubai locations.",
     },
     {
       q: "Why Am I Getting Website Traffic but No Leads?",
-      a: "Traffic without leads can result from irrelevant search intent, unclear messaging, weak trust signals, poor UX, difficult forms or ineffective conversion paths.\n\nIncreasing traffic is therefore not always the correct first solution.",
+      a: "Your website may attract the wrong visitors or have poor navigation, weak content, slow loading speed or unclear calls to action.",
     },
     {
       q: "Is SEO Still Important With AI Search?",
-      a: "Yes. Strong SEO foundations remain important for helping search platforms discover, understand and evaluate website content, including within newer AI-assisted search experiences.",
+      a: "Yes. Technical SEO, helpful content, clear website structure and credible business information remain important for organic search and AI-assisted discovery.",
     },
     {
       q: "Should Businesses Optimize for Keywords or Conversational Questions?",
-      a: "Both. Commercial keywords help establish what a business offers, while conversational questions address the detailed problems, comparisons and decisions customers make during research.",
+      a: "Both. Keywords help target relevant searches, while conversational content answers detailed customer questions across Google and AI platforms.",
     },
     {
       q: "Can My Website Appear in ChatGPT Search?",
-      a: "Public websites can potentially appear in ChatGPT Search. Eligibility does not guarantee that a website will be selected, mentioned or cited.",
+      a: "Yes. ChatGPT Search can reference publicly accessible website content, although visibility and citations are not guaranteed.",
     },
     {
-      q: "Does Goodfaith Only Work With Niagara Businesses?",
-      a: "No. Niagara Region is our primary local market, but many Goodfaith services can also be delivered to businesses across Ontario and Canada.",
+      q: " Does Leads Pro Only Work With Dubai Businesses?",
+      a: "No. Leads Pro can also support businesses targeting other UAE markets through SEO, website design, branding, content marketing and digital strategy.",
     },
     {
-      q: "Do I Need Separate Website Pages for Every Niagara City I Serve?",
-      a: "Not necessarily. A separate location page should have a genuine purpose, meaningful search opportunity and useful information for customers in that market.\n\nGoodfaith first considers customer demand, geographic relevance and business value before recommending additional location pages.",
+      q: "Do I Need Separate Website Pages for Every Dubai Area I Serve?",
+      a: "Not always. Separate location pages are useful when they contain unique, relevant service information for customers in each area.",
     },
     {
       q: "Which Digital Marketing Service Does My Business Need?",
-      a: "Start with the problem.\n\nLow visibility → SEO. Weak Google Maps presence → Local SEO. Traffic without enquiries → Website / CRO. Weak differentiation → Branding. Limited authority → Content. Weak AI visibility → SEO + AI Search Strategy.\n\nThe strongest starting point depends on where the customer journey is currently breaking.",
+      a: "That depends on your goals, website performance and competition. An SEO and digital marketing audit can help identify the right starting point.",
     },
   ],
 
@@ -624,7 +621,7 @@ export const home = {
     ],
     line: "We can start by identifying where the strongest opportunity exists.",
     statement: "Find the constraint. Fix the right problem. Build the system around growth.",
-    primary: { label: "Get Your Free Digital Growth Audit", href: routes.audit },
-    secondary: { label: "Explore the Goodfaith Ecosystem", href: routes.ecosystem },
+    primary: { label: "Get Your Free Digital Growth Audit", href: routes.nolink },
+    secondary: { label: "Explore the LeadsPro Ecosystem", href: routes.nolink },
   },
 };

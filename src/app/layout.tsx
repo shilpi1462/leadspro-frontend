@@ -18,7 +18,7 @@ const body = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.legalName} | Niagara Region`,
+    default: `${site.legalName} | Dubai Region`,
     template: `%s`,
   },
   description: site.description,

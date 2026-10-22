@@ -30,7 +30,7 @@ const journeyIcons: IconName[] = ["pin", "map", "spark"];
 
 export const metadata: Metadata = pageMetadata({
   title:
-    "Industries We Serve | Digital Marketing for Contractors, Clinics, Firms & More | Goodfaith",
+    "Industries We Serve | Digital Marketing for Contractors, Clinics, Firms & More | LeadsPro",
   description:
     "Digital marketing for different industries: contractors and home services, dental and healthcare clinics, restaurants, law and accounting firms, technology companies and more across Niagara Region and Ontario.",
   path: routes.industry,

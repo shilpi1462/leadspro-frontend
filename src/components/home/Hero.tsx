@@ -18,7 +18,8 @@ export function Hero() {
       name: g.name,
       short: g.short,
       blurb: g.blurb,
-      href: g.href,
+      // href: g.href,
+      href: "#",
       image: servicePictures[g.slug][0],
       thumb: serviceThumbs[g.slug],
     };
@@ -33,12 +34,12 @@ export function Hero() {
       <div className={styles.top}>
         <p className={styles.wordmark} aria-hidden="true">
           <span className={styles.wordmarkInner}>
-            Goodfaith<sup>®</sup>
+            Leads
             <wbr />
-            _Branding
+            _Pro
           </span>
         </p>
-        <a href={routes.audit} className={styles.founder}>
+        <a href={routes.nolink} className={styles.founder}>
           <span className={styles.avatar} aria-hidden="true">
             {initials}
           </span>

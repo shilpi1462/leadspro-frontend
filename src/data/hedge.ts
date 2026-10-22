@@ -6,7 +6,7 @@ export const humanEdge = {
   title: "The Human Edge™",
   lead: "Technology keeps evolving. Human connection never goes out of style.",
   text: [
-    "The H-EDGE™ is Goodfaith's human-centred approach to digital marketing, combining AI, SEO data, customer psychology, creativity, emotional intelligence and ethical human judgment.",
+    "The H-EDGE™ combines human-centred digital marketing, AI, SEO data, customer psychology, creativity, emotional intelligence and ethical human judgment.",
     "Because the future of marketing is not AI. It is AI guided by people who understand people.",
   ],
   cta: { label: "Learn About The H-EDGE™", href: routes.hedge },
