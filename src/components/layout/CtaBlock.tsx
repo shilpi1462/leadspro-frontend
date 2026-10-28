@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { SocialLinks } from "./SocialLinks";
 import styles from "./CtaBlock.module.css";
 
-const picture = { src: "/images/backdrop/niagara-night.webp", width: 2000, height: 1250 };
+const picture = { src: "/images/backdrop/Dubai-night.webp", width: 2000, height: 1250 };
 
 export function CtaBlock() {
   const ref = useRef<HTMLElement>(null);

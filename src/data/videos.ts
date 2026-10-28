@@ -32,7 +32,7 @@ export const clientVideos: ClientVideo[] = [
     text: "Informative videos that explain the service and build trust before the call.",
   },
   {
-    client: "Canada Waterproofers",
+    client: "UAE Waterproofers",
     caption: "Filming • Editing",
     text: "Educational content showing homeowners what the work involves.",
   },

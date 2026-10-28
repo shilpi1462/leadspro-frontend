@@ -22,13 +22,13 @@ export interface Story {
 
 export const stories: Story[] = [
   {
-    slug: "niagara-waterproofing-drainage-plumbing-seo",
+    slug: "Dubai-waterproofing-drainage-plumbing-seo",
     kind: "Case Study",
     industry: "Waterproofing, Drainage & Plumbing",
     icon: "water",
     title: "Waterproofing, Drainage & Plumbing",
     services: "Technical SEO + Local SEO + Website Optimization",
-    text: "A Niagara Region waterproofing, drainage and plumbing company had valuable services and strong local-market potential, but its website audit revealed several weaknesses limiting its search foundation.",
+    text: "A Dubai waterproofing, drainage and plumbing company had valuable services and strong local-market potential, but its website audit revealed several weaknesses limiting its search foundation.",
     snapshotTitle: "Audit Snapshot",
     snapshotMetrics: [
       { value: "~6", label: "Domain Authority" },

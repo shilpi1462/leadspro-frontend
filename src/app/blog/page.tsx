@@ -15,9 +15,9 @@ import styles from "./blog.module.css";
 const crumbs = [{ name: "Blog", href: routes.blog }];
 
 export const metadata: Metadata = pageMetadata({
-  title: "Blog | SEO Guides, Research, Experiments & Industry Insights | Goodfaith",
+  title: "Blog | SEO Guides, Research, Experiments & Industry Insights | LeadsPro",
   description:
-    "The Goodfaith blog: SEO-focused guides, original research using collected data, experiments we actually test and measure, and marketing analysis for specific industries.",
+    "The LeadsPro blog: SEO-focused guides, original research using collected data, experiments we actually test and measure, and marketing analysis for specific industries.",
   path: routes.blog,
 });
 

@@ -1,9 +1,9 @@
 import { routes, services } from "@/lib/site";
 
 export const home = {
-  seoTitle: "Digital Marketing Agency Niagara Region | SEO & AI Search | LeadsPro",
+  seoTitle: "Digital Marketing Agency Dubai | SEO & AI Search | LeadsPro",
   description:
-    "LeadsPro is a Niagara Region digital marketing agency providing SEO, AI Search Optimization, Local SEO, web design, branding, content and digital growth strategy.",
+    "LeadsPro is a Dubai digital marketing agency providing SEO, AI Search Optimization, Local SEO, web design, branding, content and digital growth strategy.",
 
   hero: {
     title: "Digital Marketing Agency in Dubai UAE for SEO, AI Search, Web Design & Business Growth",
@@ -34,11 +34,11 @@ export const home = {
         { kind: "Cause", text: "why do basements leak after heavy rain" },
         { kind: "Compare", text: "interior vs exterior basement waterproofing" },
         { kind: "Repair", text: "foundation crack repair options" },
-        { kind: "Cost", text: "basement waterproofing cost Niagara" },
+        { kind: "Cost", text: "basement waterproofing cost Dubai" },
         { kind: "Local", text: "waterproofing contractors near me" },
         { kind: "Trust", text: "waterproofing company reviews" },
       ],
-      sources: ["yourbusiness.ca", "Google Business Profile", "Reviews", "Local guides"],
+      sources: ["yourbusiness.ae", "Google Business Profile", "Reviews", "Local guides"],
       caption: "Illustrative example of a query fan-out",
     },
     fanoutLabel: "Query fan-out",
@@ -94,9 +94,9 @@ export const home = {
       listLabel: "Top local options",
       pick: {
         name: "Your Business",
-        meta: "Waterproofing & drainage · Niagara Region",
+        meta: "Waterproofing & drainage · Dubai",
         badge: "Top pick",
-        sources: ["yourbusiness.ca", "Google Business Profile", "Reviews"],
+        sources: ["yourbusiness.ae", "Google Business Profile", "Reviews"],
       },
       caption: "Illustrative example of an AI answer",
     },
@@ -433,13 +433,19 @@ export const home = {
       {
         name: "Organic Search Growth",
         metrics: [
-          { value: "1.08M", label: "Search Impressions" },
-          { value: "5.52K", label: "Organic Clicks" },
+          { value: "608K", label: "Search Impressions" },
+          { value: "4.03K", label: "Organic Clicks" },
         ],
         note: "Measured through Google Search Console across the reported 16-month period.",
         shot: {
           label: "Google Search Console",
-          caption: "Search performance over the reported period",
+          caption: "Google Search Console performance",
+          picture: {
+            src: "/images/google-search-console.webp",
+            alt: "Google Search Console search performance report",
+            width: 1200,
+            height: 800,
+          },
         },
         text: [
           "Search performance data helps us understand how often a business is being discovered, which pages and queries are gaining visibility and where further opportunities exist.",
@@ -453,7 +459,16 @@ export const home = {
           { value: "111", label: "Calls in August 2026" },
         ],
         note: "Measured through Google Business Profile performance data from March to August 2026.",
-        shot: { label: "Google Business Profile", caption: "Calls recorded from the profile" },
+        shot: {
+          label: "Google Business Profile",
+          caption: "Google Business Profile performance",
+          picture: {
+            src: "/images/gmb.webp",
+            alt: "Google Business Profile performance results",
+            width: 1200,
+            height: 800,
+          },
+        },
         text: [
           "Local SEO becomes much more meaningful when visibility turns into real customer action.",
           "We therefore look beyond Maps rankings and monitor actions such as calls, website visits, directions, bookings and enquiries.",
@@ -469,8 +484,14 @@ export const home = {
       ],
       platforms: ["Google AI Overviews", "Google AI Mode", "ChatGPT", "Gemini"],
       shot: {
-        label: "AI search result",
-        caption: "Verified AI Overview, AI Mode or ChatGPT result",
+        label: "AI Performance",
+        caption: "AI search performance",
+        picture: {
+          src: "/images/ai-performance.webp",
+          alt: "AI search performance report",
+          width: 1200,
+          height: 800,
+        },
       },
       factorsLabel: "We look at factors such as:",
       factors: [
@@ -556,10 +577,10 @@ export const home = {
       "A tourism business in Dubai Marina, professional practice in Business Bay, real estate agency in Downtown Dubai and logistics company in Jebel Ali may serve completely different customers.",
       "That is why we build strategies around the actual market, customers and competition of each business rather than applying the same local approach everywhere.",
     ],
-    listTitle: "Areas We Serve Across Niagara Region",
+    listTitle: "Areas We Serve Across Dubai",
     note: [
-      "Niagara Region is our primary local market.",
-      "Services such as SEO strategy, AI Search Optimization, website design, web development, branding and content marketing can also support businesses across Ontario and Canada.",
+      "Dubai is our primary local market.",
+      "Services such as SEO strategy, AI Search Optimization, website design, web development, branding and content marketing can also support businesses across Dubai.",
     ],
   },
 

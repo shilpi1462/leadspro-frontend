@@ -48,7 +48,7 @@ export function Results() {
         {proof.cases.map((item) => (
           <article key={item.name} className={styles.case}>
             <Reveal className={styles.caseHead}>
-              <h3 className={styles.caseName}>{item.name}</h3>
+              <h3 className={styles.caseName}>{item.name} </h3>
               <ul className={styles.metrics}>
                 {item.metrics.map((m) => (
                   <li key={m.label}>

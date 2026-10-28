@@ -34,7 +34,7 @@ export type Section =
 const pad = (n: number) => String(n).padStart(2, "0");
 
 const NEW_TOPIC =
-  /^(The |How |Why |What |When |Can |Does |Is |Should |Which |Industries|Goodfaith)|Example|Search Everywhere|\bvs\b/i;
+  /^(The |How |Why |What |When |Can |Does |Is |Should |Which |Industries|LeadsPro)|Example|Search Everywhere|\bvs\b/i;
 const NUMBERED = /^(\d+)\.\s+/;
 
 const has = (blocks: Block[], type: Block["type"]) => blocks.some((b) => b.type === type);
@@ -142,7 +142,7 @@ export function planService(chapters: Chapter[]): Section[] {
 
     const tables = count(blocks, "table");
 
-    if (tables && /^Why\b.*Goodfaith/i.test(title)) {
+    if (tables && /^Why\b.*LeadsPro/i.test(title)) {
       sections.push({ kind: "compare", part, tone: "dark" });
       continue;
     }

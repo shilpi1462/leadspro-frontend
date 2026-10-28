@@ -25,7 +25,8 @@ export interface BrandPlan {
   included: Part | null;
   stack: StackItem[];
   steps:
-    (Part & { lead: Block[]; steps: { label: string; text: string }[]; after: Block[] }) | null;
+    | (Part & { lead: Block[]; steps: { label: string; text: string }[]; after: Block[] })
+    | null;
   example: (Part & { name: string; kind: string }) | null;
   compare: Table | null;
   versus: Table | null;
@@ -34,7 +35,7 @@ export interface BrandPlan {
 }
 
 const NEW_TOPIC =
-  /^(The |How |Why |What |When |Can |Does |Is |Should |Which |Industries|Goodfaith)|Example|\bvs\b/i;
+  /^(The |How |Why |What |When |Can |Does |Is |Should |Which |Industries|LeadsPro)|Example|\bvs\b/i;
 const STEP = /^\d+\.\s*/;
 
 function table(part: Part): Table {
@@ -140,7 +141,7 @@ export function planBrand(chapters: Chapter[], config: BrandPageConfig = {}): Br
   const comparePart = parts.find(
     (p) =>
       !used.has(p.id) &&
-      /^Why\b.*Goodfaith/i.test(p.title) &&
+      /^Why\b.*LeadsPro/i.test(p.title) &&
       p.blocks.some((b) => b.type === "table"),
   );
   const versusPart = parts.find(

@@ -224,5 +224,5 @@ export const serviceGallery: Record<string, Picture[]> = {
 export const postPictures: Record<string, Picture> = {
   "google-top-ranking-local-businesses-ai-recommendations":
     serviceGallery["seo-ai-search-optimization"][1],
-  "seo-lessons-niagara-waterproofing-company": serviceGallery["seo-ai-search-optimization"][2],
+  "seo-lessons-Dubai-waterproofing-company": serviceGallery["seo-ai-search-optimization"][2],
 };

@@ -60,7 +60,7 @@ export function ReadingCards({
                     {category && <span className={styles.chip}>{category.name}</span>}
                   </Link>
                   <div className={styles.meta}>
-                    <span>{post.data.author ?? "Goodfaith"}</span>
+                    <span>{post.data.author ?? "LeadsPro"}</span>
                     <span className={styles.dot} aria-hidden="true" />
                     <span className={styles.time}>{readingTime(post.body)} mins</span>
                   </div>

@@ -136,7 +136,7 @@ type Inner = ScreenProps & { scrollRef?: RefObject<HTMLDivElement | null> };
 function Profile({
   thumbs,
   handle = "yourbusiness",
-  bio = "Waterproofing & drainage · Niagara Region",
+  bio = "Waterproofing & drainage · Dubai",
   scrollRef,
 }: Inner) {
   return (

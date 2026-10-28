@@ -20,9 +20,9 @@ import styles from "./portfolio.module.css";
 const crumbs = [{ name: "Portfolio", href: routes.portfolio }];
 
 export const metadata: Metadata = pageMetadata({
-  title: "Portfolio | Digital Marketing Case Studies & Success Stories | Goodfaith",
+  title: "Portfolio | Digital Marketing Case Studies & Success Stories | LeadsPro",
   description:
-    "Goodfaith case studies: the industry, the initial challenge, the services provided, the strategy and the results—across local services, healthcare and hospitality businesses.",
+    "LeadsPro case studies: the industry, the initial challenge, the services provided, the strategy and the results—across local services, healthcare and hospitality businesses.",
   path: routes.portfolio,
 });
 

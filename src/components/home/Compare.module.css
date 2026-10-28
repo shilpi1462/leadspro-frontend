@@ -42,7 +42,7 @@
   background: var(--paper-2);
 }
 
-/* The Goodfaith column steps forward a little: dark green head with a lime rule, lime-tinted
+/* The LeadsPro column steps forward a little: dark green head with a lime rule, lime-tinted
    cells with a tick, and the typical column set back with a muted dash. */
 
 .table th:last-child {
@@ -78,7 +78,7 @@
   box-shadow: 0 18px 40px -24px rgba(17, 17, 17, 0.25);
 }
 
-/* Phones: each row becomes a small card, the typical approach, then Goodfaith's, so
+/* Phones: each row becomes a small card, the typical approach, then LeadsPro's, so
    neither column has to be swiped into view. */
 
 @media (max-width: 639px) {

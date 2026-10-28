@@ -50,9 +50,9 @@ export const organizationSchema = {
   email: site.email,
   founder: { "@type": "Person", name: site.founder, jobTitle: "Founder & CEO" },
   areaServed: [
-    { "@type": "AdministrativeArea", name: "Niagara Region" },
-    { "@type": "AdministrativeArea", name: "Ontario" },
-    { "@type": "Country", name: "Canada" },
+    { "@type": "AdministrativeArea", name: "Dubai" },
+    { "@type": "AdministrativeArea", name: "UAE" },
+    { "@type": "Country", name: "UAE" },
   ],
   address: {
     "@type": "PostalAddress",
@@ -103,7 +103,7 @@ export function serviceSchema(name: string, description: string, path: string) {
     description,
     url: `${site.url}${path}`,
     provider: { "@id": `${site.url}/#organization` },
-    areaServed: { "@type": "AdministrativeArea", name: "Ontario, Canada" },
+    areaServed: { "@type": "AdministrativeArea", name: " UAE" },
   };
 }
 

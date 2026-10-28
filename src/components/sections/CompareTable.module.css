@@ -1,4 +1,4 @@
-/* A real table, read row by row: typical habit on the left (set back, with a cross), Goodfaith's
+/* A real table, read row by row: typical habit on the left (set back, with a cross), LeadsPro's
    answer on the right (bold, ticked, on a lit strip). */
 
 .wrap {
@@ -150,7 +150,7 @@
   opacity: 0.4;
 }
 
-/* Phones: each row becomes a small card, the typical habit, then Goodfaith's answer. */
+/* Phones: each row becomes a small card, the typical habit, then LeadsPro's answer. */
 
 @media (max-width: 719px) {
   .pair thead {

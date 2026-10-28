@@ -47,10 +47,10 @@ export function ResearchFinding({ title, blocks }: { title: string; blocks: Bloc
             <Flask />
             Research finding
           </span>
-          <span className={styles.source}>Goodfaith applied SEO research</span>
+          <span className={styles.source}>LeadsPro applied SEO research</span>
         </div>
         <h3 className={`${kit.h3} ${styles.title}`}>
-          {title.replace(/^Goodfaith Research Finding:\s*/i, "")}
+          {title.replace(/^LeadsPro Research Finding:\s*/i, "")}
         </h3>
 
         <ol className={styles.story}>

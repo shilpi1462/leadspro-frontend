@@ -70,7 +70,7 @@ export function IndustriesAreas() {
             aria-labelledby="areas-title"
           >
             <span className={styles.light} aria-hidden="true" />
-            <span className="eyebrow">Niagara Region</span>
+            <span className="eyebrow">Dubai</span>
             <SplitText as="h2" id="areas-title" className={styles.title} text={areas.title} />
             <div className={styles.text}>
               {areas.text.map((t) => (

@@ -143,9 +143,9 @@ export function HeaderNav({ groups }: { groups: NavGroup[] }) {
           <div className={styles.menuFoot}>
             <span>
               <span className={styles.dot} aria-hidden="true" />
-              Digital marketing agency based in Niagara Region
+              Digital marketing agency based in Dubai
             </span>
-            <span>Ontario, Canada</span>
+            <span> UAE</span>
             <span>
               Accepting Projects <span className={styles.dotLime} aria-hidden="true" />
             </span>

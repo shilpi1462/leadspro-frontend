@@ -10,7 +10,7 @@ import p from "./Plans.module.css";
 interface PlansProps {
   id?: string;
   title: ReactNode;
-  /** [typical, goodfaith] column names. */
+  /** [typical, LeadsPro] column names. */
   head: string[];
   rows: string[][];
   cta: { label: string; href: string };
@@ -28,12 +28,12 @@ function Slide({ first, second }: { first: ReactNode; second: ReactNode }) {
 }
 
 export function Plans({ id, title, head, rows, cta }: PlansProps) {
-  const [goodfaith, setGoodfaith] = useState(true);
-  const [typicalName, goodfaithName] = head;
+  const [LeadsPro, setLeadsPro] = useState(true);
+  const [typicalName, LeadsProName] = head;
   const cards = [0, 1, 2].map((c) => rows.slice(c * 2, c * 2 + 2)).filter((r) => r.length);
 
   return (
-    <section id={id} className={`${s.section} ${goodfaith ? "" : p.typical}`}>
+    <section id={id} className={`${s.section} ${LeadsPro ? "" : p.typical}`}>
       <div className={s.container}>
         <div className={p.headRow}>
           <h2 className={`${s.h2} ${p.title}`}>{title}</h2>
@@ -42,14 +42,14 @@ export function Plans({ id, title, head, rows, cta }: PlansProps) {
             <button
               type="button"
               role="switch"
-              aria-checked={goodfaith}
-              aria-label={`Show the ${goodfaith ? typicalName : goodfaithName}`}
+              aria-checked={LeadsPro}
+              aria-label={`Show the ${LeadsPro ? typicalName : LeadsProName}`}
               className={p.switch}
-              onClick={() => setGoodfaith((v) => !v)}
+              onClick={() => setLeadsPro((v) => !v)}
             >
               <span className={p.indicator} />
             </button>
-            <span className={p.toggleText}>{goodfaithName}</span>
+            <span className={p.toggleText}>{LeadsProName}</span>
           </div>
         </div>
 
@@ -58,7 +58,7 @@ export function Plans({ id, title, head, rows, cta }: PlansProps) {
             <div key={c} className={`${p.card} ${c === 1 ? p.wide : ""}`}>
               <div>
                 <div className={p.label}>
-                  <Slide first={goodfaithName} second={typicalName} />
+                  <Slide first={LeadsProName} second={typicalName} />
                 </div>
                 <div className={p.separator} />
                 <ul className={p.rows}>

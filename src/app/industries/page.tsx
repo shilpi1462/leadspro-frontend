@@ -32,7 +32,7 @@ export const metadata: Metadata = pageMetadata({
   title:
     "Industries We Serve | Digital Marketing for Contractors, Clinics, Firms & More | LeadsPro",
   description:
-    "Digital marketing for different industries: contractors and home services, dental and healthcare clinics, restaurants, law and accounting firms, technology companies and more across Niagara Region and Ontario.",
+    "Digital marketing for different industries: contractors and home services, dental and healthcare clinics, restaurants, law and accounting firms, technology companies and more across Dubai and UAE.",
   path: routes.industry,
 });
 

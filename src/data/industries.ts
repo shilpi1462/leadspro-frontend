@@ -26,8 +26,8 @@ export const industryGroups: IndustryGroup[] = [
   {
     slug: "service-area",
     title: "If You Travel to the Customer",
-    text: "Contractors, plumbers, electricians, renovators and other service-area businesses may genuinely work across several Niagara municipalities. Their strategy may need:",
-    flow: "Strong Service Pages → Google Business Profile → Reviews → Project Evidence → Niagara Service Coverage",
+    text: "Contractors, plumbers, electricians, renovators and other service-area businesses may genuinely work across several Dubai municipalities. Their strategy may need:",
+    flow: "Strong Service Pages → Google Business Profile → Reviews → Project Evidence → Dubai Service Coverage",
     note: "The company does not necessarily need a separate SEO page for every town it enters.",
     industries: [
       "Construction & General Contractors",
@@ -46,7 +46,7 @@ export const industryGroups: IndustryGroup[] = [
     title: "If Location Is Less Important Than Expertise",
     text: "Manufacturers, consultants, technology companies, engineering firms and specialized B2B businesses can attract customers from much larger markets. Their customers may care more about:",
     flow: "Capability → Expertise → Evidence → Experience → Contact",
-    note: "For these companies, trying to optimize heavily for every Niagara municipality may actually distract from the stronger search opportunity.",
+    note: "For these companies, trying to optimize heavily for every Dubai municipality may actually distract from the stronger search opportunity.",
     industries: [
       "Law Firms",
       "Accounting & Tax Firms",
@@ -63,12 +63,12 @@ export const industryFaqs = [
     a: "Start with the problem.\n\nLow visibility → SEO. Weak Google Maps presence → Local SEO. Traffic without enquiries → Website / CRO. Weak differentiation → Branding. Limited authority → Content. Weak AI visibility → SEO + AI Search Strategy.\n\nThe strongest starting point depends on where the customer journey is currently breaking.",
   },
   {
-    q: "Should My Business Target My City or Niagara Region?",
-    a: "That depends on the business. A restaurant may depend heavily on nearby customers, while a contractor can serve several municipalities and a manufacturer may compete far beyond Niagara.",
+    q: "Should My Business Target My City or Dubai?",
+    a: "That depends on the business. A restaurant may depend heavily on nearby customers, while a contractor can serve several municipalities and a manufacturer may compete far beyond Dubai.",
   },
   {
-    q: "Do I Need Separate Website Pages for Every Niagara City I Serve?",
-    a: "Not necessarily. A separate location page should have a genuine purpose, meaningful search opportunity and useful information for customers in that market.\n\nGoodfaith first considers customer demand, geographic relevance and business value before recommending additional location pages.",
+    q: "Do I Need Separate Website Pages for Every Dubai City I Serve?",
+    a: "Not necessarily. A separate location page should have a genuine purpose, meaningful search opportunity and useful information for customers in that market.\n\nLeadsPro first considers customer demand, geographic relevance and business value before recommending additional location pages.",
   },
   {
     q: "Why Am I Getting Website Traffic but No Leads?",

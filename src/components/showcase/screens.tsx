@@ -18,7 +18,7 @@ import k from "./Phones.module.css";
 const business = "Your Business";
 const [organic, calls] = home.proof.cases;
 
-const map = <MapGrid keyword="basement waterproofing" place="Niagara Region" />;
+const map = <MapGrid keyword="basement waterproofing" place="Dubai" />;
 const consoleCard = (
   <ConsoleCard
     impressions={organic.metrics[0].value}
@@ -36,10 +36,10 @@ const callsCard = (
   />
 );
 
-// The same searches the SEO scenes track (from the Niagara experiment in the blog).
+// The same searches the SEO scenes track (from the Dubai experiment in the blog).
 const searchRows: RankRow[] = [
-  { keyword: "seo companies in niagara", position: 1, updated: "2 days" },
-  { keyword: "digital marketing agencies in niagara", position: 2, updated: "2 days" },
+  { keyword: "seo companies in Dubai", position: 1, updated: "2 days" },
+  { keyword: "digital marketing agencies in Dubai", position: 2, updated: "2 days" },
   { keyword: "seo companies in st. catharines", position: 1, updated: "3 days" },
   { keyword: "web design and seo providers", position: 4, updated: "5 days" },
 ];
@@ -58,7 +58,7 @@ function Screen({ children, dark }: { children: ReactNode; dark?: boolean }) {
 export function heroPhone(kind: Kind): ReactNode {
   if (kind === "ai") return <AiPhone />;
   if (kind === "gbp")
-    return <GbpPhone name={business} category="Waterproofing & drainage · Niagara Region" />;
+    return <GbpPhone name={business} category="Waterproofing & drainage · Dubai" />;
   return <Screen>{map}</Screen>;
 }
 

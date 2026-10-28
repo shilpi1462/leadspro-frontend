@@ -8,10 +8,10 @@ interface CompareTableProps {
 }
 
 export function CompareTable({ head, rows, tone = "dark" }: CompareTableProps) {
-  const goodfaith = head.findIndex((h) => /goodfaith/i.test(h));
+  const LeadsPro = head.findIndex((h) => /LeadsPro/i.test(h));
   const pair = head.length === 2;
-  const highlight = pair && goodfaith === -1 ? 1 : goodfaith;
-  const marks = pair && goodfaith !== -1;
+  const highlight = pair && LeadsPro === -1 ? 1 : LeadsPro;
+  const marks = pair && LeadsPro !== -1;
   const labelled = !pair && highlight !== 0;
 
   return (

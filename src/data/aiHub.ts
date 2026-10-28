@@ -10,12 +10,12 @@ const implementation = {
 };
 
 export const aiHub = {
-  seoTitle: "Goodfaith AI Hub | AI Search Research, Experiments & Guides",
+  seoTitle: "LeadsPro AI Hub | AI Search Research, Experiments & Guides",
   description:
-    "Explore Goodfaith’s AI search research, experiments and practical observations on Google AI, ChatGPT Search, citations, query fan-out and brand visibility.",
+    "Explore LeadsPro’s AI search research, experiments and practical observations on Google AI, ChatGPT Search, citations, query fan-out and brand visibility.",
 
   hero: {
-    kicker: "Goodfaith AI Hub",
+    kicker: "LeadsPro AI Hub",
     title: "AI Search Research, Experiments & Practical Guides",
     lead: "AI search is changing quickly, and confident advice often moves faster than reliable evidence.",
     research,
@@ -25,7 +25,7 @@ export const aiHub = {
 
   intro: {
     statement:
-      "The Goodfaith AI Hub is where we document what we are testing, observing and learning about Google AI Search, ChatGPT Search and the wider shift toward AI-assisted discovery.",
+      "The LeadsPro AI Hub is where we document what we are testing, observing and learning about Google AI Search, ChatGPT Search and the wider shift toward AI-assisted discovery.",
     questionsLabel: "We study questions such as:",
     questions: [
       "Where are AI platforms getting their information?",
@@ -45,11 +45,11 @@ export const aiHub = {
   },
 
   why: {
-    title: "Why Goodfaith Studies AI Search",
+    title: "Why LeadsPro Studies AI Search",
     intro: [
       "There is already a large amount of advice about “ranking in AI.”",
       "Some of it comes from strong research. Some is opinion. Some is traditional SEO presented under a new name.",
-      "Goodfaith prefers to investigate the question before turning it into a recommendation.",
+      "LeadsPro prefers to investigate the question before turning it into a recommendation.",
     ],
     combinesLabel: "Our AI-search work combines:",
     combines: [
@@ -72,7 +72,7 @@ export const aiHub = {
 
   observing: {
     title: "What We Are Observing in AI Search",
-    note: "These are Goodfaith field observations, not guaranteed AI-ranking factors.",
+    note: "These are LeadsPro field observations, not guaranteed AI-ranking factors.",
     citations: {
       title: "Third-Party Citations Can Strengthen a Brand’s Information Footprint",
       lead: "One of the strongest patterns we have observed is that AI-search research should not stop at a company’s website.",
@@ -92,7 +92,7 @@ export const aiHub = {
       takeaway:
         "Our practical takeaway is that credible third-party sources give search and AI systems additional places to encounter and confirm information about a business.",
       frameworkLabel: "We call this the:",
-      framework: "Goodfaith AI Source Footprint",
+      framework: "LeadsPro AI Source Footprint",
       steps: [
         "Website",
         "Business Profiles",
@@ -115,7 +115,7 @@ export const aiHub = {
         "Specific expertise",
         "The overall customer experience",
       ],
-      seen: "In Goodfaith’s observations, established profiles containing genuine reviews have often been more informative than empty listings.",
+      seen: "In LeadsPro’s observations, established profiles containing genuine reviews have often been more informative than empty listings.",
       not: "We do not describe reviews as a confirmed direct AI-ranking factor.",
       sayLabel: "What we can say is:",
       say: "Real customer experiences create independent information about a business.",
@@ -129,7 +129,7 @@ export const aiHub = {
       lead: "One of the most useful questions in AI-search research is:",
       question: "Where is the answer getting its information from?",
       studies:
-        "For important commercial questions, Goodfaith studies the sources appearing around the answer.",
+        "For important commercial questions, LeadsPro studies the sources appearing around the answer.",
       typesLabel: "We look at whether those sources are:",
       types: [
         "Company Websites",
@@ -148,7 +148,7 @@ export const aiHub = {
       ],
       askJoin: "and:",
       frameworkLabel: "This leads to the:",
-      framework: "Goodfaith AI Source Gap Audit",
+      framework: "LeadsPro AI Source Gap Audit",
       steps: [
         "Important Question",
         "Sources Appearing",
@@ -158,7 +158,7 @@ export const aiHub = {
       after: [
         "The objective is not to get listed everywhere.",
         "It is to understand which parts of the information ecosystem may genuinely matter.",
-        "Our detailed source-selection and execution process remains part of Goodfaith’s internal methodology.",
+        "Our detailed source-selection and execution process remains part of LeadsPro’s internal methodology.",
       ],
     },
     fanout: {
@@ -170,10 +170,10 @@ export const aiHub = {
       ],
       exampleLabel: "For example:",
       example:
-        "“Which digital marketing company in Niagara would be suitable for a healthcare clinic that needs Local SEO and better AI visibility?”",
+        "“Which digital marketing company in Dubai would be suitable for a healthcare clinic that needs Local SEO and better AI visibility?”",
       needsLabel: "may involve information about:",
       needs: [
-        "Niagara marketing companies",
+        "Dubai marketing companies",
         "Healthcare experience",
         "Local SEO",
         "Google Business Profile",
@@ -182,9 +182,9 @@ export const aiHub = {
         "Evidence",
         "Company credibility",
       ],
-      beyond: "Goodfaith therefore looks beyond the exact keyword.",
+      beyond: "LeadsPro therefore looks beyond the exact keyword.",
       frameworkLabel: "Our research model is:",
-      framework: "Goodfaith Query Fan-Out Map",
+      framework: "LeadsPro Query Fan-Out Map",
       steps: ["Main Question", "Related Information Needs", "Evidence Needed", "Useful Sources"],
       after: [
         "That does not mean creating a separate webpage for every possible related query.",
@@ -195,7 +195,7 @@ export const aiHub = {
     seo: {
       title: "Strong SEO Still Matters",
       lead: [
-        "Goodfaith does not treat traditional SEO and AI SEO as two completely separate systems.",
+        "LeadsPro does not treat traditional SEO and AI SEO as two completely separate systems.",
         "Google says its existing SEO best practices remain relevant because its generative AI Search experiences use its broader Search ranking and quality systems.",
         "We have seen a similar pattern in our own work.",
       ],
@@ -220,10 +220,10 @@ export const aiHub = {
   },
 
   lab: {
-    title: "The Goodfaith AI Search Lab",
+    title: "The LeadsPro AI Search Lab",
     lead: [
       "AI search is changing too quickly for us to rely only on theories.",
-      "The Goodfaith AI Search Lab is where we test questions worth investigating.",
+      "The LeadsPro AI Search Lab is where we test questions worth investigating.",
     ],
     areasLabel: "We are studying areas such as:",
     areas: [
@@ -254,10 +254,10 @@ export const aiHub = {
   },
 
   featured: {
-    title: "Featured Goodfaith Research",
+    title: "Featured LeadsPro Research",
     study: "Does Schema Influence Google AI Mode Citations?",
     method:
-      "Goodfaith reviewed 15 URLs cited by Google AI Mode across three different topics and manually checked their structured data.",
+      "LeadsPro reviewed 15 URLs cited by Google AI Mode across three different topics and manually checked their structured data.",
     figures: [
       { value: "15", label: "URLs cited by Google AI Mode" },
       { value: "3", label: "different topics" },
@@ -277,9 +277,9 @@ export const aiHub = {
   },
 
   claims: {
-    title: "What Goodfaith Will Not Claim About AI Search",
+    title: "What LeadsPro Will Not Claim About AI Search",
     lead: "AI search is still evolving, and some claims online are stronger than the available evidence.",
-    listLabel: "Goodfaith does not claim that:",
+    listLabel: "LeadsPro does not claim that:",
     list: [
       "Schema guarantees AI citations.",
       "One directory listing automatically improves AI rankings.",
@@ -302,7 +302,7 @@ export const aiHub = {
   library: {
     title: "AI Search Evidence Library",
     lead: [
-      "Goodfaith prefers primary sources whenever possible.",
+      "LeadsPro prefers primary sources whenever possible.",
       "Our research library follows areas including:",
     ],
     areas: [
@@ -320,7 +320,7 @@ export const aiHub = {
       },
       {
         title: "Structured Data",
-        text: "Official documentation combined with Goodfaith’s own experiments.",
+        text: "Official documentation combined with LeadsPro’s own experiments.",
       },
       {
         title: "External Authority",
@@ -355,16 +355,15 @@ export const aiHub = {
   },
 
   author: {
-    title: "Research & Analysis by Goodfaith",
-    byline:
-      "Research led by Lovish Tayal, Founder & CEO of Goodfaith Branding & Digital Marketing.",
-    name: "Lovish Tayal",
+    title: "Research & Analysis by LeadsPro",
+    byline: "Research led by Sachin Gupta, Founder & CEO of LeadsPro Branding & Digital Marketing.",
+    name: "Sachin Gupta",
     role: "Founder & CEO",
-    text: "The Goodfaith AI Hub combines practical SEO work, manual source analysis, AI-search testing, original experiments and primary platform documentation.",
+    text: "The LeadsPro AI Hub combines practical SEO work, manual source analysis, AI-search testing, original experiments and primary platform documentation.",
   },
 
   principles: {
-    title: "Goodfaith AI Research Principles",
+    title: "LeadsPro AI Research Principles",
     list: [
       "Test Before Claiming",
       "Prefer Primary Sources",
@@ -376,15 +375,15 @@ export const aiHub = {
       "Change the Conclusion When Better Evidence Appears",
     ],
     goal: [
-      "The goal of the Goodfaith AI Hub is not to prove that we already have every answer.",
+      "The goal of the LeadsPro AI Hub is not to prove that we already have every answer.",
       "It is to become more accurate as we learn more.",
     ],
   },
 
   closing: {
-    title: "Keep Learning With the Goodfaith AI Hub",
+    title: "Keep Learning With the LeadsPro AI Hub",
     lead: ["AI search will continue to change.", "So will our research."],
-    topicsLabel: "The Goodfaith AI Hub will continue publishing practical work around:",
+    topicsLabel: "The LeadsPro AI Hub will continue publishing practical work around:",
     topics: [
       "AI Citations",
       "Query Fan-Out",

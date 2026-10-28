@@ -24,7 +24,7 @@ interface CaseCard {
 }
 
 const screens: Record<string, ReactNode> = {
-  "niagara-waterproofing-drainage-plumbing-seo": (
+  "Dubai-waterproofing-drainage-plumbing-seo": (
     <Shot picture={workPictures["waterproofing-local-service-growth"]} position="top" />
   ),
   "construction-company-strategy-example": <Wireframe name="Construction Company" compact />,

@@ -1,4 +1,4 @@
-// Line icons for the industries Goodfaith works with, on a 24px grid, stroked in currentColor.
+// Line icons for the industries LeadsPro works with, on a 24px grid, stroked in currentColor.
 // Keyed by the industry names in the home data.
 
 const paths: Record<string, string[]> = {

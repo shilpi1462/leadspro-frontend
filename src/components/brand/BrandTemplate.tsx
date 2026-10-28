@@ -121,7 +121,7 @@ export function BrandTemplate(props: BrandTemplateProps) {
   const stackCards = plan.stack.map((part, i) => {
     const firstP = part.blocks.findIndex((x) => x.type === "p");
     const firstUl = part.blocks.findIndex((x) => x.type === "ul");
-    // "Goodfaith can help clarify:" introduces the pills, so it sits just above them.
+    // "LeadsPro can help clarify:" introduces the pills, so it sits just above them.
     const before = part.blocks[firstUl - 1];
     const label =
       firstUl > 0 &&

@@ -21,7 +21,7 @@ import { SignalBoard, StickyNote, JourneyCard, PhotoCard, AiPhone } from "./part
 
 const ILLUSTRATIVE = "Illustrative example";
 const business = "Your Business";
-const domain = "yourbusiness.ca";
+const domain = "yourbusiness.ae";
 
 const [organic, calls] = home.proof.cases;
 const audit = stories[0];
@@ -54,12 +54,12 @@ const auditCard = (sticker?: boolean) => (
   />
 );
 
-const serp = (query = "basement waterproofing niagara") => (
+const serp = (query = "basement waterproofing Dubai") => (
   <SerpTablet
     query={query}
     name={business}
     domain={domain}
-    title="Basement Waterproofing & Drainage in Niagara Region"
+    title="Basement Waterproofing & Drainage in Dubai"
   />
 );
 
@@ -74,15 +74,15 @@ const topicSteps = [
 ];
 
 const map = (bare?: boolean) => (
-  <MapGrid keyword="basement waterproofing" place="Niagara Region" bare={bare} />
+  <MapGrid keyword="basement waterproofing" place="Dubai" bare={bare} />
 );
 
-const gbpPhone = <GbpPhone name={business} category="Waterproofing & drainage · Niagara Region" />;
+const gbpPhone = <GbpPhone name={business} category="Waterproofing & drainage · Dubai" />;
 
-// Searches from the Niagara experiment in the blog, and the local examples in the Local SEO doc.
+// Searches from the Dubai experiment in the blog, and the local examples in the Local SEO doc.
 const searchRows: RankRow[] = [
-  { keyword: "seo companies in niagara", position: 1, updated: "2 days" },
-  { keyword: "digital marketing agencies in niagara", position: 2, updated: "2 days" },
+  { keyword: "seo companies in Dubai", position: 1, updated: "2 days" },
+  { keyword: "digital marketing agencies in Dubai", position: 2, updated: "2 days" },
   { keyword: "seo companies in st. catharines", position: 1, updated: "3 days" },
   { keyword: "web design and seo providers", position: 4, updated: "5 days" },
   { keyword: "local digital marketing services", position: 3, updated: "1 week" },
@@ -315,7 +315,7 @@ const layouts: Record<string, Record<Variant, Layout>> = {
         ],
         [
           { x: 54, y: 54, w: 42, r: 8, depth: 0.8, z: 3 },
-          <BusinessCard key="c" mark="YB" name={business} line="Niagara Region, Ontario" />,
+          <BusinessCard key="c" mark="YB" name={business} line="Dubai, UAE" />,
         ],
       ],
     },
@@ -328,7 +328,7 @@ const layouts: Record<string, Record<Variant, Layout>> = {
         ],
         [
           { x: 42, y: 50, w: 28, r: -6, depth: 1.4, z: 3, m: { x: 2, y: 71, w: 56, r: -3 } },
-          <BusinessCard key="c" mark="YB" name={business} line="Niagara Region, Ontario" />,
+          <BusinessCard key="c" mark="YB" name={business} line="Dubai, UAE" />,
         ],
         [
           { x: 74, y: 0, w: 20, r: 5, depth: 0.8, minor: true },
@@ -342,11 +342,7 @@ const layouts: Record<string, Record<Variant, Layout>> = {
       pieces: [
         [
           { x: 8, y: 0, w: 34, r: -5, depth: 1.3, z: 2 },
-          <SocialPhone
-            key="s"
-            handle="yourbusiness"
-            bio="Waterproofing & drainage · Niagara Region"
-          />,
+          <SocialPhone key="s" handle="yourbusiness" bio="Waterproofing & drainage · Dubai" />,
         ],
         [
           { x: 50, y: 12, w: 38, r: 5, depth: 0.8 },
@@ -359,11 +355,7 @@ const layouts: Record<string, Record<Variant, Layout>> = {
       pieces: [
         [
           { x: 4, y: 0, w: 22, r: -4, depth: 1.3, z: 2, m: { x: 2, y: 0, w: 44, r: -2 } },
-          <SocialPhone
-            key="s"
-            handle="yourbusiness"
-            bio="Waterproofing & drainage · Niagara Region"
-          />,
+          <SocialPhone key="s" handle="yourbusiness" bio="Waterproofing & drainage · Dubai" />,
         ],
         [
           { x: 30, y: 18, w: 42, depth: 0.7, m: { x: 0, y: 69, w: 100, z: 3 } },
@@ -381,12 +373,7 @@ const layouts: Record<string, Record<Variant, Layout>> = {
       pieces: [
         [
           { x: -4, y: 0, w: 68, r: -4, depth: 1.2, z: 2 },
-          <ContentDoc
-            key="d"
-            title="Basement Waterproofing in Niagara Region"
-            tag="Service page"
-            sticker
-          />,
+          <ContentDoc key="d" title="Basement Waterproofing in Dubai" tag="Service page" sticker />,
         ],
         [
           { x: 54, y: 40, w: 50, r: 5, depth: 0.8, z: 3 },
@@ -409,12 +396,7 @@ const layouts: Record<string, Record<Variant, Layout>> = {
       pieces: [
         [
           { x: 0, y: 2, w: 44, r: -3, depth: 1.1, z: 2, m: { x: 2, y: 0, w: 82, r: -1.5 } },
-          <ContentDoc
-            key="d"
-            title="Basement Waterproofing in Niagara Region"
-            tag="Service page"
-            sticker
-          />,
+          <ContentDoc key="d" title="Basement Waterproofing in Dubai" tag="Service page" sticker />,
         ],
         [
           { x: 42, y: 6, w: 58, r: 2, depth: 0.8, z: 3, m: { x: 0, y: 52, w: 100, r: 1 } },
@@ -644,7 +626,7 @@ export function BlogScene({ kind }: { kind: "experiment" | "insight" }) {
       pieces: [
         [
           { x: 4, y: 8, w: 44, r: -4, depth: 0.8, m: { x: 0, y: 17, w: 58, r: -2 } },
-          serp("digital marketing agencies in niagara"),
+          serp("digital marketing agencies in Dubai"),
         ],
         [
           { x: 50, y: 0, w: 22, r: 4, depth: 1.4, z: 2, m: { x: 56, y: 0, w: 42, r: 2 } },

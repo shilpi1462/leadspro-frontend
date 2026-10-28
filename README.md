@@ -1,19 +1,19 @@
-# Goodfaith Branding & Digital Marketing
+# LeadsPro Branding & Digital Marketing
 
-Marketing website for Goodfaith, a digital marketing agency in Niagara Region, Ontario.
+Marketing website for LeadsPro, a digital marketing agency in Dubai.
 Next.js (App Router) exported as static HTML, so it can be hosted anywhere.
 
 ## Pages
 
-| Page      | Route                                                          |
-| --------- | -------------------------------------------------------------- |
-| Home      | `/`                                                            |
-| Services  | `/services/<slug>/` (25 pages in 8 categories, `content/services/`) |
-| Industries | `/industries/`                                                |
-| Blog      | `/blog/`                                                       |
-| Portfolio | `/portfolio/`                                                  |
-| H-EDGE    | `/h-edge/`                                                     |
-| AI Hub    | `/ai-hub/`                                                     |
+| Page       | Route                                                               |
+| ---------- | ------------------------------------------------------------------- |
+| Home       | `/`                                                                 |
+| Services   | `/services/<slug>/` (25 pages in 8 categories, `content/services/`) |
+| Industries | `/industries/`                                                      |
+| Blog       | `/blog/`                                                            |
+| Portfolio  | `/portfolio/`                                                       |
+| H-EDGE     | `/h-edge/`                                                          |
+| AI Hub     | `/ai-hub/`                                                          |
 
 ## Getting started
 

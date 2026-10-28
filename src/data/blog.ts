@@ -10,18 +10,18 @@ export const blogCategories: BlogCategory[] = [
     slug: "insights-guides",
     name: "Insights & Guides",
     purpose: "Normal SEO-focused educational blogs",
-    example: "How Much Does SEO Cost in Canada?",
+    example: "How Much Does SEO Cost in UAE?",
   },
   {
     slug: "research",
     name: "Research",
-    purpose: "Original Goodfaith studies using collected data",
-    example: "We Analyzed 100 Niagara Business Websites",
+    purpose: "Original LeadsPro studies using collected data",
+    example: "We Analyzed 100 Dubai Business Websites",
   },
   {
     slug: "experiments",
     name: "Experiments",
-    purpose: "Things Goodfaith actually tests and measures",
+    purpose: "Things LeadsPro actually tests and measures",
     example: "We Tested AI SEO vs Traditional SEO for 90 Days",
   },
   {

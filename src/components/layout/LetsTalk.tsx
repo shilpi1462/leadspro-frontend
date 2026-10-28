@@ -53,7 +53,7 @@ export function LetsTalk() {
                 <p className={styles.detailText}>
                   {site.region}
                   <br />
-                  Canada
+                  UAE
                 </p>
               </span>
             </div>

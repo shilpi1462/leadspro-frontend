@@ -87,7 +87,7 @@ export function Footer() {
 
         <div className={styles.wordmark} aria-hidden="true">
           <span className={styles.wordText}>
-            Goodfaith<sup>®</sup>
+            LeadsPro<sup></sup>
           </span>
         </div>
       </div>

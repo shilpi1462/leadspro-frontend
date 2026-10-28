@@ -24,7 +24,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "waterproofing-local-service-growth",
     industry: "Waterproofing / Home Services",
     title: "Local Service Growth Framework",
-    client: "Niagara Region waterproofing, drainage & plumbing company",
+    client: "Dubai waterproofing, drainage & plumbing company",
     services: ["Technical SEO", "Local SEO", "Google Business Profile", "Website Optimization"],
     timeline: "Ongoing engagement",
     challenge:
@@ -53,7 +53,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "clinic-website-trust-refresh",
     industry: "Healthcare / Mental Health",
     title: "Clinic Website Trust Refresh",
-    client: "Ontario mental health & counselling clinic",
+    client: "Dubai mental health & counselling clinic",
     services: ["Website Design", "Content Marketing", "Local SEO"],
     timeline: "12 weeks",
     challenge:
@@ -72,7 +72,7 @@ export const caseStudies: CaseStudy[] = [
     slug: "restaurant-brand-local-search",
     industry: "Hospitality / Restaurants",
     title: "Restaurant Brand and Local Search Plan",
-    client: "Niagara Falls restaurant group",
+    client: "Dubai Falls restaurant group",
     services: ["Branding & Visual Identity", "Google Business Profile", "Social Media"],
     timeline: "8 weeks",
     challenge:
@@ -91,7 +91,7 @@ export const caseStudies: CaseStudy[] = [
 
 export const caseStudyStandards = {
   title: "No Fake Metrics. No Fake Testimonials.",
-  text: "When Goodfaith publishes a case study, it includes the industry, initial challenge, services provided, strategy, timeline, before-and-after context and genuine results. A testimonial is included only when supporting information exists.",
+  text: "When LeadsPro publishes a case study, it includes the industry, initial challenge, services provided, strategy, timeline, before-and-after context and genuine results. A testimonial is included only when supporting information exists.",
   fields: [
     "Industry",
     "Initial challenge",
