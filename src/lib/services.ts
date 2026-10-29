@@ -20,7 +20,8 @@ export function getServiceGroups(): ServiceGroup[] {
     const services = all.filter((s) => s.data.category === cat.slug);
     const links = services.map((s) => ({
       name: serviceShortTitle(s.data.title),
-      href: servicePath(s.slug),
+      href: "#",
+      // href: servicePath(s.slug),
     }));
     return { ...cat, services, links, href: links[0]?.href ?? servicePath(cat.slug) };
   });

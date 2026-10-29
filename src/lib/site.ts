@@ -9,9 +9,9 @@ export const site = {
   description:
     "Leads Pro is a Dubai Based digital marketing agency providing SEO, AI Search Optimization, Local SEO, web design, branding, content and digital growth strategy.",
   social: {
-    linkedin: "https://www.linkedin.com/company/leadsprodubai",
-    instagram: "https://www.instagram.com/leadsprodubai",
-    facebook: "https://www.facebook.com/leadsprodubai",
+    linkedin: "#",
+    instagram: "#",
+    facebook: "#",
   },
 };
 
