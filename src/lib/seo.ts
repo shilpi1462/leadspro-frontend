@@ -9,6 +9,7 @@ interface PageMeta {
   path: string;
   type?: "website" | "article";
   publishedTime?: string;
+  robot?: boolean;
 }
 
 export function pageMetadata({
@@ -17,6 +18,7 @@ export function pageMetadata({
   path,
   type = "website",
   publishedTime,
+  robot = false,
 }: PageMeta): Metadata {
   const url = `${site.url}${path}`;
   return {
@@ -38,6 +40,7 @@ export function pageMetadata({
       title,
       description,
     },
+    robots: { index: robot, follow: robot },
   };
 }
 

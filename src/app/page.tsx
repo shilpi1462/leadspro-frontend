@@ -27,6 +27,7 @@ export const metadata: Metadata = pageMetadata({
   title: home.seoTitle,
   description: home.description,
   path: "/",
+  robot: true,
 });
 
 const dark = `on-dark ${styles.dark}`;
