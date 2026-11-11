@@ -4,7 +4,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CtaBlock } from "@/components/layout/CtaBlock";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { organizationSchema } from "@/lib/seo";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -73,21 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CtaBlock />
         <Footer />
 
-        <JsonLd
-          data={[
-            organizationSchema,
-            {
-              "@type": "WebSite",
-              "@id": `${site.url}/#website`,
-              name: site.legalName,
-              url: site.url,
-              publisher: {
-                "@id": `${site.url}/#organization`,
-              },
-            },
-            localBusinessSchema,
-          ]}
-        />
+        <JsonLd data={[localBusinessSchema]} />
       </body>
     </html>
   );
