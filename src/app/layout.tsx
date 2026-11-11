@@ -27,6 +27,29 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.webp" },
 };
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${site.url}/#localbusiness`,
+  name: "LeadsPro.ae",
+  image: "https://www.leadspro.ae/images/services/content-marketing-1.webp",
+  url: "https://www.leadspro.ae/",
+  telephone: "+971527121005",
+  priceRange: "$$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "B3222, Skyhills Astra, Umm Suqeim St - Al Barsha South Second - Al Barsha",
+    addressLocality: "Dubai",
+    postalCode: "00000",
+    addressCountry: "AE",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 25.0730467,
+    longitude: 55.2461184,
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -37,15 +60,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body>
         <script
-          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
         />
         <a href="#main" className="skip-link">
           Skip to content
         </a>
+
         <Header />
         <main id="main">{children}</main>
         <CtaBlock />
         <Footer />
+
         <JsonLd
           data={[
             organizationSchema,
@@ -54,8 +81,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "@id": `${site.url}/#website`,
               name: site.legalName,
               url: site.url,
-              publisher: { "@id": `${site.url}/#organization` },
+              publisher: {
+                "@id": `${site.url}/#organization`,
+              },
             },
+            localBusinessSchema,
           ]}
         />
       </body>

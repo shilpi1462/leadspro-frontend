@@ -27,6 +27,8 @@ export function Footer() {
       title: "Get in touch",
       links: [
         { name: "Free Digital Growth Audit", href: routes.audit },
+        { name: site.address, href: routes.googleMap },
+        { name: site.phone, href: routes.phone },
         { name: site.email, href: routes.contact },
         { name: "LinkedIn", href: site.social.linkedin },
         { name: "Instagram", href: site.social.instagram },
@@ -59,7 +61,7 @@ export function Footer() {
                         </span>
                       </Link>
                     ) : (
-                      <a href={l.href} className={styles.link} rel="noopener">
+                      <a href={l.href} className={styles.link} rel="noopener nofollow">
                         <span>{l.name}</span>
                         <span className={styles.chev} aria-hidden="true">
                           ›

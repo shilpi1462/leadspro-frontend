@@ -39,7 +39,7 @@ export function LatestArticle() {
               </span>
               <span className={styles.side}>
                 <span className={styles.text}>{post.data.description}</span>
-                {i === 0 && (
+                {/* {i === 0 && (
                   <span className={styles.author}>
                     <span className={styles.avatar} aria-hidden="true">
                       {initials}
@@ -49,7 +49,7 @@ export function LatestArticle() {
                       <span className={styles.authorRole}>Founder &amp; CEO</span>
                     </span>
                   </span>
-                )}
+                )} */}
               </span>
             </Link>
           );

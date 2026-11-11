@@ -1,11 +1,13 @@
 export const site = {
-  name: "LeadsPro",
-  legalName: "LeadsPro Branding & Digital Marketing",
+  name: " LeadsPro.ae",
+  legalName: " LeadsPro.ae",
   url: "https://www.leadspro.ae",
   email: "hello@leadspro.ae",
+  address: "B3222, Skyhills Astra, Umm Suqeim St - Al Barsha South Second - Al Barsha - Dubai",
+  phone: "+971 52 712 1005",
   city: "Dubai",
   region: "Dubai Marina, Downtown Dubai, Business Bay, Jumeirah",
-  founder: "Sachin Gupta",
+  founder: "SG",
   description:
     "Leads Pro is a Dubai Based digital marketing agency providing SEO, AI Search Optimization, Local SEO, web design, branding, content and digital growth strategy.",
   social: {
@@ -42,6 +44,8 @@ export const routes = {
   about: "/#about",
   audit: `mailto:${site.email}?subject=${encodeURIComponent("Free Digital Growth Audit")}`,
   contact: `mailto:${site.email}`,
+  phone: "tel:+971527121005",
+  googleMap: "https://www.google.com/maps/search/?api=1&query=25.0730467%2C55.2461184",
 };
 
 // Service pages referenced from designed sections (home, industries, footer)

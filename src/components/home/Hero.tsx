@@ -39,7 +39,7 @@ export function Hero() {
             _Pro
           </span>
         </p>
-        <a href={routes.nolink} className={styles.founder}>
+        {/* <a href={routes.nolink} className={styles.founder}>
           <span className={styles.avatar} aria-hidden="true">
             {initials}
           </span>
@@ -53,7 +53,7 @@ export function Hero() {
               </span>
             </span>
           </span>
-        </a>
+        </a> */}
       </div>
 
       <HeroPanel chips={chips}>

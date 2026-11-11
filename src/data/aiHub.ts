@@ -356,8 +356,8 @@ export const aiHub = {
 
   author: {
     title: "Research & Analysis by LeadsPro",
-    byline: "Research led by Sachin Gupta, Founder & CEO of LeadsPro Branding & Digital Marketing.",
-    name: "Sachin Gupta",
+    byline: "Research led by Founder & CEO of LeadsPro Branding & Digital Marketing.",
+    name: "",
     role: "Founder & CEO",
     text: "The LeadsPro AI Hub combines practical SEO work, manual source analysis, AI-search testing, original experiments and primary platform documentation.",
   },
