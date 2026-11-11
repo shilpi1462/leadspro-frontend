@@ -1,13 +1,13 @@
 export const site = {
-  name: " LeadsPro.ae",
-  legalName: " LeadsPro.ae",
+  name: "LeadsPro.ae",
+  legalName: "LeadsPro.ae",
   url: "https://www.leadspro.ae",
   email: "hello@leadspro.ae",
   address: "B3222, Skyhills Astra, Umm Suqeim St - Al Barsha South Second - Al Barsha - Dubai",
   phone: "+971 52 712 1005",
   city: "Dubai",
   region: "Dubai Marina, Downtown Dubai, Business Bay, Jumeirah",
-  founder: "SG",
+  founder: "Shilpi Gupta",
   description:
     "Leads Pro is a Dubai Based digital marketing agency providing SEO, AI Search Optimization, Local SEO, web design, branding, content and digital growth strategy.",
   social: {
