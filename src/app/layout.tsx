@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   applicationName: site.name,
   robots: { index: false, follow: false },
   icons: { icon: "/favicon.webp" },
+  verification: {
+    google: "zlG-xovAlKLdTgfksgkH8CXgngRrD_Y5iqK_mO16sJI",
+  },
 };
 
 const localBusinessSchema = {
